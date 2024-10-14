@@ -1,10 +1,12 @@
-import Image from "next/image";
+import React from 'react'
 import classes from "./page.module.css";
 
-export default function Home() {
+const page = () => {
   return (
     <div className={classes['page']}>
-dash
+        dash
     </div>
-  );
+  )
 }
+
+export default page
