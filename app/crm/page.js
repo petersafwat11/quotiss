@@ -4,10 +4,10 @@ import classes from "./page.module.css";
 import Title from "../ui/title/Title";
 import Search from "../ui/search/Search";
 import ChexBoxFilter from "../ui/checkboxFilter/CheckBoxFilter";
-import TypesFilter from "../ui/rates/typesFilter/TypesFilter";
 import ClientsFilter from "../ui/clients/clientsFilter/ClientsFilter";
 import StatusFilter from "../ui/clients/statusFilter/StatusFilter";
 import Table from "../ui/clients/table/Table";
+import TypesFilter from "../ui/clients/typesFilter/TypesFilter";
 const Page = () => {
   const [clientsFilterValue, setClientsFilterValue] = useState("All Clients");
   const [statusFilterValue, setStatusFilterValue] = useState("Status");
