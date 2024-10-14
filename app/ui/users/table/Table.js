@@ -10,14 +10,9 @@ const Table = () => {
   return (
     <div className={classes["container"]}>
       <div className={classes["top"]}>
-        <div className={classes['actions']}
-        >
-          <p className={classes['action']}>
-            Clear Selection
-          </p>
-          <p className={classes['action']}>
-            Edit Email
-          </p>
+        <div className={classes["actions"]}>
+          <p className={classes["action"]}>Clear Selection</p>
+          <p className={classes["action"]}>Edit Email</p>
         </div>
         <button
           onClick={() => {
@@ -29,9 +24,9 @@ const Table = () => {
         </button>
       </div>
       <div className={classes["table"]}>
-        <div className={classes["table-header"]}>
+        <div className={classes["header"]}>
           <div></div>
-        <p className={classes["header-col"]}>Name </p>
+          <p className={classes["header-col"]}>Name </p>
           <p className={classes["header-col"]}> Team</p>
           <p className={classes["header-col"]}>Organization </p>
           <p className={classes["header-col"]}> Email</p>
@@ -41,9 +36,9 @@ const Table = () => {
         </div>
         <div className={classes["body"]}>
           <div className={classes["row"]}>
-          <div></div>
+            <div></div>
 
-          <p className={classes["data"]}>A </p>
+            <p className={classes["data"]}>A </p>
             <p className={classes["data"]}>Gold Level</p>
             <p className={classes["data"]}>A Gold Level</p>
             <p className={classes["data"]}>A </p>

@@ -3,17 +3,17 @@ import React, { useState } from "react";
 import classes from "./table.module.css";
 import Popup from "../../popupWrapper/Popup";
 import Country from "../country/Country";
+import CircleChexbox from "../../circleCheckbox/CircleChexbox";
 const Table = () => {
   const [activeCountry, setActiveCountry] = useState();
   const [showEditPopup, setShowEditPopup] = useState(false);
-  const applyChanges= ()=>{
-// make update api request
-    setShowEditPopup(false)
-    
-  }
-  const cancelChanges= ()=>{
-    setShowEditPopup(false)
-  }
+  const applyChanges = () => {
+    // make update api request
+    setShowEditPopup(false);
+  };
+  const cancelChanges = () => {
+    setShowEditPopup(false);
+  };
   return (
     <>
       {showEditPopup && (
@@ -26,18 +26,25 @@ const Table = () => {
           />
         </Popup>
       )}
-      <div className={classes["container"]}>
-        <div className={classes["table"]}>
-          <div className={classes["table-header"]}>
-            <p className={classes["header-col"]}>Code</p>
-            <p className={classes["header-col"]}>Name</p>
-            <p className={classes["header-col"]}>Status</p>
+      <div className={classes["table"]}>
+        <div className={classes["header"]}>
+          <p className={classes["code"]}>Code</p>
+          <p className={classes["name"]}>Name</p>
+          <p className={classes["status"]}>Status</p>
+        </div>
+        <div className={classes["body"]}>
+          <div className={classes["row"]}>
+            <p className={classes["code"]}>Gold Level</p>
+            <p className={classes["name"]}>A Gold Level</p>
+            <div className={classes["status"]}>
+              <CircleChexbox />
+            </div>
           </div>
-          <div className={classes["body"]}>
-            <div className={classes["row"]}>
-              <p className={classes["data"]}>Gold Level</p>
-              <p className={classes["data"]}>A Gold Level</p>
-              <p className={classes["data"]}>A Gold Level</p>
+          <div className={classes["row"]}>
+            <p className={classes["code"]}>Gold Level</p>
+            <p className={classes["name"]}>A Gold Level</p>
+            <div className={classes["status"]}>
+              <CircleChexbox />
             </div>
           </div>
         </div>

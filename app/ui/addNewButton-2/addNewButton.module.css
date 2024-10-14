@@ -1,0 +1,15 @@
+.add-new {
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 3.5rem;
+  background-color: #4aab68; */
+  color:  #4aab68;
+  border: none;
+  cursor: pointer;
+  font-family: "Roboto Condensed";
+  border-radius: 0.25rem;
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+}

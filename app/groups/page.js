@@ -5,10 +5,12 @@ import Search from "../ui/search/Search";
 import Table from "../ui/groups/table/Table";
 const page = () => {
   return (
-    <div className={classes["page"]}>
+    <div className={"page"}>
       <div className={classes["top"]}>
         <Title title={"Groups"} />
-        <Search />
+        <div className={classes["search"]}>
+          <Search />
+        </div>
       </div>
       <Table />
     </div>

@@ -24,10 +24,10 @@ const Search = (
   return (
     <div className={classes["search-wrapper"]}>
       <input
-        defaultValue={searchParams.get("search")?.toString()}
-        onChange={(e) => {
-          handleSearch(e.target.value);
-        }}
+        // defaultValue={searchParams.get("search")?.toString()}
+        // onChange={(e) => {
+        //   handleSearch(e.target.value);
+        // }}
         className={classes["search"]}
         type="text"
         placeholder="Search"

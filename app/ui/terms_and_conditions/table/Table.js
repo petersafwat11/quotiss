@@ -9,14 +9,14 @@ const Table = () => {
 
   return (
     <div className={classes["table"]}>
-      <div className={classes["table-header"]}>
-        <p className={classes["header-col"]}>Load </p>
-        <p className={classes["header-col"]}> Translations</p>
+      <div className={classes["header"]}>
+        <p className={classes["load"]}>Load </p>
+        <p className={classes["translations"]}> Translations</p>
       </div>
       <div className={classes["body"]}>
         <div className={classes["row"]}>
-          <p className={classes["data"]}>A </p>
-          <p className={classes["data"]}>Gold Level</p>
+          <p className={classes["load"]}>Load </p>
+          <p className={classes["translations"]}> Translations</p>
         </div>
       </div>
     </div>

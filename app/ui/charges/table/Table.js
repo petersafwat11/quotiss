@@ -9,26 +9,26 @@ const Table = () => {
 
   return (
     <div className={classes["table"]}>
-      <div className={classes["table-header"]}>
-        <p className={classes["header-col"]}>Location </p>
-        <p className={classes["header-col"]}> Kind </p>
-        <p className={classes["header-col"]}>Code </p>
-        <p className={classes["header-col"]}> Region</p>
-        <p className={classes["header-col"]}>Country </p>
-        <p className={classes["header-col"]}> Alias</p>
-        <p className={classes["header-col"]}> Surcharges</p>
-        <p className={classes["header-col"]}> Translations</p>
+      <div className={classes["header"]}>
+        <p className={classes["location"]}>Location</p>
+        <p className={classes["kind"]}>Kind</p>
+        <p className={classes["code"]}>Code</p>
+        <p className={classes["region"]}>Region</p>
+        <p className={classes["country"]}>Country</p>
+        <p className={classes["alias"]}>Alias</p>
+        <p className={classes["surcharges"]}>Surcharges</p>
+        <p className={classes["translations"]}>Translations</p>
       </div>
       <div className={classes["body"]}>
         <div className={classes["row"]}>
-          <p className={classes["header-col"]}>Location </p>
-          <p className={classes["header-col"]}> Kind </p>
-          <p className={classes["header-col"]}>Code </p>
-          <p className={classes["header-col"]}> Region</p>
-          <p className={classes["header-col"]}>Country </p>
-          <p className={classes["header-col"]}> Alias</p>
-          <p className={classes["header-col"]}> Surcharges</p>
-          <p className={classes["header-col"]}> Translations</p>
+          <p className={classes["location"]}>Location</p>
+          <p className={classes["kind"]}>Kind</p>
+          <p className={classes["code"]}>Code</p>
+          <p className={classes["region"]}>Region</p>
+          <p className={classes["country"]}>Country</p>
+          <p className={classes["alias"]}>Alias</p>
+          <p className={classes["surcharges"]}>Surcharges</p>
+          <p className={classes["translations"]}>Translations</p>
         </div>
       </div>
     </div>

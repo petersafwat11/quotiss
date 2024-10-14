@@ -4,7 +4,7 @@ import BackButton from "../ui/backButton/BackButton";
 import Form from "../ui/organization/form/Form";
 const page = () => {
   return (
-    <div className={classes["page"]}>
+    <div className={"page"}>
       <div className={classes["top"]}>
         <BackButton />
       </div>

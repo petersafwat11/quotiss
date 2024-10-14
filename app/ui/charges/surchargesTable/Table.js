@@ -22,7 +22,7 @@ const Table = () => {
       </div>
 
       <div className={classes["table"]}>
-        <div className={classes["table-header"]}>
+        <div className={classes["header"]}>
           <p className={classes["header-col"]}>Surcharge_type</p>
           <p className={classes["header-col"]}>Name</p>
           <p className={classes["header-col"]}>Type</p>

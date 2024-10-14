@@ -1,33 +1,27 @@
 "use client";
 import React from "react";
 import classes from "./table.module.css";
-import { usePathname, useRouter } from "next/navigation";
+import AddNewButton from "../../addNewButton/AddNewButton";
 
 const Table = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-
   return (
     <div className={classes["container"]}>
       <div className={classes["top"]}>
-        <button
-          onClick={() => {
-            router.push("/surcharge-type/create");
-          }}
-          className={classes["button"]}
-        ></button>
+        <div className={classes["add-new"]}>
+          <AddNewButton path={"surcharge-types/create"} />
+        </div>
       </div>
       <div className={classes["table"]}>
-        <div className={classes["table-header"]}>
-          <p className={classes["header-col"]}>Name </p>
-          <p className={classes["header-col"]}> Description</p>
-          <p className={classes["header-col"]}> Comment</p>
+        <div className={classes["header"]}>
+          <p className={classes["name"]}>Name </p>
+          <p className={classes["description"]}> Description</p>
+          <p className={classes["comment"]}> Comment</p>
         </div>
         <div className={classes["body"]}>
           <div className={classes["row"]}>
-            <p className={classes["data"]}>A </p>
-            <p className={classes["data"]}>Gold Level</p>
-            <p className={classes["data"]}>A Gold Level</p>
+            <p className={classes["name"]}>Name </p>
+            <p className={classes["description"]}> Description</p>
+            <p className={classes["comment"]}> Comment</p>
           </div>
         </div>
       </div>

@@ -6,14 +6,16 @@ import Search from "../ui/search/Search";
 import Table from "../ui/users/table/Table";
 const page = () => {
   return (
-    <div className={classes["page"]}>
+    <div className={"page"}>
       <div className={classes["top"]}>
         <div className={classes["first"]}>
           <Title title={"Users"} />
-          <ChexBoxFilter />
+          <ChexBoxFilter title={" Show active only"} />
         </div>
         <div className={classes["second"]}>
-          <Search />
+          <div className={classes["search"]}>
+            <Search />
+          </div>
         </div>
       </div>
       <Table />

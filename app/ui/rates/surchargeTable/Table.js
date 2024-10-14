@@ -9,7 +9,7 @@ const Table = () => {
 
   return (
     <div className={classes["table"]}>
-      <div className={classes["table-header"]}>
+      <div className={classes["header"]}>
         <p className={classes["header-col"]}> Type</p>
         <p className={classes["header-col"]}> Origin Locations</p>
         <p className={classes["header-col"]}>Destination Locations </p>

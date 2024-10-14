@@ -1,45 +1,51 @@
 "use client";
 import React from "react";
 import classes from "./table.module.css";
+import AddNewButton from "../../addNewButton-2/AddNewButton";
 const Table = () => {
   return (
     <div className={classes["container"]}>
       <div className={classes["table"]}>
-        <div className={classes["table-header"]}>
-          <p className={classes["header-col"]}>Origin Country </p>
-          <p className={classes["header-col"]}> Destination Country</p>
-          <p className={classes["header-col"]}> Service</p>
-          <p className={classes["header-col"]}>January</p>
-          <p className={classes["header-col"]}>February</p>
-          <p className={classes["header-col"]}>March</p>
-          <p className={classes["header-col"]}>April</p>
-          <p className={classes["header-col"]}>May</p>
-          <p className={classes["header-col"]}>June</p>
-          <p className={classes["header-col"]}>July</p>
-          <p className={classes["header-col"]}>August</p>
-          <p className={classes["header-col"]}>September</p>
-          <p className={classes["header-col"]}>October</p>
-          <p className={classes["header-col"]}>November</p>
-          <p className={classes["header-col"]}>December</p>
+        <div className={classes["header"]}>
+          <p className={classes["origin-country"]}>Origin Country </p>
+          <p className={classes["destination-country"]}> Destination Country</p>
+          <p className={classes["service"]}>Service</p>
+          <p className={classes["january"]}>January</p>
+          <p className={classes["february"]}>February</p>
+          <p className={classes["march"]}>March</p>
+          <p className={classes["april"]}>April</p>
+          <p className={classes["may"]}>May</p>
+          <p className={classes["june"]}>June</p>
+          <p className={classes["july"]}>July</p>
+          <p className={classes["august"]}>August</p>
+          <p className={classes["september"]}>September</p>
+          <p className={classes["october"]}>October</p>
+          <p className={classes["november"]}>November</p>
+          <p className={classes["december"]}>December</p>
         </div>
         <div className={classes["body"]}>
           <div className={classes["row"]}>
-          <p className={classes["data"]}>A </p>
-            <p className={classes["data"]}>Gold Level</p>
-            <p className={classes["data"]}>A Gold Level</p>
-            <p className={classes["data"]}>A </p>
-            <p className={classes["data"]}>Gold Level</p>
-            <p className={classes["data"]}>A Gold Level</p>
-            <p className={classes["data"]}>A </p>
-            <p className={classes["data"]}>Gold Level</p>
-            <p className={classes["data"]}>A Gold Level</p>
-            <p className={classes["data"]}>A </p>
-            <p className={classes["data"]}>Gold Level</p>
-            <p className={classes["data"]}>A Gold Level</p>
-            <p className={classes["data"]}>A </p>
-            <p className={classes["data"]}>Gold Level</p>
-            <p className={classes["data"]}>A Gold Level</p>
+            <p className={classes["origin-country"]}>Origin Country </p>
+            <p className={classes["destination-country"]}>
+              Destination Country
+            </p>
+            <p className={classes["service"]}>Service</p>
+            <p className={classes["january"]}>January</p>
+            <p className={classes["february"]}>February</p>
+            <p className={classes["march"]}>March</p>
+            <p className={classes["april"]}>April</p>
+            <p className={classes["may"]}>May</p>
+            <p className={classes["june"]}>June</p>
+            <p className={classes["july"]}>July</p>
+            <p className={classes["august"]}>August</p>
+            <p className={classes["september"]}>September</p>
+            <p className={classes["october"]}>October</p>
+            <p className={classes["november"]}>November</p>
+            <p className={classes["december"]}>December</p>
           </div>
+        </div>
+        <div className={classes["add-new"]}>
+          <AddNewButton />
         </div>
       </div>
     </div>

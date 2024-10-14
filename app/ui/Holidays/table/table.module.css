@@ -1,0 +1,131 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
+}
+
+.header {
+  display: flex;
+  margin: 0 10px;
+  padding: 10px;
+  border-bottom: 1px solid var(--black-10);
+}
+
+.header p {
+  font-family: "Roboto Condensed";
+  font-weight: 500;
+  font-size: 1.1rem;
+  /* color: rgba(11, 48, 159, 0.87); */
+  color: var(--black-50);
+}
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+.row:hover {
+  background-color: #dddddd74;
+}
+.body p {
+  font-family: "Roboto Condensed";
+  font-weight: 400;
+  font-size: 0.9rem;
+  /* color: rgba(11, 48, 159, 0.87); */
+  color: var(--black-50);
+}
+
+.origin-country {
+  flex-basis: 12%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.destination-country {
+  flex-basis: 12%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.service {
+  flex-basis: 10%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.january {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.february {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.march {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.april {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.may {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.june {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.july {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.august {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.september {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.october {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.november {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.december {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.add-new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: transparent;
+  outline: none;
+}

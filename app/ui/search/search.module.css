@@ -5,20 +5,28 @@
 
 .search {
   width: 100%;
-  height: 2.75rem;
-  border-radius: 1.98rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
   padding: 0.88rem;
-  padding-left: 4.224rem;
-  background: #f0f0f0;
-  color: #2a3042;
-  font-size: 0.66rem;
-  line-height: 0.77rem;
-  font-weight: 400;
-  font-family: "Inter";
+  padding-left: 2.8rem;
+  background: white;
+  color: var(--black-75);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: "Poppins";
+  border: 1px solid var(--black-75);
+  outline: none;
+  cursor: text;
+  /* line-height: 0.77rem; */
 }
-
+.search:active {
+  outline: none;
+}
+.search:focus {
+  border: 2px solid var(--black-75);
+}
 .search-icon {
-  color: #2a3042;
+  color: var(--black-50);
   font-size: 1.32rem;
   position: absolute;
   top: 10.56px;

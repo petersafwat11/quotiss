@@ -4,9 +4,8 @@ import BackButton from "../../ui/backButton/BackButton";
 const Page = () => {
   // remember to redirect with a param with lcl or fcl
   return (
-    <div className={classes["page"]}>
+    <div className={"page"}>
       <BackButton />
-      
     </div>
   );
 };

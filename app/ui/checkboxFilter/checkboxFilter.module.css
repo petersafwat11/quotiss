@@ -1,0 +1,9 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--black-90);
+  font-size: 0.8rem;
+  font-family: "Roboto Condensed";
+  font-weight: 400;
+}
