@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { Suspense } from "react";
+import React from "react";
 import classes from "./page.module.css";
 import LoginForm from "../ui/loginForm/LoginForm";
 
@@ -12,7 +12,7 @@ const Login = async () => {
         </div>
         <h1 className={classes["title"]}>Log In</h1>
       </div>
-        <LoginForm />
+      {/* <LoginForm /> */}
     </div>
   );
 };

@@ -2,23 +2,23 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 import classes from "./search.module.css";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 const Search = (
 ) => {
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   const handleSearch = useDebouncedCallback((val) => {
-    const params = new URLSearchParams(searchParams);
-    if (val) {
-      params.set("search", val);
-    } else {
-      params.delete("search");
-    }
-    replace(`${pathname}?${params.toString()}`);
+    // const params = new URLSearchParams(searchParams);
+    // if (val) {
+    //   params.set("search", val);
+    // } else {
+    //   params.delete("search");
+    // }
+    // replace(`${pathname}?${params.toString()}`);
   }, 500);
 
   return (

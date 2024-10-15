@@ -6,6 +6,8 @@ import Search from "../ui/search/Search";
 import ChexBoxFilter from "../ui/charges/checkboxFilter/ChexBoxFilter";
 import Table from "../ui/charges/table/Table";
 import Filter from "../ui/charges/filter/Filter";
+import { Suspense } from 'react'
+
 const Page = () => {
   const [filterValue, setFilterValue] = useState({ name: "ALL", type: "" });
   return (
