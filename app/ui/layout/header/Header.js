@@ -16,6 +16,7 @@ const Header = () => {
     setShowMobileMenu(!showMobileMenu);
   };
   function replaceSpacesWithDash(str) {
+    console.log("str", str);
     const pageName =
       str === "my organization" ? "organization" : str.replace(/\s+/g, "-");
     router.push(pageName);
@@ -113,7 +114,7 @@ const Header = () => {
                 "Margins",
                 "Surcharge types",
                 "Holidays",
-                "My Organization ",
+                "My Organization",
                 "Terms and Conditions",
                 "Users",
               ].map((item, index) => (

@@ -1,0 +1,130 @@
+.container {
+  border: 1px solid var(--black-10);
+  background-color: #f1f0f0;
+  width: 100%;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.action {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+.action * {
+  color: var(--black-25);
+  font-family: "Roboto Condensed";
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.action-button {
+  border: none;
+}
+.type,
+.active-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  background-color: #adadad;
+  border: none;
+  color: white;
+  font-family: "Roboto Condensed";
+  border-radius: 0.25rem;
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.active-type {
+  background-color: #203c5b;
+}
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  margin: 0 10px;
+  padding: 10px;
+  border-bottom: 1px solid var(--black-10);
+}
+
+.header p {
+  font-family: "Roboto Condensed";
+  font-weight: 500;
+  font-size: 1.1rem;
+  /* color: rgba(11, 48, 159, 0.87); */
+  color: var(--black-50);
+}
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+.row:hover {
+  background-color: #dddddd74;
+}
+.body p {
+  font-family: "Roboto Condensed";
+  font-weight: 400;
+  font-size: 0.9rem;
+  /* color: rgba(11, 48, 159, 0.87); */
+  color: var(--black-50);
+}
+.checkbox {
+  flex-basis: 3%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.name {
+  flex-basis: 16%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.organization {
+  flex-basis: 16%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.email {
+  flex-basis: 17%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.role {
+  flex-basis: 16%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.active {
+  flex-basis: 16%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.last-active {
+  flex-basis: 16%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}

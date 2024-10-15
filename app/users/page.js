@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./page.module.css";
 import Title from "../ui/title/Title";
-import ChexBoxFilter from "../ui/users/checkboxFilter/ChexBoxFilter";
 import Search from "../ui/search/Search";
 import Table from "../ui/users/table/Table";
+import ChexBoxFilter from "../ui/charges/checkboxFilter/ChexBoxFilter";
 const page = () => {
   return (
     <div className={"page"}>
