@@ -3,31 +3,15 @@ export const organizationReducer = (state, action) => {
   const prevState = { ...state };
   if (action.type === "UPDATE-ALL") {
     return action.value;
-  } else if (action.type === "NAME") {
-    return {
-      ...prevState,
-      organization_name: action.value,
-    };
-  } else if (action.type === "DETAILS") {
-    return {
-      ...prevState,
-      details: action.value,
-    };
-  } else if (action.type === "EMAILINTEGRATION") {
-    return {
-      ...prevState,
-      email_integration: action.value,
-    };
-  } else if (action.type === "QUOTEOPTIONS") {
-    return {
-      ...prevState,
-      quote_options: action.value,
-    };
   }
-  return;
+
+  return {
+    ...prevState,
+    [action.type.toLowerCase()]: action.value,
+  };
 };
 export const intialValue = {
-  organization_name: "",
+  name: "",
   details: {
     country: "",
     city: "",
@@ -46,7 +30,6 @@ export const intialValue = {
     insurance_rate: null,
     insurance_min_value: null,
     insurance_min_value_currency: null,
-    
   },
   email_integration: {
     use_SSL: false,

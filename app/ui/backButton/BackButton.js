@@ -2,6 +2,7 @@
 import React from "react";
 import classes from "./backbutton.module.css";
 import { usePathname, useRouter } from "next/navigation";
+import { IoIosArrowBack } from "react-icons/io";
 
 const BackButton = () => {
 
@@ -17,6 +18,8 @@ const BackButton = () => {
       }}
       className={classes["button"]}
     >
+      <IoIosArrowBack className={classes['arrow']} />
+
       Back
     </button>
   );

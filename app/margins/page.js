@@ -13,7 +13,7 @@ const page = () => {
           <Search />
         </div>
       </div>
-      <Table />
+      <Table  />
     </div>
   );
 };

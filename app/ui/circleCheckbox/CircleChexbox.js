@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./circleCheckbox.module.css";
-const CircleChexbox = () => {
+const CircleCheckbox = () => {
   return (
     <label className={classes["circle-checkbox"]}>
       <input type="checkbox" className={classes["checkbox"]} />
@@ -9,4 +9,4 @@ const CircleChexbox = () => {
   );
 };
 
-export default CircleChexbox;
+export default CircleCheckbox;

@@ -1,93 +1,96 @@
 import React from "react";
 import classes from "./details.module.css";
+import InputGroup from "../../inputs/inputGroup/InputGroup";
 const Details = ({ data, dispatchDetail }) => {
   return (
-    <div className={classes["container"]}>
-      <div className={classes["left"]}>
-        <input
-          value={data.country}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "DETAILS",
-              value: { ...data, country: e.target.value },
-            });
-          }}
-          className={classes["auth-mode"]}
-        ></input>
-        <input
-          value={data.postal_code}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "DETAILS",
-              value: { ...data, postal_code: e.target.value },
-            });
-          }}
-          className={classes["auth-mode"]}
-        ></input>
-        <input
-          value={data.taxpayer_id_number}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "DETAILS",
-              value: { ...data, taxpayer_id_number: e.target.value },
-            });
-          }}
-          className={classes["auth-mode"]}
-        ></input>
-        <input
-          value={data.quote_collecting_email}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "DETAILS",
-              value: { ...data, quote_collecting_email: e.target.value },
-            });
-          }}
-          className={classes["auth-mode"]}
-        ></input>
+    <div className={"sub-form"}>
+      <div className={classes["inputs"]}>
+        <div className={classes["first"]}>
+          <InputGroup
+            id={"country"}
+            label={"Country:"}
+            dataKey={"country"}
+            objectType={"details"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
+          <InputGroup
+            id={"postal_code"}
+            label={"Postal Code:"}
+            dataKey={"postal_code"}
+            objectType={"details"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
+          <InputGroup
+            id={"taxpayer_id_number"}
+            label={"Taxpayer ID Number:"}
+            dataKey={"taxpayer_id_number"}
+            objectType={"details"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />{" "}
+          <InputGroup
+            id={"quote_collecting_email"}
+            label={"Quote Collecting Email (BCC):"}
+            dataKey={"quote_collecting_email"}
+            objectType={"details"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
+        </div>
+        <div className={classes["second"]}>
+          <InputGroup
+            id={"city"}
+            label={"City:"}
+            dataKey={"city"}
+            objectType={"details"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
+          <InputGroup
+            id={"street"}
+            label={"Street:"}
+            dataKey={"street"}
+            objectType={"details"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
+          <InputGroup
+            id={"spread"}
+            label={"Spread:"}
+            dataKey={"spread"}
+            objectType={"details"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
+          <InputGroup
+            id={"ecu_account_id"}
+            label={"Ecu Account ID:"}
+            dataKey={"ecu_account_id"}
+            objectType={"details"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
+        </div>
       </div>
-      <div className={classes["right"]}>
-        <input
-          value={data.city}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "DETAILS",
-              value: { ...data, city: e.target.value },
-            });
-          }}
-          className={classes["auth-mode"]}
-        ></input>
-        <input
-          value={data.street}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "DETAILS",
-              value: { ...data, street: e.target.value },
-            });
-          }}
-          className={classes["auth-mode"]}
-        ></input>
-        <input
-          value={data.spread}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "DETAILS",
-              value: { ...data, spread: e.target.value },
-            });
-          }}
-          className={classes["auth-mode"]}
-        ></input>
-        <input
-          value={data.ecu_account_id}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "DETAILS",
-              value: { ...data, ecu_account_id: e.target.value },
-            });
-          }}
-          className={classes["auth-mode"]}
-        ></input>
-      </div>
-      <div className={classes["logo"]}>
+      {/* <div className={classes["logo"]}>
         <input
           value={data.logo}
           onChange={(e) => {
@@ -98,7 +101,7 @@ const Details = ({ data, dispatchDetail }) => {
           }}
           className={classes["auth-mode"]}
         ></input>
-      </div>
+      </div> */}
     </div>
   );
 };

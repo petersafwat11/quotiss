@@ -7,6 +7,7 @@
   --primary: #161d6f;
   --secondary: #163a70;
   --terchiary: #050c9c;
+  --border: #626de7;
   --black: #1a1a1c;
   --black-90: rgba(26, 26, 28, 0.9);
   --black-75: rgba(26, 26, 28, 0.75);
@@ -25,6 +26,25 @@ body,
 .page {
   padding: 2rem 6rem;
   background-color: rgb(79 79 83 / 13%);
+}
+.wrapper {
+  width: 70%;
+  margin: 0 15%;
+}
+.form,
+.sub-form,
+.otherData {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+.form {
+  border-radius: 0.75rem;
+  background-color: white;
+  padding: 2rem 4rem;
+  margin: auto;
 }
 body {
   color: var(--foreground);

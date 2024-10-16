@@ -2,7 +2,7 @@
 import React from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter } from "next/navigation";
-import CircleChexbox from "../../circleCheckbox/CircleChexbox";
+import CircleCheckbox from "../../circleCheckbox/CircleCheckbox";
 import AddNewButton from "../../addNewButton/AddNewButton";
 import { GrClear } from "react-icons/gr";
 import { FaUserEdit } from "react-icons/fa";
@@ -32,7 +32,7 @@ const Table = () => {
       <div className={classes["table"]}>
         <div className={classes["header"]}>
           <div className={classes["checkbox"]}>
-            <CircleChexbox />
+            <CircleCheckbox />
           </div>
           <p className={classes["name"]}>Name</p>
           <p className={classes["organization"]}>Organization</p>
@@ -44,7 +44,7 @@ const Table = () => {
         <div className={classes["body"]}>
           <div className={classes["row"]}>
             <div className={classes["checkbox"]}>
-              <CircleChexbox />
+              <CircleCheckbox />
             </div>
             <p className={classes["name"]}>Name</p>
             <p className={classes["organization"]}>Organization</p>

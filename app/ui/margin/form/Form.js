@@ -1,37 +1,45 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./form.module.css";
+import InputGroup from "../../inputs/inputGroup/InputGroup";
+import TextAreaGroup from "../../inputs/textareaGroup/TextAreaGroup";
 
-const Form = () => {
+const Form = ({ type }) => {
   const [data, setData] = useState({
-    main_margin: "",
-    weightAndmeasurement: "",
+    name: "",
+    "Weight / Measurement": "",
     description: "",
+    type: type,
   });
-
+  useEffect(() => {
+    console.log("data", data);
+  }, [data]);
   return (
-    <div className={classes["container"]}>
-      <input
-        value={data.main_margin}
-        onChange={(e) => {
-          setData({ ...data, main_margin: e.target.value });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.weightAndmeasurement}
-        onChange={(e) => {
-          setData({ ...data, weightAndmeasurement: e.target.value });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <textarea
-        value={data.description}
-        onChange={(e) => {
-          setData({ ...data, description: e.target.value });
-        }}
-        className={classes["main-margin"]}
-      ></textarea>
+    <div className={"form"}>
+      <InputGroup
+        id={"main-margin"}
+        label={"Margin name"}
+        data={data}
+        dataKey={"name"}
+        setData={setData}
+        stateType={"useState"}
+      />
+      <InputGroup
+        id={"w-m"}
+        label={"Weight / Measurement"}
+        data={data}
+        dataKey={"Weight / Measurement"}
+        setData={setData}
+        stateType={"useState"}
+      />
+      <TextAreaGroup
+        id={"description"}
+        label={"Description"}
+        data={data}
+        dataKey={"description"}
+        setData={setData}
+        stateType={"useState"}
+      />
     </div>
   );
 };

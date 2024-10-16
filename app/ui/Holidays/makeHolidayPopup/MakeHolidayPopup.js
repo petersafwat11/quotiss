@@ -21,7 +21,7 @@ const MakeHolidayPopup = () => {
   const [data, dispatchDetail] = useReducer(surchargeReducer, matchIntialVal);
 
   return (
-    <div className={classes["form"]}>
+    <div className={"form"}>
       {/* these 3 are selections */}
       <input
         value={data.originCountry}

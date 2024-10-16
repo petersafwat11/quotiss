@@ -1,0 +1,13 @@
+.inputs {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
+}
+.first,
+.second {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-basis: 50%;
+}

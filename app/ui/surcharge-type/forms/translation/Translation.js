@@ -1,39 +1,58 @@
 import React from "react";
-
+import classes from "./translation.module.css";
+import InputGroup from "@/app/ui/inputs/inputGroup/InputGroup";
+import SelectionGroup from "@/app/ui/inputs/selectionGroup/SelectionGroup";
 const Translation = ({ data, dispatchDetail }) => {
+  const languages = [
+    "English",
+    "Polish",
+    "Turkish",
+    "Russian",
+    "German",
+    "Czech",
+    "Slovak",
+    "Lituanian",
+    "Romanian",
+    "French",
+    "Dutch",
+    "Hungarian",
+    "Italian",
+    "Spanish",
+    "Slovenian",
+  ];
   return (
-    <div className={classes["contianer"]}>
-    {/* remember to make selection */}
-      <input
-        value={data.language}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "TRANSLATION",
-            value: { ...data, language: e.target.value },
-          });
-        }}
-        className={classes["comment"]}
-      ></input>
-      <input
-        value={data.name}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "TRANSLATION",
-            value: { ...data, name: e.target.value },
-          });
-        }}
-        className={classes["name"]}
-      ></input>
-      <input
-        value={data.description}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "TRANSLATION",
-            value: { ...data, description: e.target.value },
-          });
-        }}
-        className={classes["description"]}
-      ></input>
+    <div className="sub-form">
+      {/* remember to make selection */}
+      <SelectionGroup
+        data={data}
+        type={"TRANSLATION"}
+        dataKey={"language"}
+
+        label={"Please Select Language"}
+        options={languages}
+        setData={dispatchDetail}
+      />
+      <InputGroup
+        id={"name"}
+        label={"Name"}
+        dataKey={"name"}
+        objectType={'translation'}
+
+        data={data}
+        setData={dispatchDetail}
+        stateType={"useReducer"}
+        dataType="object"
+      />
+      <InputGroup
+        id={"description"}
+        label={"Description (information for online clients)"}
+        dataKey={"description"}
+        objectType={'translation'}
+        data={data}
+        setData={dispatchDetail}
+        stateType={"useReducer"}
+        dataType="object"
+      />
     </div>
   );
 };

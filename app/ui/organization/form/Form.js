@@ -1,11 +1,12 @@
 "use client";
-
 import React, { useReducer, useState } from "react";
 import classes from "./form.module.css";
 import Details from "../details/Details";
 import QuotesOptions from "../quoteOptions/QuotesOptions";
 import EmailIntegration from "../email-Integration/EmailIntegration";
 import { intialValue, organizationReducer } from "./dataAndReducer";
+import InputGroup from "../../inputs/inputGroup/InputGroup";
+import Tabs from "../../tabs/Tabs";
 
 const Form = () => {
   const applyChanges = () => {};
@@ -13,43 +14,21 @@ const Form = () => {
   const [data, dispatchDetail] = useReducer(organizationReducer, intialValue);
   const [dataType, setDataType] = useState("Details");
   return (
-    <div className={classes["conatiner"]}>
-      <input
-        value={data.organization_name}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "NAME",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <div className={classes["data-types"]}>
-        <p
-          onClick={() => {
-            setDataType("Details");
-          }}
-          className={classes["data-type"]}
-        >
-          Details
-        </p>
-        <p
-          onClick={() => {
-            setDataType("Quote Options");
-          }}
-          className={classes["data-type"]}
-        >
-          Quote Options
-        </p>
-        <p
-          onClick={() => {
-            setDataType("Email Integration");
-          }}
-          className={classes["data-type"]}
-        >
-          Email Integration
-        </p>
-      </div>
+    <div className={"form"}>
+      <InputGroup
+        id={"name"}
+        label={"Organization name"}
+        data={data.name}
+        dataKey={"name"}
+        setData={dispatchDetail}
+        stateType={"useReducer"}
+        dataType="single"
+      />
+      <Tabs
+        types={["Details", "Quote Options", "Email Integration"]}
+        setDataType={setDataType}
+        dataType={dataType}
+      />
       {dataType === "Details" ? (
         <Details data={data.details} dispatchDetail={dispatchDetail} />
       ) : dataType === "Quote Options" ? (
@@ -63,14 +42,6 @@ const Form = () => {
           dispatchDetail={dispatchDetail}
         />
       )}
-      <div className={classes["actions"]}>
-        <button onClick={applyChanges} className={classes["apply-button"]}>
-          Apply
-        </button>
-        <button onClick={cancelChanges} className={classes["apply-button"]}>
-          Cancel
-        </button>
-      </div>
     </div>
   );
 };

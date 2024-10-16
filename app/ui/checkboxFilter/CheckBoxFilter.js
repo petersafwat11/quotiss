@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "./checkboxFilter.module.css";
-import CircleChexbox from "../circleCheckbox/CircleChexbox";
+import CircleCheckbox from "../circleCheckbox/CircleChexbox";
 const CheckBoxFilter = ({ title }) => {
   return (
     <div className={classes["checkbox"]}>
-      <CircleChexbox />
+      <CircleCheckbox />
       {title}
     </div>
   );

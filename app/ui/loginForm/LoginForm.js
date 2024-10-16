@@ -52,7 +52,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={classes["form"]}>
+    <div className={"form"}>
       {protectedPage && (
         <p
           className={classes["not-authorized"]}

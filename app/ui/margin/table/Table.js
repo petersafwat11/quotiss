@@ -28,7 +28,7 @@ const Table = () => {
             LCL
           </button>
         </div>
-        <AddNewButton path={"margins/create"} />
+        <AddNewButton params={{ type: type }} path={"margins/create"} />
       </div>
       <div className={classes["table"]}>
         <div className={classes["header"]}>

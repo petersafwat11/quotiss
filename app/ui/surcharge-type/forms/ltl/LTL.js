@@ -1,90 +1,28 @@
 import React from "react";
 import classes from "./ltl.module.css";
+import CheckBoxFilter from "@/app/ui/checkboxFilter/CheckBoxFilter";
+import SelectionGroup from "@/app/ui/inputs/selectionGroup/SelectionGroup";
 const LTL = ({ data, dispatchDetail }) => {
+  const options = ["additional", "basic", "vip", "quotiss only"];
   return (
-    <div className={classes["contianer"]}>
-      <form>
-        <label>
-          Select an option:
-          <select
-            name="selection"
-            value={formState.selection}
-            onChange={handleChange}
-          >
-            <option value="">Select...</option>
-            <option value="optionA">Option A</option>
-            <option value="optionB">Option B</option>
-            <option value="optionC">Option C</option>
-          </select>
-        </label>
-        <br />
-
-        <label>
-          <input
-            type="checkbox"
-            name="option1"
-            checked={data.surchargeOptions.mandatory}
-            onChange={() => {
-              dispatchDetail({
-                type: "GENERAL",
-                value: {
-                  ...data,
-                  surchargeOptions: {
-                    ...data.surchargeOptions,
-                    mandatory: !data.surchargeOptions.mandatory,
-                  },
-                },
-              });
-            }}
-          />
-          [mandatory] Surcharge is mandatory
-        </label>
-        <br />
-
-        <label>
-          <input
-            type="checkbox"
-            name="option2"
-            checked={data.surchargeOptions.uber}
-            onChange={() => {
-                dispatchDetail({
-                  type: "GENERAL",
-                  value: {
-                    ...data,
-                    surchargeOptions: {
-                      ...data.surchargeOptions,
-                      uber: !data.surchargeOptions.uber,
-                    },
-                  },
-                });
-              }}
-            />
-          [uber] Surcharge needs to be present in all connected rates
-        </label>
-        <br />
-
-        <label>
-          <input
-            type="checkbox"
-            name="option3"
-            checked={data.surchargeOptions.noMargin}
-            onChange={() => {
-                dispatchDetail({
-                  type: "GENERAL",
-                  value: {
-                    ...data,
-                    surchargeOptions: {
-                      ...data.surchargeOptions,
-                      noMargin: !data.surchargeOptions.noMargin,
-                    },
-                  },
-                });
-              }}
-            />
-          [no margin] Surcharge counted without margin
-        </label>
-        <br />
-      </form>
+    <div className="sub-form">
+      <SelectionGroup
+        data={data}
+        type={"ltl"}
+        dataKey={"surchargeType"}
+        label={"Please Select type"}
+        options={options}
+        setData={dispatchDetail}
+      />{" "}
+      <div className={classes["checkbox-group"]}>
+        <CheckBoxFilter title={"[mandatory] Surcharge is mandatory"} />
+        <CheckBoxFilter
+          title={"[uber] Surcharge needs to be present in all connected rates"}
+        />
+        <CheckBoxFilter
+          title={"[no margin] Surcharge counted without margin"}
+        />
+      </div>
     </div>
   );
 };

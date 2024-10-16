@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import classes from "./table.module.css";
 import Popup from "../../popupWrapper/Popup";
 import Country from "../country/Country";
-import CircleChexbox from "../../circleCheckbox/CircleChexbox";
+import CircleCheckbox from "../../circleCheckbox/CircleCheckbox";
 const Table = () => {
   const [activeCountry, setActiveCountry] = useState();
   const [showEditPopup, setShowEditPopup] = useState(false);
@@ -37,14 +37,14 @@ const Table = () => {
             <p className={classes["code"]}>Gold Level</p>
             <p className={classes["name"]}>A Gold Level</p>
             <div className={classes["status"]}>
-              <CircleChexbox />
+              <CircleCheckbox />
             </div>
           </div>
           <div className={classes["row"]}>
             <p className={classes["code"]}>Gold Level</p>
             <p className={classes["name"]}>A Gold Level</p>
             <div className={classes["status"]}>
-              <CircleChexbox />
+              <CircleCheckbox />
             </div>
           </div>
         </div>

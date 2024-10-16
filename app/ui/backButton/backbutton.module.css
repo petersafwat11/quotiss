@@ -1,0 +1,28 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 1.5rem;
+  width: 7rem;
+  background-color: #4aab68;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Roboto Condensed";
+  border-radius: 0.25rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.button:hover {
+  background-color: rgb(52, 135, 78);
+  /* color: rgba(255, 255, 255, 0.8); */
+}
+.arrow {
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+/* button:hover .arrow {
+  color: rgba(255, 255, 255, 0.8);
+} */
