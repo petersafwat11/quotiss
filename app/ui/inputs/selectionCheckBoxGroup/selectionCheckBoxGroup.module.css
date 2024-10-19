@@ -1,0 +1,66 @@
+.selection {
+  position: relative;
+  z-index: 10;
+}
+.selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--black-50);
+  border-radius: 0.25rem;
+  width: 11rem;
+  color: var(--black-75);
+  font-size: 0.75rem;
+  font-family: "Roboto Condensed";
+  font-weight: 500;
+  cursor: pointer;
+}
+.arrow {
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+.options {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.22rem;
+  border: 1px solid var(--black-50);
+  background-color: rgb(236 236 236);
+  border-top: 0;
+  width: 11rem;
+  position: absolute;
+  left: 0;
+  z-index: 10;
+}
+.option {
+  font-size: 0.81rem;
+  cursor: pointer;
+  color: var(--black-90);
+  font-size: 0.75rem;
+  font-family: "Roboto Condensed";
+  font-weight: 500;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.icon {
+  color: var(--black-90);
+}
+.option-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  gap: 0.5rem;
+}
+
+.option-wrapper:hover,
+.option:hover .icon {
+  background: var(--black-25);
+  color: white;
+}

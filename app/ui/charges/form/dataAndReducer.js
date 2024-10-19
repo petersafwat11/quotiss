@@ -73,7 +73,7 @@ export const intialValue = {
   name: "",
   kind: "",
   code: "",
-  available_online: "",
+  available_online: "Both",
   country: "",
   region: "",
   latitude: "",

@@ -1,78 +1,89 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter } from "next/navigation";
 import Filter from "../filter/Filter";
+import MarginFilter from "../../rates/marginFilter/MarginFilter";
+import AddNewButton from "../../addNewButton-2/AddNewButton";
 
 const Table = () => {
   const router = useRouter();
   const pathname = usePathname();
-
+  const [marginFilterValue, setMarginFilterValue] = useState("45' HC");
+  const [filterValue, setFilterValue] = useState("45' HC");
+  const values = [
+    "20' DC",
+    "40' DC",
+    "40' HC",
+    "45' HC",
+    "20' NOR",
+    "40' NOR",
+    "20' REEF",
+    "40' HREEF",
+    "45' PLWD",
+    "20' OT",
+    "40' OT",
+    "20' FR",
+    "40' FR",
+    "20' TANK",
+    "40' TANK",
+  ];
   return (
-    <div className={classes["container"]}>
+    <div className={"sub-form"}>
       <div className={classes["filters"]}>
         <div className={classes["filter"]}>
           <p className={classes["filter-name"]}>Service</p>
-          <Filter />
+          <MarginFilter
+            filterValue={marginFilterValue}
+            setFilterValue={setMarginFilterValue}
+          />
         </div>
         <div className={classes["filter"]}>
           <p className={classes["filter-name"]}> Container type</p>
-          <Filter />
+          <MarginFilter
+            filterValue={filterValue}
+            setFilterValue={setMarginFilterValue}
+          />
         </div>
       </div>
 
       <div className={classes["table"]}>
         <div className={classes["header"]}>
-          <p className={classes["header-col"]}>Surcharge_type</p>
-          <p className={classes["header-col"]}>Name</p>
-          <p className={classes["header-col"]}>Type</p>
-          <p className={classes["header-col"]}>Online</p>
-          <p className={classes["header-col"]}>Service</p>
-          <p className={classes["header-col"]}>Sort_order</p>
-          <p className={classes["header-col"]}>Shipment</p>
-          <p className={classes["header-col"]}>Currency</p>
-          <p className={classes["header-col"]}>20_dc</p>
-          <p className={classes["header-col"]}>40_dc</p>
-          <p className={classes["header-col"]}>40_hc</p>
-          <p className={classes["header-col"]}>45_hc</p>
-          <p className={classes["header-col"]}>20_nor</p>
-          <p className={classes["header-col"]}>40_nor</p>
-          <p className={classes["header-col"]}>20_reef</p>
-          <p className={classes["header-col"]}>40_hreef</p>
-          <p className={classes["header-col"]}>45_plwd</p>
-          <p className={classes["header-col"]}>20_ot</p>
-          <p className={classes["header-col"]}>40_ot</p>
-          <p className={classes["header-col"]}>20_fr</p>
-          <p className={classes["header-col"]}>40_fr</p>
-          <p className={classes["header-col"]}>20_tank</p>
-          <p className={classes["header-col"]}>40_tank</p>
+          <p className={classes["surcharge_type"]}>Surcharge_type</p>
+          <p className={classes["name"]}>Name</p>
+          <p className={classes["type"]}>Type</p>
+          <p className={classes["online"]}>Online</p>
+          <p className={classes["service"]}>Service</p>
+          <p className={classes["sort_order"]}>Sort_order</p>
+          <p className={classes["shipment"]}>Shipment</p>
+          <p className={classes["currency"]}>Currency</p>
+          {values.map((item, index) => (
+            <p key={index} className={classes["container-type"]}>
+              {item}
+            </p>
+          ))}
+          <p className={classes["delete"]}></p>
         </div>
         <div className={classes["body"]}>
           <div className={classes["row"]}>
-            <p className={classes["header-col"]}>Surcharge_type</p>
-            <p className={classes["header-col"]}>Name</p>
-            <p className={classes["header-col"]}>Type</p>
-            <p className={classes["header-col"]}>Online</p>
-            <p className={classes["header-col"]}>Service</p>
-            <p className={classes["header-col"]}>Sort_order</p>
-            <p className={classes["header-col"]}>Shipment</p>
-            <p className={classes["header-col"]}>Currency</p>
-            <p className={classes["header-col"]}>20_dc</p>
-            <p className={classes["header-col"]}>40_dc</p>
-            <p className={classes["header-col"]}>40_hc</p>
-            <p className={classes["header-col"]}>45_hc</p>
-            <p className={classes["header-col"]}>20_nor</p>
-            <p className={classes["header-col"]}>40_nor</p>
-            <p className={classes["header-col"]}>20_reef</p>
-            <p className={classes["header-col"]}>40_hreef</p>
-            <p className={classes["header-col"]}>45_plwd</p>
-            <p className={classes["header-col"]}>20_ot</p>
-            <p className={classes["header-col"]}>40_ot</p>
-            <p className={classes["header-col"]}>20_fr</p>
-            <p className={classes["header-col"]}>40_fr</p>
-            <p className={classes["header-col"]}>20_tank</p>
-            <p className={classes["header-col"]}>40_tank</p>
+            <p className={classes["surcharge_type"]}>Surcharge_type</p>
+            <p className={classes["name"]}>Name</p>
+            <p className={classes["type"]}>Type</p>
+            <p className={classes["online"]}>Online</p>
+            <p className={classes["service"]}>Service</p>
+            <p className={classes["sort_order"]}>Sort_order</p>
+            <p className={classes["shipment"]}>Shipment</p>
+            <p className={classes["currency"]}>Currency</p>
+            {values.map((item, index) => (
+              <p key={index} className={classes["container-type"]}>
+                {item}
+              </p>
+            ))}
+            <p className={classes["delete"]}></p>
           </div>
+        </div>
+        <div className={classes["add-btn"]}>
+          <AddNewButton />
         </div>
       </div>
     </div>

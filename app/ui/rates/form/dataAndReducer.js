@@ -16,14 +16,15 @@ export const intialValue = {
 
   name: "",
   service: "",
+  contract_number: "",
   rate_type: "",
   validity_start: "",
   validity_end: "",
   container_type: [],
-  contract_number: "",
+  base_origin_location :"",
+  base_origin_destination :"",
   pickup_delivery_rate: "",
-  origin: "",
-  destination: "",
+  terminal_type:"",
   direction: "",
   currency: "",
   mark_up: "",
@@ -34,7 +35,7 @@ export const intialValue = {
   },
   restrictions: {
     allowed_clients: [],
-    visible_notes: [],
+    allowed_users: [],
   },
   surcharges: {
     type: "",

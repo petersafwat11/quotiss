@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import classes from "./directionFilter.js.module.css";
-import FilterSearch from "../../filterSearch/FilterSearch";
+import FilterSearch from "../../filters/filterSearch/FilterSearch";
 
 const DirectionFilter = ({ filterValue, setFilterValue }) => {
   const [showOptions, setShowOptions] = useState(false);

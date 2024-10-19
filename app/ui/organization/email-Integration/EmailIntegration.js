@@ -1,97 +1,82 @@
 import React from "react";
 import classes from "./EmailIntegration.module.css";
+import InputGroup from "../../inputs/inputGroup/InputGroup";
+import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
+import CheckboxGroup from "../../inputs/checkboxGroup/CheckboxGroup";
 const EmailIntegration = ({ data, dispatchDetail }) => {
+  console.log("email_integration".toLocaleUpperCase());
+  const encryptionOptions = ["none", "ssl", "tls"];
+  const authModeOptions = ["none", "cramMd5", "login", "plain"];
   return (
-    <div className={classes["container"]}>
-      <label>
-        <input
-          type="checkbox"
-          checked={data.use_SSL}
-          onChange={() => {
-            dispatchDetail({
-              type: "EMAILINTEGRATION",
-              value: { ...data, use_SSL: !data.use_SSL },
-            });
-          }}
-        />
-        Use SSL
-      </label>
+    <div className={"sub-form"}>
+      <CheckboxGroup
+        data={data}
+        type={"EMAIL_INTEGRATION"}
+        dataKey={"use_SSL"}
+        label={"Use SSL:"}
+        setData={dispatchDetail}
+      />
 
       <div className={classes["inputs"]}>
         <div className={classes["first"]}>
+          <SelectionGroup
+            data={data}
+            type={"EMAIL_INTEGRATION"}
+            dataKey={"auth_mode"}
+            label={"Auth Mode:"}
+            options={authModeOptions}
+            setData={dispatchDetail}
+          />
           <InputGroup
-            id={"country"}
-            label={"Country:"}
-            dataKey={"country"}
-            objectType={"details"}
+            id={"SMTP_host"}
+            label={"SMTP Host:"}
+            dataKey={"SMTP_host"}
+            objectType={"email_integration"}
             data={data}
             setData={dispatchDetail}
             stateType={"useReducer"}
             dataType="object"
           />
-          <input
-            value={data.auth_mode}
-            onChange={(e) => {
-              dispatchDetail({
-                type: "EMAILINTEGRATION",
-                value: { ...data, auth_mode: e.target.value },
-              });
-            }}
-            className={classes["auth-mode"]}
-          ></input>{" "}
-          <input
-            value={data.SMTP_host}
-            onChange={(e) => {
-              dispatchDetail({
-                type: "EMAILINTEGRATION",
-                value: { ...data, SMTP_host: e.target.value },
-              });
-            }}
-            className={classes["smtp-host"]}
-          ></input>
-          <input
-            value={data.Imap_host}
-            onChange={(e) => {
-              dispatchDetail({
-                type: "EMAILINTEGRATION",
-                value: { ...data, Imap_host: e.target.value },
-              });
-            }}
-            className={classes["imap-host"]}
-          ></input>
+          <InputGroup
+            id={"Imap_host"}
+            label={"Imap Host:"}
+            dataKey={"Imap_host"}
+            objectType={"email_integration"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
         </div>
         <div className={classes["second"]}>
-          {" "}
-          <input
-            value={data.encryption}
-            onChange={(e) => {
-              dispatchDetail({
-                type: "EMAILINTEGRATION",
-                value: { ...data, encryption: e.target.value },
-              });
-            }}
-            className={classes["encryption"]}
-          ></input>
-          <input
-            value={data.SMTP_port}
-            onChange={(e) => {
-              dispatchDetail({
-                type: "EMAILINTEGRATION",
-                value: { ...data, SMTP_port: e.target.value },
-              });
-            }}
-            className={classes["smtp-port"]}
-          ></input>
-          <input
-            value={data.Imap_port}
-            onChange={(e) => {
-              dispatchDetail({
-                type: "EMAILINTEGRATION",
-                value: { ...data, Imap_port: e.target.value },
-              });
-            }}
-            className={classes["imap-port"]}
-          ></input>
+          <SelectionGroup
+            data={data}
+            type={"EMAIL_INTEGRATION"}
+            dataKey={"encryption"}
+            label={"Encryption:"}
+            options={encryptionOptions}
+            setData={dispatchDetail}
+          />
+          <InputGroup
+            id={"SMTP_port"}
+            label={"SMTP Port:"}
+            dataKey={"SMTP_port"}
+            objectType={"email_integration"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
+          <InputGroup
+            id={"Imap_port"}
+            label={"Imap Port:"}
+            dataKey={"Imap_port"}
+            objectType={"email_integration"}
+            data={data}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="object"
+          />
         </div>
       </div>
     </div>

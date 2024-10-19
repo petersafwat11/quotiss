@@ -1,12 +1,14 @@
 import React from "react";
 import classes from "./page.module.css";
-import BackButton from "@/app/ui/backButton/BackButton";
+import Form from "@/app/ui/rates/form/Form";
+import ActionBtns from "@/app/ui/actionBtns/ActionBtns";
 const page = () => {
   return (
     <div className={"page"}>
-      <div className={classes["top"]}>
-        <BackButton />
+      <div className={"wrapper"}>
+        <Form />
       </div>
+      <ActionBtns />
     </div>
   );
 };

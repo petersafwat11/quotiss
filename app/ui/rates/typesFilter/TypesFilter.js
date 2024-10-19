@@ -6,7 +6,7 @@ import { RiShip2Fill } from "react-icons/ri";
 import { FaTrain } from "react-icons/fa";
 import { IoAirplane } from "react-icons/io5";
 import { FaTruck } from "react-icons/fa";
-import FilterSearch from "../../filterSearch/FilterSearch";
+import FilterSearch from "../../filters/filterSearch/FilterSearch";
 
 const TypesFilter = ({ filterValue, setFilterValue }) => {
   const [showOptions, setShowOptions] = useState(false);

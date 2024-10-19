@@ -1,149 +1,157 @@
 import React from "react";
 import classes from "./mainInputs.module.css";
+import InputGroup from "../../inputs/inputGroup/InputGroup";
+import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
+import DateInput from "../../inputs/dateInput/DateInput";
+import CheckboxGroup from "../../inputs/checkboxGroup/CheckboxGroup";
+import ContainerTypeFilter from "../../filters/containerTypeFilter/ContainerTypeFilter";
 const MainInputs = ({ data, dispatchDetail }) => {
+  const options = [
+    "Linked",
+    "Flat",
+    "Pick up Delivery (by zipcode)",
+    "Pick up Delivery (by distance)",
+  ];
   return (
     <div className={classes["inputs"]}>
-      <input
-        value={data.name}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "NAME",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.service}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "SERVICE",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.rate_type}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "RATE_TYPE",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.validity_start}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "VALIDITY_START",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.validity_end}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "VALIDITY_END",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.container_type}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "CONTAINER_TYPE",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
+      <InputGroup
+        id={"name"}
+        label={"Organization name"}
+        data={data.name}
+        dataKey={"name"}
+        setData={dispatchDetail}
+        stateType={"useReducer"}
+        dataType="single"
+      />
+      <InputGroup
+        id={"contract_number"}
+        label={"Contract Number"}
+        data={data.contract_number}
+        dataKey={"contract_number"}
+        setData={dispatchDetail}
+        stateType={"useReducer"}
+        dataType="single"
+      />
+      <InputGroup
+        id={"service"}
+        label={"Service"}
+        data={data.service}
+        dataKey={"service"}
+        setData={dispatchDetail}
+        stateType={"useReducer"}
+        dataType="single"
+      />
+      <SelectionGroup
+        data={data}
+        type={"rate_type"}
+        dataKey={"rate_type"}
+        label={"Please Select a rate type"}
+        options={options}
+        setData={dispatchDetail}
+        dataType={"single"}
+      />
+      <DateInput
+        label={"Validity Start"}
+        data={data.validity_start}
+        dataKey={"validity_start"}
+        setData={dispatchDetail}
+      />
+      <DateInput
+        label={"Validity End"}
+        data={data.validity_end}
+        dataKey={"validity_end"}
+        setData={dispatchDetail}
+      />
+      <ContainerTypeFilter
+        filterValue={data.container_type}
+        setFilterValue={dispatchDetail}
+        type={"single"}
+        dataKey={"container_type"}
+      />
       {/* conditional */}
-      <input
-        value={data.contract_number}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "CONTRACT_NUMBER",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.pickup_delivery_rate}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "PICKUP_DELIVERY_RATE",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.origin}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "ORIGIN",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.destination}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "DESTINATION",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.direction}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "DIRECTION",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.currency}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "CURRENCY",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.mark_up}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "MARK_UP",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
-      <input
-        value={data.online}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "ONLINE",
-            value: e.target.value,
-          });
-        }}
-        className={classes["main-margin"]}
-      ></input>
+      {data.rate_type === "Linked" && (
+        <>
+          <InputGroup
+            id={"base_origin_location"}
+            label={"Base Origin Location "}
+            data={data.base_origin_location}
+            dataKey={"base_origin_location"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            id={"base_origin_destination"}
+            label={"Base Destination Location "}
+            data={data.base_origin_destination}
+            dataKey={"base_origin_destination"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+        </>
+      )}{" "}
+      {data.rate_type === "Flat" && (
+        <>
+          <InputGroup
+            id={"pickup_delivery_rate"}
+            label={"Pickup-Delivery Rate "}
+            data={data.pickup_delivery_rate}
+            dataKey={"pickup_delivery_rate"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+        </>
+      )}
+      {(data.rate_type !== "Flat") & (data.rate_type !== "Linked") && (
+        <>
+          <InputGroup
+            id={"terminal_type"}
+            label={"Terminal type "}
+            data={data.terminal_type}
+            dataKey={"terminal_type"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            id={"direction"}
+            label={"Direction "}
+            data={data.direction}
+            dataKey={"direction"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            id={"currency"}
+            label={"Currency "}
+            data={data.currency}
+            dataKey={"currency"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            id={"mark_up"}
+            label={"Markup (%) "}
+            data={data.mark_up}
+            dataKey={"mark_up"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <CheckboxGroup
+            data={data}
+            type={"online"}
+            dataKey={"online"}
+            label={"Online"}
+            setData={dispatchDetail}
+            dataType="single"
+          />
+        </>
+      )}
     </div>
   );
 };

@@ -2,7 +2,6 @@
 import React from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter } from "next/navigation";
-import CircleCheckbox from "../../circleCheckbox/CircleCheckbox";
 import AddNewButton from "../../addNewButton/AddNewButton";
 import { GrClear } from "react-icons/gr";
 import { IoIosSend } from "react-icons/io";
@@ -10,6 +9,7 @@ import { FaRegCopy } from "react-icons/fa6";
 import { AiFillDelete } from "react-icons/ai";
 import { FaCheck } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
+import CircleCheckbox from "../../circleCheckbox/CircleChexbox";
 
 const Table = () => {
   const router = useRouter();
@@ -57,7 +57,7 @@ const Table = () => {
           <p className={classes["name"]}>Name</p>
           <p className={classes["service"]}>Service</p>
           <p className={classes["contract-number"]}>Contract Number</p>
-          <p className={"form"}>Form</p>
+          <p className={classes["form"]}>Form</p>
           <p className={classes["till"]}>Till</p>
           <p className={classes["base-origin"]}>Base Origin</p>
           <p className={classes["base-dest"]}>Base Dest</p>
@@ -74,7 +74,7 @@ const Table = () => {
             <p className={classes["name"]}>Name</p>
             <p className={classes["service"]}>Service</p>
             <p className={classes["contract-number"]}>Contract Number</p>
-            <p className={"form"}>Form</p>
+            <p className={classes["form"]}>Form</p>
             <p className={classes["till"]}>Till</p>
             <p className={classes["base-origin"]}>Base Origin</p>
             <p className={classes["base-dest"]}>Base Dest</p>

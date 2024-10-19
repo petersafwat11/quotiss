@@ -1,0 +1,35 @@
+.inputs {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.data-types {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.types {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.type,
+.active-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  background-color: #adadad;
+  border: none;
+  color: white;
+  font-family: "Roboto Condensed";
+  border-radius: 0.25rem;
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.active-type {
+  background-color: #203c5b;
+}

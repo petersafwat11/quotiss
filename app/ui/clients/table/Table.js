@@ -2,11 +2,11 @@
 import React from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter } from "next/navigation";
-import CircleCheckbox from "../../circleCheckbox/CircleCheckbox";
 import AddNewButton from "../../addNewButton/AddNewButton";
 import { GrClear } from "react-icons/gr";
 import { TbNotes } from "react-icons/tb";
 import { PiUsersThreeFill } from "react-icons/pi";
+import CircleCheckbox from "../../circleCheckbox/CircleChexbox";
 
 const Table = () => {
   const router = useRouter();

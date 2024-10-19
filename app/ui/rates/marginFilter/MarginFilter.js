@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import classes from "./marginFilter.module.css";
 import { BiSearch } from "react-icons/bi";
-import FilterSearch from "../../filterSearch/FilterSearch";
+import FilterSearch from "../../filters/filterSearch/FilterSearch";
 
 const MarginFilter = ({ filterValue, setFilterValue }) => {
   const [showOptions, setShowOptions] = useState(false);

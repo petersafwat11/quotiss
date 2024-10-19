@@ -3,7 +3,7 @@ import classes from "./surcharges.module.css";
 import Table from "../surchargesTable/Table";
 const Surcharges = ({ data, dispatchDetail }) => {
   return (
-    <div className={classes["container"]}>
+    <div className={"sub-form"}>
       <Table />
     </div>
   );

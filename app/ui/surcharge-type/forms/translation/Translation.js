@@ -27,7 +27,6 @@ const Translation = ({ data, dispatchDetail }) => {
         data={data}
         type={"TRANSLATION"}
         dataKey={"language"}
-
         label={"Please Select Language"}
         options={languages}
         setData={dispatchDetail}

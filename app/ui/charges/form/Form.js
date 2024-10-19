@@ -1,124 +1,126 @@
 "use client";
 
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import classes from "./form.module.css";
 import { chargesReducer, intialValue } from "./dataAndReducer";
 import Surcharges from "../surcharges/Surcharges";
 import TermsAndConditions from "../termsAndConditions/TermsAndConditions";
+import Tabs from "../../tabs/Tabs";
+import InputGroup from "../../inputs/inputGroup/InputGroup";
+import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
 
 const Form = () => {
-  const applyChanges = () => {};
-  const cancelChanges = () => {};
   const [data, dispatchDetail] = useReducer(chargesReducer, intialValue);
   const [dataType, setDataType] = useState("Surcharges");
+  const options = ["Both", "Origin", "Destination", "Not Available"];
+  const [type, setType] = useState("FCL");
+
   return (
-    <div className={classes["conatiner"]}>
+    <div className={"form"}>
       <div className={classes["inputs"]}>
-        <input
-          value={data.name}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "NAME",
-              value: e.target.value,
-            });
-          }}
-          className={classes["main-margin"]}
-        ></input>
-        <input
-          value={data.kind}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "KIND",
-              value: e.target.value,
-            });
-          }}
-          className={classes["main-margin"]}
-        ></input>
+        <InputGroup
+          id={"name"}
+          label={"Name"}
+          data={data.name}
+          dataKey={"name"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="single"
+        />
+        <InputGroup
+          id={"kind"}
+          label={"Kind"}
+          data={data.kind}
+          dataKey={"kind"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="single"
+        />
 
-        <input
-          value={data.code}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "CODE",
-              value: e.target.value,
-            });
-          }}
-          className={classes["main-margin"]}
-        ></input>
-        <input
-          value={data.available_online}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "AVAILABLE_ONLINE",
-              value: e.target.value,
-            });
-          }}
-          className={classes["main-margin"]}
-        ></input>
-        <input
-          value={data.country}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "COUNTRY",
-              value: e.target.value,
-            });
-          }}
-          className={classes["main-margin"]}
-        ></input>
-        <input
-          value={data.region}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "REGION",
-              value: e.target.value,
-            });
-          }}
-          className={classes["main-margin"]}
-        ></input>
-        <input
-          value={data.latitude}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "LATITUDE",
-              value: e.target.value,
-            });
-          }}
-          className={classes["main-margin"]}
-        ></input>
-        <input
-          value={data.longitude}
-          onChange={(e) => {
-            dispatchDetail({
-              type: "LONGITUDE",
-              value: e.target.value,
-            });
-          }}
-          className={classes["main-margin"]}
-        ></input>
+        <InputGroup
+          id={"code"}
+          label={"Code"}
+          data={data.code}
+          dataKey={"code"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="single"
+        />
+        <SelectionGroup
+          data={data}
+          type={"available_online"}
+          dataKey={"available_online"}
+          label={"Available Online"}
+          options={options}
+          setData={dispatchDetail}
+          dataType="single"
+        />
+
+        <InputGroup
+          id={"country"}
+          label={"Country"}
+          data={data.country}
+          dataKey={"country"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="single"
+        />
+        <InputGroup
+          id={"region"}
+          label={"Region"}
+          data={data.region}
+          dataKey={"region"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="single"
+        />
+        <InputGroup
+          id={"latitude"}
+          label={"Latitude"}
+          data={data.latitude}
+          dataKey={"latitude"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="single"
+        />
+        <InputGroup
+          id={"longitude"}
+          label={"Longitude"}
+          data={data.longitude}
+          dataKey={"longitude"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="single"
+        />
       </div>
-
       <div className={classes["data-types"]}>
-        <div className={classes["filters"]}>
-          <button>FCL</button>
-          <button>LCL</button>
+        <div className={classes["types"]}>
+          <button
+            onClick={() => {
+              setType("FCL");
+            }}
+            className={classes[type === "FCL" ? "active-type" : "type"]}
+          >
+            {" "}
+            FCL
+          </button>
+          <button
+            onClick={() => {
+              setType("LCL");
+              console.log("type", type);
+            }}
+            className={classes[type === "LCL" ? "active-type" : "type"]}
+          >
+            LCL
+          </button>
         </div>
-        <button
-          onClick={() => {
-            setDataType("Surcharges");
-          }}
-          className={classes["data-type"]}
-        >
-          Surcharges
-        </button>
-        <button
-          onClick={() => {
-            setDataType("Terms & Conditions");
-          }}
-          className={classes["data-type"]}
-        >
-          Terms & Conditions
-        </button>
+        <Tabs
+          types={["Surcharges", "Terms & Conditions"]}
+          setDataType={setDataType}
+          dataType={dataType}
+        />
       </div>
+
       {dataType === "Surcharges" ? (
         <Surcharges data={data.surcharges} dispatchDetail={dispatchDetail} />
       ) : (
@@ -127,14 +129,6 @@ const Form = () => {
           dispatchDetail={dispatchDetail}
         />
       )}
-      <div className={classes["actions"]}>
-        <button onClick={applyChanges} className={classes["apply-button"]}>
-          Apply
-        </button>
-        <button onClick={cancelChanges} className={classes["apply-button"]}>
-          Cancel
-        </button>
-      </div>
     </div>
   );
 };

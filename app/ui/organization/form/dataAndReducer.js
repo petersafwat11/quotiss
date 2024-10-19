@@ -25,7 +25,7 @@ export const intialValue = {
   },
   quote_options: {
     show_service_name_for_freight: false,
-    main_currency: "",
+    main_currency: "USD - US Dollar",
     insurance_value_multiplier: "",
     insurance_rate: null,
     insurance_min_value: null,
@@ -33,5 +33,11 @@ export const intialValue = {
   },
   email_integration: {
     use_SSL: false,
+    auth_mode: "none",
+    SMTP_host: "",
+    Imap_host: "",
+    encryption: "none",
+    SMTP_port: "",
+    Imap_port: "",
   },
 };

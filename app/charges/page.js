@@ -15,7 +15,7 @@ const Page = () => {
       <div className={classes["top"]}>
         <div className={classes["first"]}>
           <Title title={"Charges"} />
-          <Filter filterValue={filterValue} setFilterValue={setFilterValue} />
+          {/* <Filter filterValue={filterValue} setFilterValue={setFilterValue} /> */}
           <ChexBoxFilter title={" Show with charges"} />
         </div>
         <div className={classes["second"]}>

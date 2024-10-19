@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../locationsTable/Table";
+import Table from "./originTable/OriginTable";
 
 const Locations = () => {
   return (

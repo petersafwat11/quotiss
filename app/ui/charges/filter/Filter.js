@@ -20,7 +20,7 @@ const Filter = ({ filterValue, setFilterValue }) => {
         }}
         className={classes["selected"]}
       >
-        <p className={classes["selected-sport"]}>{filterValue.name}</p>
+        <p className={classes["selected-sport"]}>{filterValue}</p>
         <MdKeyboardArrowDown className={classes["arrow"]} />
       </div>
 

@@ -10,6 +10,8 @@ const SelectionGroup = ({
   options,
   setData,
   label,
+  stateType,
+  dataType,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
   const toggleFilter = () => {
@@ -18,15 +20,23 @@ const SelectionGroup = ({
   const values = ["Contracts", "Spot Rates"];
   const handleSelection = (val) => {
     // setFilterValue(item);
-    setData({
-      type: type,
-      value: { ...data, [dataKey]: val },
-    });
+    stateType === "useState"
+      ? setData({ ...data, [dataKey]: val })
+      : dataType === "single"
+      ? setData({
+          type: type.toUpperCase(),
+          value: val,
+        })
+      : setData({
+          type: type.toUpperCase(),
+          value: { ...data, [dataKey]: val },
+        });
 
     setShowOptions(false);
   };
   return (
     <div className={classes["selection"]}>
+      <p className={classes["label"]}> {label}</p>
       <div
         onClick={() => {
           setShowOptions(!showOptions);
