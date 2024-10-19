@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import classes from "./filter.module.css";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import {  usePathname, useRouter } from "next/navigation";
 
 const Filter = ({ sportsType }) => {
   const categories = [
@@ -26,16 +26,16 @@ const Filter = ({ sportsType }) => {
     "Tabletennis",
     "UFC",
   ];
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  const category = searchParams.get("category") || "Football";
+  const category = "Football";
   const handleChangeCategory = (val) => {
-    const params = new URLSearchParams(searchParams);
-    if (val) {
-      params.set("category", val);
-    }
-    replace(`${pathname}?${params.toString()}`);
+    // const params = new URLSearchParams(searchParams);
+    // if (val) {
+    //   params.set("category", val);
+    // }
+    // replace(`${pathname}?${params.toString()}`);
   };
 
   const [showOptions, setShowOptions] = useState(false);

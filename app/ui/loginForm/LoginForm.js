@@ -2,7 +2,7 @@
 import axios from "axios";
 
 import Cookies from "js-cookie";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import classes from "./loginForm.module.css";
 
@@ -10,8 +10,8 @@ const LoginForm = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const searchParams = useSearchParams();
-  const protectedPage = searchParams.get("next");
+  // const searchParams = useSearchParams();
+  // const protectedPage = searchParams.get("next");
 
   const handleSubmit = async () => {
     try {
@@ -53,12 +53,12 @@ const LoginForm = () => {
 
   return (
     <div className={"form"}>
-      {protectedPage && (
+      {/* {protectedPage && (
         <p
           className={classes["not-authorized"]}
         >{`you aren't authorized to access the previous page , login to to gain access`}</p>
       )}
-
+ */}
       <div className={classes["input-group"]}>
         <label htmlFor="email" className={classes["label"]}>
           Email
