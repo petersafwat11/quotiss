@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Restrictions.module.css";
+import classes from "./restrictions.module.css";
 import SelectionCheckBoxGroup from "../../inputs/selectionCheckBoxGroup/SelectionCheckBoxGroup";
 const Restrictions = ({ data, dispatchDetail }) => {
   const options = ["All clients", "peter", "saaaa"];

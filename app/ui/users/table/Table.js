@@ -2,10 +2,10 @@
 import React from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter } from "next/navigation";
-import CircleCheckbox from "../../circleCheckbox/CircleCheckbox";
 import AddNewButton from "../../addNewButton/AddNewButton";
 import { GrClear } from "react-icons/gr";
 import { FaUserEdit } from "react-icons/fa";
+import CircleCheckbox from "../../circleCheckbox/CircleChexbox";
 
 const Table = () => {
   const router = useRouter();

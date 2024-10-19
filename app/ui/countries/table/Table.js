@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import classes from "./table.module.css";
 import Popup from "../../popupWrapper/Popup";
 import Country from "../country/Country";
-import CircleCheckbox from "../../circleCheckbox/CircleCheckbox";
+import CircleCheckbox from "../../circleCheckbox/CircleChexbox";
 const Table = () => {
   const [activeCountry, setActiveCountry] = useState();
   const [showEditPopup, setShowEditPopup] = useState(false);
