@@ -8,7 +8,7 @@ const InputGroup = ({
   setData,
   stateType,
   dataType,
-  objectType
+  objectType,
 }) => {
   const handleInputChange = (val) => {
     stateType !== "useReducer"

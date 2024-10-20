@@ -62,7 +62,7 @@ const formats = [
   "image",
 ];
 
-function MyEditor() {
+const RichText=()=> {
   const [content, setContent] = useState("");
 
   // Handle editor changes
@@ -84,4 +84,4 @@ function MyEditor() {
   );
 }
 
-export default MyEditor;
+export default RichText;

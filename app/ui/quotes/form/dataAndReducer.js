@@ -13,7 +13,6 @@ export const ratesReducer = (state, action) => {
 };
 export const intialValue = {
   quote_for_client: "",
-  // DATE
   validity_start: "",
   validity_end: "",
   quote_type: "",
@@ -26,14 +25,14 @@ export const intialValue = {
     internal_notes: "",
   },
   layout: {
-    terms_and_conditions: "",
+    terms_and_conditions: "manual",
+    modify: false,
   },
-  surcharges: {
-    Recipient_To: "",
-    CC: "",
-    BCC: "",
-    Subject: "",
-    //text formmater
-    Message: "",
+  email: {
+    recipient_to: "",
+    cc: "",
+    bcc: "",
+    subject: "",
+    message: "",
   },
 };

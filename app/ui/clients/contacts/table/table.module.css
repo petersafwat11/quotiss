@@ -1,0 +1,57 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--black-10);
+  background-color: #f1f0f0;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  margin: 0 10px;
+  padding: 10px;
+  border-bottom: 1px solid var(--black-10);
+}
+
+.header p {
+  font-family: "Roboto Condensed";
+  font-weight: 500;
+  font-size: 1.1rem;
+  /* color: rgba(11, 48, 159, 0.87); */
+  color: var(--black-50);
+}
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+.row:hover {
+  background-color: #dddddd74;
+}
+.body p {
+  font-family: "Roboto Condensed";
+  font-weight: 400;
+  font-size: 0.9rem;
+  /* color: rgba(11, 48, 159, 0.87); */
+  color: var(--black-50);
+}
+.name,
+.email,
+.phone,
+.active,
+.password,
+.delete {
+  flex-basis: 16.6%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.delete {
+  border: none;
+  background-color: transparent;
+}

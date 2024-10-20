@@ -1,0 +1,20 @@
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 100%;
+}
+.layout > * {
+  flex-basis: 50%;
+}
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.selection-wrapper {
+  width: 10rem;
+}

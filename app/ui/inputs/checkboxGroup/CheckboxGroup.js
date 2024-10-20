@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./checkboxGroup.module.css";
 const CheckboxGroup = ({ data, type, dataKey, setData, label, dataType }) => {
   const handleClick = () => {
-    dataType = "single"
+    dataType === "single"
       ? setData({
           type: type,
           value: !data[dataKey],
@@ -22,7 +22,6 @@ const CheckboxGroup = ({ data, type, dataKey, setData, label, dataType }) => {
         />
         <span className={classes["checkmark"]}></span>
       </div>
-
       <p className={classes["label"]}>{label}</p>
     </div>
   );
