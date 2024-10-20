@@ -7,3 +7,9 @@
 .wrapper > * {
   flex-basis: 50%;
 }
+@media (max-width: 37.5rem) {
+  .wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

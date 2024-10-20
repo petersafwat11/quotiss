@@ -21,19 +21,21 @@ const Page = () => {
       <div className={classes["top"]}>
         <div className={classes["first"]}>
           <Title title={"Rates"} />
-          <TypesFilter
-            filterValue={typesFilterValue}
-            setFilterValue={setTypesFilterValue}
-          />
-          <MarginFilter
-            filterValue={marginFilterValue}
-            setFilterValue={setMarginFilterValue}
-          />
-          <ContractsFilter
-            filterValue={contractsFilterValue}
-            setFilterValue={setContractsFilterValue}
-          />
-          <ChexBoxFilter title={" Show Valid Only"} />
+          <div className={classes["filters-desktop"]}>
+            <TypesFilter
+              filterValue={typesFilterValue}
+              setFilterValue={setTypesFilterValue}
+            />
+            <MarginFilter
+              filterValue={marginFilterValue}
+              setFilterValue={setMarginFilterValue}
+            />
+            <ContractsFilter
+              filterValue={contractsFilterValue}
+              setFilterValue={setContractsFilterValue}
+            />
+            <ChexBoxFilter title={" Show Valid Only"} />
+          </div>
         </div>
         <div className={classes["second"]}>
           <div className={classes["search"]}>
@@ -41,6 +43,22 @@ const Page = () => {
           </div>
         </div>
       </div>
+      <div className={classes["filters-mobile"]}>
+            <TypesFilter
+              filterValue={typesFilterValue}
+              setFilterValue={setTypesFilterValue}
+            />
+            <MarginFilter
+              filterValue={marginFilterValue}
+              setFilterValue={setMarginFilterValue}
+            />
+            <ContractsFilter
+              filterValue={contractsFilterValue}
+              setFilterValue={setContractsFilterValue}
+            />
+            <ChexBoxFilter title={" Show Valid Only"} />
+          </div>
+
       <Table />
     </div>
   );

@@ -31,27 +31,10 @@
 .action-button {
   border: none;
 }
-.type,
-.active-type {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem 0.5rem;
-  background-color: #adadad;
-  border: none;
-  color: white;
-  font-family: "Roboto Condensed";
-  border-radius: 0.25rem;
-  font-weight: 400;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.active-type {
-  background-color: #203c5b;
-}
 .table {
   display: flex;
   flex-direction: column;
+  overflow-x: scroll;
 }
 
 .header {
@@ -154,4 +137,82 @@
   flex-basis: 2.5%;
   flex-shrink: 0;
   flex-grow: 0;
+}
+.mobile-add-new {
+  display: none;
+}
+@media (max-width: 75rem) {
+  .desktop-add-new {
+    display: none;
+  }
+  .mobile-add-new {
+    display: block;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .header {
+    margin: 0 10px;
+    padding: 10px;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .row {
+    padding: 10px 20px;
+  }
+  .body p {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 53rem) {
+  .checkbox {
+    flex-basis: 1.5rem;
+  }
+  .status {
+    flex-basis: 15%;
+  }
+
+  .name {
+    flex-basis: 18%;
+  }
+  .service {
+    flex-basis: 13%;
+  }
+
+  .contract-number {
+    flex-basis: 30%;
+  }
+  .form {
+    flex-basis: 14%;
+  }
+
+  .till {
+    flex-basis: 14%;
+  }
+  .base-origin {
+    flex-basis: 19%;
+  }
+
+  .base-dest {
+    flex-basis: 17%;
+  }
+
+  .curr {
+    flex-basis: 9%;
+  }
+  .int {
+    flex-basis: 7%;
+  }
+
+  .ext {
+    flex-basis: 7%;
+  }
 }

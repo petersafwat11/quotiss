@@ -8,3 +8,11 @@
 .search {
   width: 17rem;
 }
+@media (max-width: 75rem) {
+  .top {
+    padding-bottom: 2rem;
+  }
+  .search {
+    width: 13rem;
+  }
+}

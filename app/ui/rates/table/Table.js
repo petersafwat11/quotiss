@@ -43,8 +43,13 @@ const Table = () => {
             <FaBoxArchive className={classes["action-icon"]} />
             <button className={classes["action-button"]}>Archive</button>
           </div>
+          <div className={classes["mobile-add-new"]}>
+            <AddNewButton path={"rates/create"} />
+          </div>
         </div>
-        <AddNewButton path={"rates/create"} />
+        <div className={classes["desktop-add-new"]}>
+          <AddNewButton path={"rates/create"} />
+        </div>
       </div>
       <div className={classes["table"]}>
         <div className={classes["header"]}>

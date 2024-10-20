@@ -33,3 +33,24 @@
 .active-type {
   background-color: #203c5b;
 }
+@media (max-width: 50rem) {
+  .inputs {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .data-types {
+    gap: 0.5rem;
+  }
+  .types {
+    gap: 0.75rem;
+  }
+  .type,
+  .active-type {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+}

@@ -101,7 +101,6 @@ const Form = () => {
             }}
             className={classes[type === "FCL" ? "active-type" : "type"]}
           >
-            {" "}
             FCL
           </button>
           <button

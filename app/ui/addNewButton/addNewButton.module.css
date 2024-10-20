@@ -13,3 +13,9 @@
   font-size: 1rem;
   cursor: pointer;
 }
+@media (max-width: 50rem) {
+  .add-new {
+    padding: 0.4rem 2.5rem;
+    font-size: 0.9rem;
+  }
+}

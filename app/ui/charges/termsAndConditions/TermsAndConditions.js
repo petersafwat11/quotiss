@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./termsAndConditions.module.css";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
 import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
+import RichText from "../../inputs/richTextGroup/RichTextGroup";
 const TermsAndConditions = ({ data, dispatchDetail }) => {
   const languages = [
     "English",
@@ -32,17 +33,21 @@ const TermsAndConditions = ({ data, dispatchDetail }) => {
         setData={dispatchDetail}
         dataType="object"
       />
+      {data.language.length > 0 && (
+        <>
+          <div className={classes["rich-text"]}>
+            <p className={classes["label"]}>
+              FCL Destination Terms & Conditions
+            </p>
+            <RichText />
+          </div>
+          <div className={classes["rich-text"]}>
+            <p className={classes["label"]}>FCL Origin Terms & Conditions</p>
 
-      {/* <input
-        value={data.language}
-        onChange={(e) => {
-          dispatchDetail({
-            type: "TERMSANDCONDITIONS",
-            value: { ...data, language: e.target.value },
-          });
-        }}
-        className={classes["auth-mode"]}
-      ></input> */}
+            <RichText />
+          </div>
+        </>
+      )}
     </div>
   );
 };

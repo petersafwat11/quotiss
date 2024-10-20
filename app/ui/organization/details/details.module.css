@@ -11,3 +11,8 @@
   gap: 1.5rem;
   flex-basis: 50%;
 }
+@media (max-width: 37.5rem) {
+  .inputs {
+    gap: 1.5rem;
+  }
+}

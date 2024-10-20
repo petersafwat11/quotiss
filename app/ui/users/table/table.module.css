@@ -2,6 +2,7 @@
   border: 1px solid var(--black-10);
   background-color: #f1f0f0;
   width: 100%;
+  overflow-x: scroll;
 }
 .top {
   display: flex;
@@ -102,29 +103,72 @@
 }
 
 .organization {
-  flex-basis: 16%;
+  flex-basis: 21%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
 .email {
-  flex-basis: 17%;
+  flex-basis: 21%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 .role {
-  flex-basis: 16%;
+  flex-basis: 14%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
 .active {
-  flex-basis: 16%;
+  flex-basis: 10%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 .last-active {
-  flex-basis: 16%;
+  flex-basis: 15%;
   flex-shrink: 0;
   flex-grow: 0;
+}
+@media (max-width: 56.25rem) {
+  .checkbox {
+    flex-basis: 1.5rem;
+  }
+  
+  .header {
+    margin: 0 10px;
+    padding: 10px;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .row {
+    padding: 10px 20px;
+  }
+  .body p {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 31.25rem) {
+  .name {
+    flex-basis: 20%;
+  }
+
+  .organization {
+    flex-basis: 25%;
+  }
+
+  .email {
+    flex-basis: 25%;
+  }
+  .role {
+    flex-basis: 15%;
+  }
+  .active {
+    flex-basis: 15%;
+  }
+  .last-active {
+    flex-basis: 20%;
+  }
 }

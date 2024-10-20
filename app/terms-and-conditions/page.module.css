@@ -4,3 +4,11 @@
   justify-content: space-between;
   padding-bottom: 3rem;
 }
+@media (max-width: 75rem) {
+  .top {
+    padding-bottom: 2rem;
+  }
+  .search {
+    width: 13rem;
+  }
+}

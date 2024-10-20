@@ -45,7 +45,7 @@ const MainInputs = ({ data, dispatchDetail }) => {
         data={data}
         type={"rate_type"}
         dataKey={"rate_type"}
-        label={"Please Select a rate type"}
+        label={"rate type"}
         options={options}
         setData={dispatchDetail}
         dataType={"single"}
@@ -142,14 +142,16 @@ const MainInputs = ({ data, dispatchDetail }) => {
             stateType={"useReducer"}
             dataType="single"
           />
-          <CheckboxGroup
-            data={data}
-            type={"online"}
-            dataKey={"online"}
-            label={"Online"}
-            setData={dispatchDetail}
-            dataType="single"
-          />
+          <div className={classes["checkbox"]}>
+            <CheckboxGroup
+              data={data}
+              type={"online"}
+              dataKey={"online"}
+              label={"Online"}
+              setData={dispatchDetail}
+              dataType="single"
+            />
+          </div>
         </>
       )}
     </div>

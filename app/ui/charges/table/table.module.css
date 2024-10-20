@@ -85,3 +85,52 @@
   flex-shrink: 0;
   flex-grow: 0;
 }
+@media (max-width: 56.25rem) {
+  .header {
+    margin: 0 10px;
+    padding: 10px;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .row {
+    padding: 10px 20px;
+  }
+  .body p {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 31.25rem) {
+  .table {
+    overflow-x: scroll;
+  }
+  .location {
+    flex-basis: 15%;
+  }
+
+  .kind {
+    flex-basis: 12%;
+  }
+
+  .code {
+    flex-basis: 12%;
+  }
+
+  .region {
+    flex-basis: 15%;
+  }
+  .country {
+    flex-basis: 15%;
+  }
+  .alias {
+    flex-basis: 15%;
+  }
+  .surcharges {
+    flex-basis: 19%;
+  }
+  .translations {
+    flex-basis: 12%;
+  }
+}

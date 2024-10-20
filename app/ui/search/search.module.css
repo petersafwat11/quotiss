@@ -32,3 +32,14 @@
   top: 10.56px;
   left: 14.08px;
 }
+@media (max-width: 75rem) {
+  .search {
+    height: 2.1rem;
+    padding: 0.8rem;
+    padding-left: 2rem;
+  }
+  .search-icon {
+    font-size: 1.2rem;
+    top: 8px;
+    left: 11px;  }
+}

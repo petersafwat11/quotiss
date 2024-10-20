@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
+  border: 1px solid var(--black-10);
+  background-color: #f1f0f0;
+  width: 100%;
 }
 
 .header {
@@ -57,70 +60,23 @@
   flex-grow: 0;
 }
 
-.january {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-.february {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-.march {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-.april {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-.may {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-.june {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-.july {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-.august {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-.september {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-.october {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-.november {
-  flex-basis: 7%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
+.january,
+.february,
+.march,
+.april,
+.may,
+.june,
+.july,
+.august,
+.september,
+.october,
+.november,
 .december {
-  flex-basis: 7%;
+  flex-basis: 8%;
   flex-shrink: 0;
   flex-grow: 0;
 }
+
 .add-new {
   display: flex;
   align-items: center;
@@ -128,4 +84,79 @@
   padding: 1rem;
   background-color: transparent;
   outline: none;
+}
+@media (max-width: 75rem) {
+  .header {
+    margin: 0 10px;
+    padding: 10px;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .row {
+    padding: 10px 20px;
+  }
+  .body p {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 50rem) {
+  .origin-country {
+    flex-basis: 19%;
+  }
+
+  .destination-country {
+    flex-basis: 19%;
+  }
+  .service {
+    flex-basis: 12%;
+  }
+
+  .january,
+  .february,
+  .march,
+  .april,
+  .may,
+  .june,
+  .july,
+  .august,
+  .september,
+  .october,
+  .november,
+  .december {
+    flex-basis: 10%;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+}
+@media (max-width: 37.5rem) {
+  .origin-country {
+    flex-basis: 35%;
+  }
+
+  .destination-country {
+    flex-basis: 35%;
+  }
+  .service {
+    flex-basis: 20%;
+  }
+
+  .january,
+  .february,
+  .march,
+  .april,
+  .may,
+  .june,
+  .july,
+  .august,
+  .september,
+  .october,
+  .november,
+  .december {
+    flex-basis: 19%;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
 }
