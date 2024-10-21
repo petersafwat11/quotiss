@@ -90,7 +90,7 @@ const MainInputs = ({ data, dispatchDetail }) => {
             dataType="single"
           />
         </>
-      )}{" "}
+      )}
       {data.rate_type === "Flat" && (
         <>
           <InputGroup

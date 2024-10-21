@@ -1,0 +1,21 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 3.5rem;
+  background-color: #4aab68;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Roboto Condensed";
+  border-radius: 0.25rem;
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+}
+@media (max-width: 50rem) {
+  .button {
+    padding: 0.4rem 2.5rem;
+    font-size: 0.9rem;
+  }
+}

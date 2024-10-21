@@ -8,27 +8,11 @@ const AddNewButton = ({ params, path }) => {
   const { replace } = useRouter();
 
   const handleClick = useDebouncedCallback(() => {
-    // const newParams = new URLSearchParams(searchParams);
-    // if (params) {
-    //   Object.keys(params).forEach((key) => {
-    //     newParams.set(key, params[key]);
-    //   });
-    //   replace(`${path}?${newParams.toString()}`);
-    // } else {
-    //   replace(`${path}`);
-    // }
+    replace(`${path}/create`);
   }, 200);
 
   return (
-    <button
-      onClick={
-        handleClick
-        // () => {
-        // router.push(path);
-        // }
-      }
-      className={classes["add-new"]}
-    >
+    <button onClick={handleClick} className={classes["add-new"]}>
       Add New
     </button>
   );
