@@ -5,100 +5,81 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import classes from "./loginForm.module.css";
+import InputGroup from "../inputs/inputGroup/InputGroup";
 
 const LoginForm = () => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // const searchParams = useSearchParams();
-  // const protectedPage = searchParams.get("next");
-
+  const [data, setData] = useState({ email: "", password: "" });
+  const [error, setError] = useState({ state: false, message: "" });
   const handleSubmit = async () => {
     try {
+      if (data.email.length < 1 || data.password.length < 1) {
+        setError({ state: true, message: "Error: you must enter both inputs" });
+      }
       const response = await axios.post(
         `${process.env.BACKEND_SERVER}/users/login`,
-        { email: email, password: password }
+        { email: data.email, password: data.password }
       );
+      console.log("response", response);
       Cookies.set("user", JSON.stringify(response.data.data.user), {
         expires: 1,
       });
       Cookies.set("token", response.data.token, {
         expires: 1,
       });
-      // let next = "/sports";
-      // const search = searchParams.get("next");
-      // if (search) {
-      //   next = search;
-      // }
-      setEmail("");
-      setPassword("");
-      setTimeout(() => {
-        console.log("Checking cookies before redirect");
-        console.log("User Cookie:", Cookies.get("user"));
-        console.log("Token Cookie:", Cookies.get("token"));
-        router.replace("/sports");
-      }, 2000);
-
-      console.log("redirect");
+      router.push("/");
     } catch (error) {
+      setError({
+        state: true,
+        message: "Error: either email or password is incorrect",
+      });
       console.log("error", error);
     }
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      // Handle the Enter key press here
       handleSubmit();
     }
   };
 
   return (
-    <div className={"form"}>
-      {/* {protectedPage && (
+    <div className={classes["container"]}>
+      <div className={classes["form"]}>
+        <p className={classes["logo"]}> Quoturl</p>
+        {error.state && <p className={classes["error"]}>{error.message}</p>}
+        <InputGroup
+          handleKeyDown={handleKeyDown}
+          id={"email"}
+          type={"email"}
+          label={"Username or Email Address"}
+          data={data}
+          dataKey={"email"}
+          setData={setData}
+          stateType={"useState"}
+        />
+        <InputGroup
+          handleKeyDown={handleKeyDown}
+          type={"password"}
+          id={"password"}
+          label={"Password"}
+          data={data}
+          dataKey={"password"}
+          setData={setData}
+          stateType={"useState"}
+        />
+
+        <button onClick={handleSubmit} className={classes["login-button"]}>
+          Log in
+        </button>
         <p
-          className={classes["not-authorized"]}
-        >{`you aren't authorized to access the previous page , login to to gain access`}</p>
-      )}
- */}
-      <div className={classes["input-group"]}>
-        <label htmlFor="email" className={classes["label"]}>
-          Email
-        </label>
-        <input
-          placeholder="Enter Your Email"
-          className={classes["input"]}
-          value={email}
-          onKeyDown={handleKeyDown}
-          onChange={(e) => {
-            setEmail(e.target.value);
+          onClick={() => {
+            router.push("/forget-password");
           }}
-        />
+          className={classes["forget-password"]}
+        >
+          Forgot password?
+        </p>
       </div>
-      <div className={classes["input-group"]}>
-        <label htmlFor="email" className={classes["label"]}>
-          Password
-        </label>
-        <input
-          placeholder="Enter Your Password"
-          className={classes["input"]}
-          value={password}
-          type="password"
-          onKeyDown={handleKeyDown}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </div>
-      <button onClick={handleSubmit} className={classes["login-button"]}>
-        Log in
-      </button>
-      <p
-        onClick={() => {
-          router.push("/forget-password");
-        }}
-        className={classes["forget-password"]}
-      >
-        Forgot password?
-      </p>
     </div>
   );
 };

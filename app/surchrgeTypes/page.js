@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./page.module.css";
 import Title from "../ui/title/Title";
 import Search from "../ui/search/Search";
-import Table from "../ui/margin/table/Table";
+import Table from "../ui/surcharge-type/table/Table";
 import axios from "axios";
 
 const page = async ({ searchParams }) => {
@@ -11,12 +11,12 @@ const page = async ({ searchParams }) => {
   const search = searchParams?.search;
   let data;
   try {
-    data = await axios.get(`${process.env.BACKEND_SERVER}/margins`, {
+    data = await axios.get(`${process.env.BACKEND_SERVER}/surchrgeTypes`, {
       params: {
         page: page,
         limit: rows,
         searchValue: search ? search : null,
-        or: search ? ["name", "Weight / Measurement", "description"] : null,
+        or: search ? ["name"] : null,
       },
     });
   } catch (err) {
@@ -25,12 +25,12 @@ const page = async ({ searchParams }) => {
   return (
     <div className={"page"}>
       <div className={classes["top"]}>
-        <Title title={"Margin"} />
+        <Title title={"Surcharge Types"} />
         <div className={classes["search"]}>
           <Search />
         </div>
       </div>
-      <Table data={data?.data} rows={rows} search={search} />
+      <Table data={data?.data} />
     </div>
   );
 };

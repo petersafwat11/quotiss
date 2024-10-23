@@ -2,13 +2,20 @@ import React from "react";
 import classes from "./addNewButton.module.css";
 import { usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-const AddNewButton = ({ params, path }) => {
-  // const searchParams = useSearchParams();
+const AddNewButton = ({ params }) => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
   const handleClick = useDebouncedCallback(() => {
-    replace(`${path}/create`);
+    const newParams = new URLSearchParams();
+    if (params) {
+      for (const [key, value] of Object.entries(params)) {
+        newParams.set(key, value);
+      }
+      replace(`${pathname}/create?${newParams.toString()}`);
+    } else {
+      replace(`${pathname}/create`);
+    }
   }, 200);
 
   return (

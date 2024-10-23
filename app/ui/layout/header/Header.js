@@ -29,7 +29,7 @@ const Header = () => {
       <IoMdMenu onClick={toggleMobileMenu} className={classes["menu-icon"]} />
 
       <div className={classes["first"]}>
-        <p className={classes["logo"]}> quotsis</p>
+        <p className={"logo"}> Quoturl</p>
       </div>
 
       <div className={classes["second"]}>

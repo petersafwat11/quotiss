@@ -9,6 +9,8 @@ const InputGroup = ({
   stateType,
   dataType,
   objectType,
+  type,
+  handleKeyDown,
 }) => {
   const handleInputChange = (val) => {
     stateType !== "useReducer"
@@ -29,6 +31,10 @@ const InputGroup = ({
         {label}
       </label>
       <input
+        onKeyDown={(e) => {
+          handleKeyDown ? handleKeyDown(e) : "";
+        }}
+        type={type ? type : "text"}
         value={dataType === "single" ? data : data[dataKey]}
         onChange={(e) => {
           handleInputChange(e.target.value);

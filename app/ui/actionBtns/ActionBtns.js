@@ -3,23 +3,23 @@ import React from "react";
 import classes from "./actionBtns.module.css";
 import { useRouter, usePathname } from "next/navigation";
 
-const ActionBtns = () => {
+const ActionBtns = ({ applyChanges }) => {
   const router = useRouter();
   const pathname = usePathname();
   const mainPage = pathname.slice(0, pathname.lastIndexOf("/"));
 
-  const applyChanges = () => {
-    router.push(mainPage);
+  const applyHandler = () => {
+    applyChanges();
   };
-  const cancelChanges = () => {
+  const cancelHandler = () => {
     router.push(mainPage);
   };
   return (
     <div className={classes["actions"]}>
-      <button onClick={applyChanges} className={classes["apply"]}>
+      <button onClick={applyHandler} className={classes["apply"]}>
         Apply
       </button>
-      <button onClick={cancelChanges} className={classes["cancel"]}>
+      <button onClick={cancelHandler} className={classes["cancel"]}>
         Cancel
       </button>
     </div>

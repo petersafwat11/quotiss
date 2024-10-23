@@ -25,7 +25,7 @@ body,
 }
 .page {
   padding: 2rem 6rem;
-  background-color: rgb(79 79 83 / 13%);
+  /* background-color: rgb(79 79 83 / 13%); */
 }
 .wrapper {
   width: 70%;
@@ -46,9 +46,16 @@ body,
   padding: 2rem 4rem;
   margin: auto;
 }
+.logo {
+  font-family: "Pacifico";
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  letter-spacing: 1px;
+}
 body {
-  color: var(--foreground);
-  background: var(--background);
+  /* color: var(--foreground); */
+  background-color: rgb(79 79 83 / 13%);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

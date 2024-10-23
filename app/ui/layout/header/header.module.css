@@ -87,13 +87,13 @@
   flex-direction: column;
   gap: 0.75rem;
 }
-.header .logo {
+/* .header .logo {
   font-family: "Pacifico";
   font-weight: 400;
   font-style: normal;
   color: white;
   letter-spacing: 1px;
-}
+} */
 .user-icon,
 .notifictions,
 .menu-icon {

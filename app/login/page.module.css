@@ -1,0 +1,11 @@
+.page {
+  padding: 2rem 6rem;
+  /* background-color: rgb(79 79 83 / 13%); */
+}
+.logo {
+  font-family: "Pacifico";
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  letter-spacing: 1px;
+}
