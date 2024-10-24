@@ -74,7 +74,7 @@ const Table = ({ data, rows, search }) => {
               className={classes["row"]}
             >
               <p className={classes["name"]}>{item.name} </p>
-              <p className={classes["W-M"]}> {item["Weight / Measurement"]}</p>
+              <p className={classes["W-M"]}> {item.weightmeasurement}</p>
               <p className={classes["description"]}> {item.description}</p>
             </div>
           ))}

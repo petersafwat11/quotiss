@@ -62,18 +62,19 @@ const formats = [
   "image",
 ];
 
-const RichText=()=> {
-  const [content, setContent] = useState("");
+const RichText = ({ data, setData, dataKey }) => {
+  // const [content, setContent] = useState("");
 
   // Handle editor changes
   const handleChange = (value) => {
-    setContent(value);
+    setData({ ...data, [dataKey]: value });
+    // console.log(value);
   };
 
   return (
     <div>
       <ReactQuill
-        value={content}
+        value={data[dataKey]}
         onChange={handleChange}
         modules={modules}
         formats={formats}
@@ -82,6 +83,6 @@ const RichText=()=> {
       />
     </div>
   );
-}
+};
 
 export default RichText;

@@ -1,80 +1,103 @@
 "use client";
-
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import classes from "./form.module.css";
-import { intialValue, ratesReducer } from "./dataAndReducer";
-import Locations from "../locations/Locations";
-import Surcharge from "../surcharge/Surcharge";
-import Restrictions from "../restrictions/Restrictions";
-import Notes from "../notes/Notes";
-import MainInputs from "../mainInputs/MainInputs";
+import Details from "../details/Details";
+import QuotesOptions from "../quoteOptions/QuotesOptions";
+import EmailIntegration from "../email-Integration/EmailIntegration";
+import { intialValue, organizationReducer } from "./dataAndReducer";
+import InputGroup from "../../inputs/inputGroup/InputGroup";
+import Tabs from "../../tabs/Tabs";
+import ActionBtns from "../../actionBtns/ActionBtns";
+import CheckboxGroup from "../../inputs/checkboxGroup/CheckboxGroup";
+import DateInput from "../../inputs/dateInput/DateInput";
 
 const Form = () => {
-  const applyChanges = () => {};
+  const applyChanges = async () => {
+    // if (id === "create") {
+    // await createItem("organization", data, router);
+    // } else {
+    //   await updateItem("margins", data, router, id);
+    // }
+  };
   const cancelChanges = () => {};
-  const [data, dispatchDetail] = useReducer(ratesReducer, intialValue);
-  const [dataType, setDataType] = useState("Surcharges");
-
+  const [data, dispatchDetail] = useReducer(organizationReducer, intialValue);
+  const [dataType, setDataType] = useState("Details");
   return (
-    <div className={classes["conatiner"]}>
-      <MainInputs dispatchDetail={dispatchDetail} data={data} />
-      <div className={classes["data-types"]}>
-        <button
-          onClick={() => {
-            setDataType("Locations");
-          }}
-          className={classes["data-type"]}
-        >
-          Locations
-        </button>
-        <button
-          onClick={() => {
-            setDataType("Surcharges");
-          }}
-          className={classes["data-type"]}
-        >
-          Surcharges
-        </button>
-        <button
-          onClick={() => {
-            setDataType("Locations");
-          }}
-          className={classes["data-type"]}
-        >
-          Restrictions
-        </button>
-        <button
-          onClick={() => {
-            setDataType("Notes");
-          }}
-          className={classes["data-type"]}
-        >
-          Notes
-        </button>
+    <div className={classes["container"]}>
+      <div className={"form"}>
+        <div className={classes["inputs"]}>
+          <InputGroup
+            id={"user_email"}
+            label={"Email"}
+            data={data.name}
+            dataKey={"user_email"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            id={"user_name"}
+            label={"Name"}
+            data={data.user_name}
+            dataKey={"user_name"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+
+          <InputGroup
+            id={"user_pwd"}
+            label={"Password"}
+            data={data.user_pwd}
+            dataKey={"user_pwd"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            id={"user_company"}
+            label={"Company"}
+            data={data.user_company}
+            dataKey={"user_company"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            id={"user_location"}
+            label={"Location"}
+            data={data.user_location}
+            dataKey={"user_location"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          {/* <InputGroup
+          id={"user_avatar"}
+          label={"Select an Avatar"}
+          data={data.user_avatar}
+          dataKey={"user_avatar"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="single"
+        /> */}
+          <CheckboxGroup
+            data={data}
+            type={"user_active"}
+            dataKey={"user_active"}
+            label={"Active"}
+            setData={dispatchDetail}
+            dataType={"single"}
+          />
+          <DateInput
+            label={"Vaild date"}
+            data={data.user_valid_date}
+            dataKey={"user_valid_date"}
+            setData={dispatchDetail}
+          />
+        </div>
       </div>
-      {dataType === "Locations" ? (
-        <Locations data={data.surcharges} dispatchDetail={dispatchDetail} />
-      ) : dataType === "Surcharges" ? (
-        <Surcharge
-          data={data.terms_and_conditions}
-          dispatchDetail={dispatchDetail}
-        />
-      ) : dataType === "Restrictions" ? (
-        <Restrictions
-          data={data.terms_and_conditions}
-          dispatchDetail={dispatchDetail}
-        />
-      ) : (
-        <Notes />
-      )}
-      <div className={classes["actions"]}>
-        <button onClick={applyChanges} className={classes["apply-button"]}>
-          Apply
-        </button>
-        <button onClick={cancelChanges} className={classes["apply-button"]}>
-          Cancel
-        </button>
-      </div>
+      <ActionBtns applyChanges={applyChanges} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./details.module.css";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
+import FileInput from "../../inputs/fileInput/FileInput";
 const Details = ({ data, dispatchDetail }) => {
   return (
     <div className={"sub-form"}>
@@ -90,6 +91,7 @@ const Details = ({ data, dispatchDetail }) => {
           />
         </div>
       </div>
+      {/* <FileInput /> */}
       {/* <div className={classes["logo"]}>
         <input
           value={data.logo}

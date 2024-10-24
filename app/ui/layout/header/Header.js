@@ -18,7 +18,11 @@ const Header = () => {
   function replaceSpacesWithDash(str) {
     console.log("str", str);
     const pageName =
-      str === "my organization" ? "organization" : str.replace(/\s+/g, "-");
+      str === "my organization"
+        ? "organization"
+        : str === "surcharge types"
+        ? "surchargeTypes"
+        : str.replace(/\s+/g, "-");
     router.push(pageName);
   }
 

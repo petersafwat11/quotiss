@@ -6,7 +6,7 @@ import TextAreaGroup from "../../inputs/textareaGroup/TextAreaGroup";
 import ActionBtns from "../../actionBtns/ActionBtns";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { createItem, updateItem } from "../../helperFunctions/formFunctions";
+import { createItem, updateItem } from "../../../lib/formFunctions";
 
 const Form = ({ type, formData, id }) => {
   const router = useRouter();
@@ -16,7 +16,7 @@ const Form = ({ type, formData, id }) => {
       ? usableData
       : {
           name: "",
-          "Weight / Measurement": "",
+          weightmeasurement: "",
           description: "",
           type: type,
         }
@@ -41,10 +41,10 @@ const Form = ({ type, formData, id }) => {
           stateType={"useState"}
         />
         <InputGroup
-          id={"w-m"}
+          id={"weightmeasurement"}
           label={"Weight / Measurement"}
           data={data}
-          dataKey={"Weight / Measurement"}
+          dataKey={"weightmeasurement"}
           setData={setData}
           stateType={"useState"}
         />

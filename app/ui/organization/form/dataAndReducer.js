@@ -23,7 +23,7 @@ export const intialValue = {
     ecu_account_id: "",
     logo: "",
   },
-  quote_options: {
+  quotes_options: {
     show_service_name_for_freight: false,
     main_currency: "USD - US Dollar",
     insurance_value_multiplier: "",
@@ -41,3 +41,4 @@ export const intialValue = {
     Imap_port: "",
   },
 };
+

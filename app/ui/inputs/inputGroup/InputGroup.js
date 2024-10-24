@@ -11,6 +11,8 @@ const InputGroup = ({
   objectType,
   type,
   handleKeyDown,
+  noLabel,
+  numbersOnly,
 }) => {
   const handleInputChange = (val) => {
     stateType !== "useReducer"
@@ -27,9 +29,11 @@ const InputGroup = ({
   };
   return (
     <div className={classes["input-group"]}>
-      <label htmlFor={id} className={classes["label"]}>
-        {label}
-      </label>
+      {!noLabel && (
+        <label htmlFor={id} className={classes["label"]}>
+          {label}
+        </label>
+      )}
       <input
         onKeyDown={(e) => {
           handleKeyDown ? handleKeyDown(e) : "";
@@ -37,7 +41,12 @@ const InputGroup = ({
         type={type ? type : "text"}
         value={dataType === "single" ? data : data[dataKey]}
         onChange={(e) => {
-          handleInputChange(e.target.value);
+          if (numbersOnly) {
+            const onlyNumbers = e.target.value.replace(/[^0-9]/g, "");
+            handleInputChange(onlyNumbers);
+          } else {
+            handleInputChange(e.target.value);
+          }
         }}
         // placeholder={`Please Enter ${label}`}
         id={id}

@@ -3,7 +3,26 @@ import classes from "./page.module.css";
 import Title from "../ui/title/Title";
 import Search from "../ui/search/Search";
 import Table from "../ui/Holidays/table/Table";
-const page = () => {
+import axios from "axios";
+const page = async ({ searchParams }) => {
+  const page = searchParams?.page || 1;
+  const rows = searchParams?.rows || 10;
+  const search = searchParams?.search;
+  let data;
+  try {
+    data = await axios.get(`${process.env.BACKEND_SERVER}/holidays`, {
+      params: {
+        page: page,
+        limit: rows,
+        searchValue: search ? search : null,
+        or: search
+          ? ["service", "destination_country", "origin_country"]
+          : null,
+      },
+    });
+  } catch (err) {
+    console.log("err", err);
+  }
   return (
     <div className={"page"}>
       <div className={classes["top"]}>
@@ -12,7 +31,7 @@ const page = () => {
           <Search />
         </div>
       </div>
-      <Table />
+      <Table data={data?.data} rows={rows} search={search} />
     </div>
   );
 };

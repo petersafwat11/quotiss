@@ -9,7 +9,7 @@ import InputGroup from "../../inputs/inputGroup/InputGroup";
 import Tabs from "../../tabs/Tabs";
 import ActionBtns from "../../actionBtns/ActionBtns";
 import { useRouter } from "next/navigation";
-import { createItem, updateItem } from "../../helperFunctions/formFunctions";
+import { createItem, updateItem } from "../../../lib/formFunctions";
 
 const Form = ({ formData, id }) => {
   const router = useRouter();
@@ -22,9 +22,9 @@ const Form = ({ formData, id }) => {
   const [dataType, setDataType] = useState("General");
   const applyChanges = async () => {
     if (id === "create") {
-      await createItem("surchrgeTypes", data, router);
+      await createItem("surchargeTypes", data, router);
     } else {
-      await updateItem("surchrgeTypes", data, router, id);
+      await updateItem("surchargeTypes", data, router, id);
     }
   };
 
