@@ -17,6 +17,6 @@ export const intialValue = {
   user_location: "",
   user_avatar: "",
   user_active: false,
-  user_valid_date: "YYYY-MM-DD",
+  user_valid_date: "",
   user_email: "",
 };

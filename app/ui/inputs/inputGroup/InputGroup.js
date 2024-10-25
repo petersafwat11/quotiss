@@ -13,6 +13,7 @@ const InputGroup = ({
   handleKeyDown,
   noLabel,
   numbersOnly,
+  disabled,
 }) => {
   const handleInputChange = (val) => {
     stateType !== "useReducer"
@@ -35,6 +36,8 @@ const InputGroup = ({
         </label>
       )}
       <input
+        disabled={disabled ? disabled : ""}
+        style={{ border: disabled ? "1px solid #b6acac" : "" }}
         onKeyDown={(e) => {
           handleKeyDown ? handleKeyDown(e) : "";
         }}

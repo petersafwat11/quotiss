@@ -3,6 +3,7 @@ import classes from "./page.module.css";
 import Title from "../ui/title/Title";
 import Search from "../ui/search/Search";
 import Table from "../ui/countries/table/Table";
+import axios from "axios";
 const page = async ({ searchParams }) => {
   const page = searchParams?.page || 1;
   const rows = searchParams?.rows || 10;
@@ -13,7 +14,7 @@ const page = async ({ searchParams }) => {
       params: {
         page: page,
         limit: rows,
-        searchValue: search ? search : null,    
+        searchValue: search ? search : null,
         or: search ? ["name", "status", "code"] : null,
       },
     });
@@ -28,7 +29,7 @@ const page = async ({ searchParams }) => {
           <Search />
         </div>
       </div>
-      <Table />
+      <Table data={data?.data} />
     </div>
   );
 };

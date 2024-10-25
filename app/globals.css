@@ -75,6 +75,10 @@ a {
 body .ql-toolbar.ql-snow + .ql-container.ql-snow {
   min-height: 8rem;
 }
+.react-date-picker__wrapper {
+  padding: 0.34rem;
+  border: 1px solid var(--border) !important;
+}
 @media (max-width: 75rem) {
   .page {
     padding: 2rem 4vw;

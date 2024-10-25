@@ -1,15 +1,33 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter } from "next/navigation";
 import AddNewButton from "../../addNewButton/AddNewButton";
 import { GrClear } from "react-icons/gr";
 import { FaUserEdit } from "react-icons/fa";
-import CircleCheckbox from "../../circleCheckbox/CircleChexbox";
+import NormalCheckbox from "../../circleCheckbox/CircleChexbox";
+import CircleCheckbox from "../../inputs/selectionCheckBoxGroup/circleCheckbox/CircleChexbox";
 
-const Table = () => {
+const Table = ({ data }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const onSelect = (val) => {
+    if (val === "all") {
+      if (selectedOptions.length === data.length) {
+        setSelectedOptions([]); // Deselect all
+      } else {
+        setSelectedOptions([...data]); // Select all
+      }
+    } else {
+      setSelectedOptions((prev) =>
+        prev.includes(val)
+          ? prev.filter((item) => item !== val)
+          : [...prev, val]
+      );
+    }
+  };
 
   return (
     <div className={classes["container"]}>
@@ -32,27 +50,37 @@ const Table = () => {
       <div className={classes["table"]}>
         <div className={classes["header"]}>
           <div className={classes["checkbox"]}>
-            <CircleCheckbox />
+            <CircleCheckbox
+              itemName={null}
+              onChange={() => onSelect("all")}
+              type={"item"}
+              checked={selectedOptions.length === data?.length}
+            />
           </div>
           <p className={classes["name"]}>Name</p>
-          <p className={classes["organization"]}>Organization</p>
+          <p className={classes["organization"]}>company</p>
           <p className={classes["email"]}>Email</p>
-          <p className={classes["role"]}>Role</p>
           <p className={classes["active"]}>Active</p>
-          <p className={classes["last-active"]}>Last Active</p>
+          {/* <p className={classes["last-active"]}>Last Active</p> */}
         </div>
         <div className={classes["body"]}>
-          <div className={classes["row"]}>
-            <div className={classes["checkbox"]}>
-              <CircleCheckbox />
-            </div>
-            <p className={classes["name"]}>Name</p>
-            <p className={classes["organization"]}>Organization</p>
-            <p className={classes["email"]}>Email</p>
-            <p className={classes["role"]}>Role</p>
-            <p className={classes["active"]}>Active</p>
-            <p className={classes["last-active"]}>Last Active</p>
-          </div>
+          {data?.length > 0 &&
+            data.map((item, index) => (
+              <div key={index} className={classes["row"]}>
+                <div className={classes["checkbox"]}>
+                  <CircleCheckbox
+                    itemName={item}
+                    onChange={() => onSelect(item)}
+                    type={"item"}
+                    checked={selectedOptions.includes(item)}
+                  />
+                </div>
+                <p className={classes["name"]}>{item.user_name}</p>
+                <p className={classes["organization"]}>{item.user_company}</p>
+                <p className={classes["email"]}>{item.user_email}</p>
+                <NormalCheckbox value={item.user_active} />
+              </div>
+            ))}
         </div>
       </div>
     </div>

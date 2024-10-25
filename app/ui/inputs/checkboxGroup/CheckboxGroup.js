@@ -1,8 +1,21 @@
 import React from "react";
 import classes from "./checkboxGroup.module.css";
-const CheckboxGroup = ({ data, type, dataKey, setData, label, dataType }) => {
+const CheckboxGroup = ({
+  data,
+  type,
+  dataKey,
+  setData,
+  label,
+  dataType,
+  stateType,
+}) => {
   const handleClick = () => {
-    dataType === "single"
+    stateType === "useState"
+      ? setData({
+          ...data,
+          [dataKey]: !data[dataKey],
+        })
+      : dataType === "single"
       ? setData({
           type: type,
           value: !data[dataKey],

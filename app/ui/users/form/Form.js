@@ -1,27 +1,30 @@
 "use client";
 import React, { useReducer, useState } from "react";
 import classes from "./form.module.css";
-import Details from "../details/Details";
-import QuotesOptions from "../quoteOptions/QuotesOptions";
-import EmailIntegration from "../email-Integration/EmailIntegration";
 import { intialValue, organizationReducer } from "./dataAndReducer";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
-import Tabs from "../../tabs/Tabs";
 import ActionBtns from "../../actionBtns/ActionBtns";
 import CheckboxGroup from "../../inputs/checkboxGroup/CheckboxGroup";
 import DateInput from "../../inputs/dateInput/DateInput";
+import { createItem, updateItem } from "@/app/lib/formFunctions";
+import { useRouter, usePathname } from "next/navigation";
 
-const Form = () => {
-  const applyChanges = async () => {
-    // if (id === "create") {
-    // await createItem("organization", data, router);
-    // } else {
-    //   await updateItem("margins", data, router, id);
-    // }
-  };
+const Form = ({ formData }) => {
+  const pathname = usePathname();
+  const router = useRouter();
   const cancelChanges = () => {};
   const [data, dispatchDetail] = useReducer(organizationReducer, intialValue);
-  const [dataType, setDataType] = useState("Details");
+  // const [dataType, setDataType] = useState("Details");
+  const applyChanges = async () => {
+    const page = pathname.slice(pathname.lastIndexOf("/") + 1);
+    const id = data?.id;
+    if (page === "create") {
+      await createItem("users", data, router);
+    } else {
+      await updateItem("users", data, router, id);
+    }
+  };
+
   return (
     <div className={classes["container"]}>
       <div className={"form"}>
@@ -29,6 +32,7 @@ const Form = () => {
           <InputGroup
             id={"user_email"}
             label={"Email"}
+            type={"email"}
             data={data.name}
             dataKey={"user_email"}
             setData={dispatchDetail}
@@ -48,6 +52,7 @@ const Form = () => {
           <InputGroup
             id={"user_pwd"}
             label={"Password"}
+            type={"password"}
             data={data.user_pwd}
             dataKey={"user_pwd"}
             setData={dispatchDetail}

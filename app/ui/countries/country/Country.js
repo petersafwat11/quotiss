@@ -1,41 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./country.module.css";
-const Country = ({ data, setData, applyChanges, cancelChanges }) => {
+import InputGroup from "../../inputs/inputGroup/InputGroup";
+import { IoCheckmarkSharp } from "react-icons/io5";
+import { FaXmark } from "react-icons/fa6";
+import CircleCheckbox from "../../circleCheckbox/CircleChexbox";
+
+const Country = ({ data, applyChanges, toggleEditCountry }) => {
+  const [countryData, setCountryData] = useState(data);
+  const editHandler = () => {
+    setCountryData({ ...data, status: !countryData.status });
+  };
   return (
     <div className={classes["container"]}>
-      <input
-        value={data.code}
-        onChange={(e) => {
-          setData({ ...data, code: e.target.value });
-        }}
-        className={classes["code"]}
-      ></input>
-      <input
-        value={data.name}
-        onChange={(e) => {
-          setData({ ...data, name: e.target.value });
-        }}
-        className={classes["name"]}
-      ></input>
-      <label>
-        <input
-          className={classes["checkbox"]}
-          type="checkbox"
-          checked={data.active}
-          onChange={() => {
-            setData({ ...data, active: !data.active });
-          }}
-        />
-        Status
-      </label>
+      <div className={classes["code"]}>
+        <div className={classes["wrapper"]}>
+          <InputGroup
+            noLabel={true}
+            id={countryData.code}
+            data={countryData}
+            dataKey={"code"}
+            disabled={true}
+          />
+        </div>
+      </div>
+      <div className={classes["name"]}>
+        <div className={classes["wrapper"]}>
+          <InputGroup
+            noLabel={true}
+            id={countryData.name}
+            data={countryData}
+            dataKey={"name"}
+            disabled={true}
+          />
+        </div>
+      </div>
+      <div className={classes["status"]}>
+        <div className={classes["wrapper"]}>
+          <CircleCheckbox value={countryData.status} onChange={editHandler} />
+        </div>
+      </div>
 
       <div className={classes["actions"]}>
-        <button onClick={applyChanges} className={classes["apply-button"]}>
-          Apply
-        </button>
-        <button onClick={cancelChanges} className={classes["apply-button"]}>
-          Cancel
-        </button>
+        <div
+          onClick={() => {
+            applyChanges(countryData);
+          }}
+          className={classes["apply-div"]}
+        >
+          <IoCheckmarkSharp className={classes["apply-icon"]} />
+        </div>
+        <div onClick={toggleEditCountry} className={classes["cancel-div"]}>
+          <FaXmark className={classes["cancel-icon"]} />
+        </div>
       </div>
     </div>
   );

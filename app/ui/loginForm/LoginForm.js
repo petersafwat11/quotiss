@@ -27,6 +27,7 @@ const LoginForm = () => {
       Cookies.set("token", response.data.token, {
         expires: 1,
       });
+      
       router.push("/");
     } catch (error) {
       setError({
