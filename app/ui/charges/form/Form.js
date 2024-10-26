@@ -19,6 +19,7 @@ const Form = () => {
     <div className={"form"}>
       <div className={classes["inputs"]}>
         <InputGroup
+          required={true}
           id={"name"}
           label={"Name"}
           data={data.name}
@@ -28,6 +29,7 @@ const Form = () => {
           dataType="single"
         />
         <InputGroup
+          required={true}
           id={"kind"}
           label={"Kind"}
           data={data.kind}
@@ -38,6 +40,8 @@ const Form = () => {
         />
 
         <InputGroup
+          required={true}
+          numbersOnly={true}
           id={"code"}
           label={"Code"}
           data={data.code}
@@ -47,6 +51,7 @@ const Form = () => {
           dataType="single"
         />
         <SelectionGroup
+          required={true}
           data={data}
           type={"available_online"}
           dataKey={"available_online"}
@@ -57,6 +62,7 @@ const Form = () => {
         />
 
         <InputGroup
+          required={true}
           id={"country"}
           label={"Country"}
           data={data.country}
@@ -66,6 +72,7 @@ const Form = () => {
           dataType="single"
         />
         <InputGroup
+          required={true}
           id={"region"}
           label={"Region"}
           data={data.region}
@@ -75,6 +82,8 @@ const Form = () => {
           dataType="single"
         />
         <InputGroup
+          required={true}
+          numbersOnly={true}
           id={"latitude"}
           label={"Latitude"}
           data={data.latitude}
@@ -84,6 +93,8 @@ const Form = () => {
           dataType="single"
         />
         <InputGroup
+          required={true}
+          numbersOnly={true}
           id={"longitude"}
           label={"Longitude"}
           data={data.longitude}

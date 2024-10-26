@@ -64,7 +64,7 @@
 .header p {
   font-family: "Roboto Condensed";
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1rem;
   /* color: rgba(11, 48, 159, 0.87); */
   color: var(--black-50);
 }
@@ -95,63 +95,63 @@
   flex-grow: 0;
 }
 .status {
-  flex-basis: 8%;
+  flex-basis: 7%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
 .name {
-  flex-basis: 17%;
+  flex-basis: 8%;
   flex-shrink: 0;
   flex-grow: 0;
 }
-.service {
+.sales-rep {
+  flex-basis: 8%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.account-owner {
+  flex-basis: 10%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.contact-persons {
   flex-basis: 10%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
-.contract-number {
-  flex-basis: 12%;
+.country {
+  flex-basis: 9%;
   flex-shrink: 0;
   flex-grow: 0;
 }
-.form {
+.city {
   flex-basis: 10%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
-.till {
-  flex-basis: 10%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-.base-origin {
+.postal-code {
   flex-basis: 10%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
-.base-dest {
-  flex-basis: 10%;
+.terms-conditions {
+  flex-basis: 11%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.hashtags {
+  flex-basis: 6%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
-.curr {
-  flex-basis: 5%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-.int {
-  flex-basis: 2.5%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-.ext {
-  flex-basis: 2.5%;
+.last-quote {
+  flex-basis: 6%;
   flex-shrink: 0;
   flex-grow: 0;
 }

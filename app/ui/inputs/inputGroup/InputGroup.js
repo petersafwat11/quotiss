@@ -14,6 +14,7 @@ const InputGroup = ({
   noLabel,
   numbersOnly,
   disabled,
+  required,
 }) => {
   const handleInputChange = (val) => {
     stateType !== "useReducer"
@@ -32,7 +33,7 @@ const InputGroup = ({
     <div className={classes["input-group"]}>
       {!noLabel && (
         <label htmlFor={id} className={classes["label"]}>
-          {label}
+          {label} {required && <span className={classes["required"]}>*</span>}
         </label>
       )}
       <input

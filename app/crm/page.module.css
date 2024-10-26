@@ -4,11 +4,35 @@
   justify-content: space-between;
   padding-bottom: 3rem;
 }
-.first {
+.filters-mobile {
+  display: none;
+}
+.first,
+.filters-desktop {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 .search {
   width: 17rem;
+}
+@media (max-width: 58rem) {
+  .top {
+    padding-bottom: 1rem;
+  }
+  .filters-desktop {
+    display: none;
+  }
+  .filters-mobile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .search {
+    width: 13rem;
+  }
 }

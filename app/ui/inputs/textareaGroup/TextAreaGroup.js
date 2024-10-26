@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./textareaGroup.module.css";
-const TextAreaGroup = ({ id, label, data, dataKey, setData, stateType }) => {
+const TextAreaGroup = ({ id, label, data, dataKey, setData, stateType,required }) => {
   return (
     <div className={classes["input-group"]}>
       <label htmlFor={id} className={classes["label"]}>
         {label}
+        {required && <span className={classes["required"]}>*</span>}
       </label>
       <textarea
         value={data[dataKey]}

@@ -17,6 +17,11 @@
   font-weight: 500;
   cursor: pointer;
 }
+.selected-type {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .arrow {
   font-size: 1.1rem;
   color: var(--primary);
@@ -34,24 +39,28 @@
   left: 0;
   z-index: 10;
 }
-.option {
-  font-size: 0.81rem;
+.option,
+.types-text {
   cursor: pointer;
-  color: var(--black-90);
-  font-size: 0.75rem;
-  font-family: "Roboto Condensed";
-  font-weight: 500;
   width: 100%;
   padding: 0.25rem 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+.option-name,
+.types-text {
+  font-size: 0.81rem;
+  color: var(--black-75);
+  font-size: 0.75rem;
+  font-family: "Roboto Condensed";
+  font-weight: 500;
+}
+
 .icon {
-  color: var(--black-90);
+  color: var(--black-75);
 }
 .option:hover,
-.option:hover .icon {
-  background: var(--black-50);
-  color: white;
+.types-text:hover {
+  background-color: #ddd;
 }

@@ -43,30 +43,30 @@
 }
 
 .location {
-  flex-basis: 13%;
+  flex-basis: 15%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
 .kind {
-  flex-basis: 10%;
+  flex-basis: 12%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
 .code {
-  flex-basis: 10%;
+  flex-basis: 12%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
 .region {
-  flex-basis: 13%;
+  flex-basis: 15%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 .country {
-  flex-basis: 13%;
+  flex-basis: 15%;
   flex-shrink: 0;
   flex-grow: 0;
 }
@@ -76,12 +76,12 @@
   flex-grow: 0;
 }
 .surcharges {
-  flex-basis: 17%;
+  flex-basis: 19%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 .translations {
-  flex-basis: 10%;
+  flex-basis: 11%;
   flex-shrink: 0;
   flex-grow: 0;
 }

@@ -4,10 +4,10 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import classes from "./dateInput.module.css";
 
-const DateInput = ({ data, setData, dataKey, label }) => {
+const DateInput = ({ data, setData, dataKey, label, required }) => {
   return (
     <div className={classes["input-group"]}>
-      <p className={classes["label"]}>{label}</p>
+      <p className={classes["label"]}>{label}{required && <span className={classes["required"]}>*</span>}</p>
       <DatePicker
         onChange={(date) =>
           setData({ type: dataKey.toUpperCase(), value: date })

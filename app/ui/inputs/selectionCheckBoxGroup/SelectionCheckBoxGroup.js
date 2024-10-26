@@ -6,16 +6,13 @@ import CircleCheckbox from "./circleCheckbox/CircleChexbox";
 import FilterSearch from "./filterSearch/FilterSearch";
 
 const SelectionCheckBoxGroup = ({
-  data,
-  dataKey,
   options,
   label,
-  type,
-  setData,
-  stateType,
-  dataType,
+  selectedOptions,
+  setSelectedOptions,
+  required,
 }) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  // const [selectedOptions, setSelectedOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
@@ -47,13 +44,16 @@ const SelectionCheckBoxGroup = ({
       );
     }
     console.log("selectedOptions", selectedOptions);
-    toggleFilter();
+    // toggleFilter();
   };
 
   return (
     <div className={classes["selection"]}>
       <div onClick={toggleFilter} className={classes["selected"]}>
-        <p className={classes["selected-sport"]}>{label}</p>
+        <p className={classes["selected-sport"]}>
+          {label}
+          {required && <span className={classes["required"]}>*</span>}
+        </p>
         <MdKeyboardArrowDown className={classes["arrow"]} />
       </div>
 

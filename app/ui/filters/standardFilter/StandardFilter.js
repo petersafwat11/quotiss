@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import classes from "./statusFilter.js.module.css";
+import classes from "./standeredFilter.module.css";
 import FilterSearch from "../../filters/filterSearch/FilterSearch";
 
 const StandardFilter = ({ filterValue, setFilterValue, options }) => {
@@ -10,30 +10,21 @@ const StandardFilter = ({ filterValue, setFilterValue, options }) => {
     setShowOptions(!showOptions);
   };
   const [searchValue, setSearchValue] = useState("");
-//   const values = [
-//     "status",
-//     "draft",
-//     "sent",
-//     "accepted",
-//     "declined",
-//     "negotiated",
-//   ];
+  //   const values = [
+  //     "status",
+  //     "draft",
+  //     "sent",
+  //     "accepted",
+  //     "declined",
+  //     "negotiated",
+  //   ];
   const [updatedValues, setUpdatedValues] = useState(options);
   useEffect(() => {
-    const values = [
-      "status",
-      "draft",
-      "sent",
-      "accepted",
-      "declined",
-      "negotiated",
-    ];
-
-    const searchedValues = values.filter((item) =>
+    const searchedValues = options.filter((item) =>
       item.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
     );
     setUpdatedValues(searchedValues);
-  }, [searchValue]);
+  }, [searchValue, options]);
   return (
     <div className={classes["selection"]}>
       <div

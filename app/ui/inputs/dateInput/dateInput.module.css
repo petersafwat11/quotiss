@@ -14,4 +14,7 @@
   color: #999;
   white-space: nowrap;
 }
-
+.required {
+  font-size: 0.8rem;
+  color: #c42828;
+}

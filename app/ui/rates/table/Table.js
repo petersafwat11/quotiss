@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter } from "next/navigation";
 import AddNewButton from "../../addNewButton/AddNewButton";
@@ -7,11 +7,28 @@ import { FaBoxArchive } from "react-icons/fa6";
 import { MdUnarchive } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
 import { GrClear } from "react-icons/gr";
-import CircleCheckbox from "../../circleCheckbox/CircleChexbox";
+import CircleCheckbox from "../../inputs/selectionCheckBoxGroup/circleCheckbox/CircleChexbox";
 
-const Table = () => {
+const Table = ({ tableData }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const onSelect = (val) => {
+    if (val === "all") {
+      if (selectedOptions.length === tableData?.length) {
+        setSelectedOptions([]); // Deselect all
+      } else {
+        setSelectedOptions([...tableData]); // Select all
+      }
+    } else {
+      setSelectedOptions((prev) =>
+        prev.includes(val)
+          ? prev.filter((item) => item !== val)
+          : [...prev, val]
+      );
+    }
+  };
 
   return (
     <div className={classes["container"]}>
@@ -54,7 +71,12 @@ const Table = () => {
       <div className={classes["table"]}>
         <div className={classes["header"]}>
           <div className={classes["checkbox"]}>
-            <CircleCheckbox />
+            <CircleCheckbox
+              itemName={null}
+              onChange={() => onSelect("all")}
+              type={"item"}
+              checked={selectedOptions.length === tableData?.length}
+            />
           </div>
           <p className={classes["status"]}>Status</p>
           <p className={classes["name"]}>Name</p>
@@ -69,22 +91,37 @@ const Table = () => {
           <p className={classes["ext"]}>Ext.</p>
         </div>
         <div className={classes["body"]}>
-          <div className={classes["row"]}>
-            <div className={classes["checkbox"]}>
-              <CircleCheckbox />
-            </div>
-            <p className={classes["status"]}>Status</p>
-            <p className={classes["name"]}>Name</p>
-            <p className={classes["service"]}>Service</p>
-            <p className={classes["contract-number"]}>Contract Number</p>
-            <p className={classes["form"]}>Form</p>
-            <p className={classes["till"]}>Till</p>
-            <p className={classes["base-origin"]}>Base Origin</p>
-            <p className={classes["base-dest"]}>Base Dest</p>
-            <p className={classes["curr"]}>Curr.</p>
-            <p className={classes["int"]}>Int.</p>
-            <p className={classes["ext"]}>Ext.</p>
-          </div>
+          {tableData?.length > 0 &&
+            tableData?.map((item, index) => (
+              <div key={index} className={classes["row"]}>
+                <div className={classes["checkbox"]}>
+                  <CircleCheckbox
+                    itemName={item}
+                    onChange={() => onSelect(item)}
+                    type={"item"}
+                    checked={selectedOptions.includes(item)}
+                  />
+                </div>
+                <p className={classes["status"]}>{item.status}</p>
+                <p className={classes["name"]}>{item.name}</p>
+                <p className={classes["service"]}>{item.service}</p>
+                <p className={classes["contract-number"]}>
+                  {item.contract_number}
+                </p>
+                <p className={classes["form"]}>{item.validity_start}</p>
+                <p className={classes["till"]}>{item.validity_end}</p>
+
+                <p className={classes["base-origin"]}>
+                  {item.base_origin_location}
+                </p>
+                <p className={classes["base-dest"]}>
+                  {item.base_origin_destination}
+                </p>
+                <p className={classes["curr"]}>Curr.</p>
+                <p className={classes["int"]}>Int.</p>
+                <p className={classes["ext"]}>Ext.</p>
+              </div>
+            ))}
         </div>
       </div>
     </div>

@@ -1,65 +1,35 @@
-"use client";
-import React, { useState } from "react";
-import classes from "./page.module.css";
-import Title from "../ui/title/Title";
-import Search from "../ui/search/Search";
-import Table from "../ui/rates/table/Table";
-import TypesFilter from "../ui/rates/typesFilter/TypesFilter";
-import MarginFilter from "../ui/rates/marginFilter/MarginFilter";
-import ContractsFilter from "../ui/rates/contractsFilter/ContractsFilter";
-import ChexBoxFilter from "../ui/charges/checkboxFilter/ChexBoxFilter";
-const Page = () => {
-  const [typesFilterValue, setTypesFilterValue] = useState({
-    name: "ALL",
-    type: "",
-  });
-  const [marginFilterValue, setMarginFilterValue] = useState("45' HC");
-  const [contractsFilterValue, setContractsFilterValue] = useState("Contracts");
-
+import Wrapper from "./Wrapper";
+const Page = async ({ searchParams }) => {
+  const page = searchParams?.page || 1;
+  const rows = searchParams?.rows || 10;
+  const search = searchParams?.search;
+  let data;
+  try {
+    data = await axios.get(`${process.env.BACKEND_SERVER}/rates`, {
+      params: {
+        page: page,
+        limit: rows,
+        searchValue: search ? search : null,
+        or: search
+          ? [
+              "status",
+              "name",
+              "service",
+              "contract_number",
+              "origin",
+              "destination",
+              "validity_start",
+              "validity_end",
+            ]
+          : null,
+      },
+    });
+  } catch (err) {
+    console.log("err", err);
+  }
   return (
     <div className={"page"}>
-      <div className={classes["top"]}>
-        <div className={classes["first"]}>
-          <Title title={"Rates"} />
-          <div className={classes["filters-desktop"]}>
-            <TypesFilter
-              filterValue={typesFilterValue}
-              setFilterValue={setTypesFilterValue}
-            />
-            <MarginFilter
-              filterValue={marginFilterValue}
-              setFilterValue={setMarginFilterValue}
-            />
-            <ContractsFilter
-              filterValue={contractsFilterValue}
-              setFilterValue={setContractsFilterValue}
-            />
-            <ChexBoxFilter title={" Show Valid Only"} />
-          </div>
-        </div>
-        <div className={classes["second"]}>
-          <div className={classes["search"]}>
-            <Search />
-          </div>
-        </div>
-      </div>
-      <div className={classes["filters-mobile"]}>
-            <TypesFilter
-              filterValue={typesFilterValue}
-              setFilterValue={setTypesFilterValue}
-            />
-            <MarginFilter
-              filterValue={marginFilterValue}
-              setFilterValue={setMarginFilterValue}
-            />
-            <ContractsFilter
-              filterValue={contractsFilterValue}
-              setFilterValue={setContractsFilterValue}
-            />
-            <ChexBoxFilter title={" Show Valid Only"} />
-          </div>
-
-      <Table />
+      <Wrapper data={data?.data} page={page} rows={rows} search={search}/>
     </div>
   );
 };

@@ -12,6 +12,7 @@ const SelectionGroup = ({
   label,
   stateType,
   dataType,
+  required
 }) => {
   const [showOptions, setShowOptions] = useState(false);
   const toggleFilter = () => {
@@ -36,7 +37,11 @@ const SelectionGroup = ({
   };
   return (
     <div className={classes["selection"]}>
-      <p className={classes["label"]}> {label}</p>
+      <p className={classes["label"]}>
+        {" "}
+        {label}
+        {required && <span className={classes["required"]}>*</span>}{" "}
+      </p>
       <div
         onClick={() => {
           setShowOptions(!showOptions);

@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter } from "next/navigation";
-import Filter from "../filter/Filter";
 import MarginFilter from "../../rates/marginFilter/MarginFilter";
 import AddNewButton from "../../addNewButton-2/AddNewButton";
 

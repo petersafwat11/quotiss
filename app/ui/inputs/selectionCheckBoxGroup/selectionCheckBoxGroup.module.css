@@ -17,6 +17,11 @@
   font-weight: 500;
   cursor: pointer;
 }
+.required {
+  font-size: 0.8rem;
+  color: #c42828;
+}
+
 .arrow {
   font-size: 1.1rem;
   color: var(--primary);
