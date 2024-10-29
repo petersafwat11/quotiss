@@ -31,7 +31,7 @@ const SelectionCheckBoxGroup = ({
   // Handle selection of options
   const onSelect = (val) => {
     if (val === "all") {
-      if (selectedOptions.length === options.length) {
+      if (selectedOptions?.length === options.length) {
         setSelectedOptions([]); // Deselect all
       } else {
         setSelectedOptions([...options]); // Select all
@@ -65,7 +65,7 @@ const SelectionCheckBoxGroup = ({
               itemName={null}
               onChange={() => onSelect("all")}
               type={"item"}
-              checked={selectedOptions.length === options.length}
+              checked={selectedOptions.length === options?.length}
             />
 
             <FilterSearch

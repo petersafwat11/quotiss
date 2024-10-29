@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import classes from "./form.module.css";
 import { chargesReducer, intialValue } from "./dataAndReducer";
 import Surcharges from "../surcharges/Surcharges";
@@ -8,13 +8,14 @@ import TermsAndConditions from "../termsAndConditions/TermsAndConditions";
 import Tabs from "../../tabs/Tabs";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
 import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
+import axios from "axios";
 
 const Form = () => {
   const [data, dispatchDetail] = useReducer(chargesReducer, intialValue);
   const [dataType, setDataType] = useState("Surcharges");
   const options = ["Both", "Origin", "Destination", "Not Available"];
   const [type, setType] = useState("FCL");
-
+  // useEffect(()=>{data?.})
   return (
     <div className={"form"}>
       <div className={classes["inputs"]}>
@@ -132,9 +133,14 @@ const Form = () => {
       </div>
 
       {dataType === "Surcharges" ? (
-        <Surcharges data={data.surcharges} dispatchDetail={dispatchDetail} />
+        <Surcharges
+          type={type}
+          data={data.surcharges}
+          dispatchDetail={dispatchDetail}
+        />
       ) : (
         <TermsAndConditions
+          type={type}
           data={data.terms_and_conditions}
           dispatchDetail={dispatchDetail}
         />

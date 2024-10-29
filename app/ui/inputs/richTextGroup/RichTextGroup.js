@@ -4,7 +4,7 @@ import "react-quill/dist/quill.snow.css"; // Quill editor styling
 
 // Custom image handler to allow image uploads
 const handleImageUpload = () => {
-  const input = document.createElement("input");
+  const input = document?.createElement("input");
   input.setAttribute("type", "file");
   input.setAttribute("accept", "image/*");
   input.click();
@@ -62,12 +62,14 @@ const formats = [
   "image",
 ];
 
-const RichText = ({ data, setData, dataKey }) => {
+const RichText = ({ data, setData, dataKey, dataType, type }) => {
   // const [content, setContent] = useState("");
 
   // Handle editor changes
   const handleChange = (value) => {
-    setData({ ...data, [dataKey]: value });
+    dataType === "object"
+      ? setData({ type: type, value: { ...data, [dataKey]: value } })
+      : setData({ ...data, [dataKey]: value });
     // console.log(value);
   };
 

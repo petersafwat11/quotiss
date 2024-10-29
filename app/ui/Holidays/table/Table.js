@@ -9,9 +9,6 @@ const Table = ({ data, rows, search }) => {
   const usableData = data?.data?.data;
   const router = useRouter();
   const [tableData, setTableData] = useState(usableData ? usableData : []);
-  const handleItemClick = (id) => {
-    router.push(`/margins/${id}`);
-  };
   const [showAddHoliday, setShowAddHoliday] = useState({
     state: false,
     index: null,

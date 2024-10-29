@@ -39,12 +39,23 @@ const TermsAndConditions = ({ data, dispatchDetail }) => {
             <p className={classes["label"]}>
               FCL Destination Terms & Conditions
             </p>
-            <RichText />
+            <RichText
+              data={data}
+              dataKey={"destination"}
+              type={"terms_and_conditions"}
+              setData={dispatchDetail}
+              dataType={"object"}
+            />
           </div>
           <div className={classes["rich-text"]}>
             <p className={classes["label"]}>FCL Origin Terms & Conditions</p>
-
-            <RichText />
+            <RichText
+              data={data}
+              dataKey={"origin"}
+              type={"terms_and_conditions"}
+              setData={dispatchDetail}
+              dataType={"object"}
+            />
           </div>
         </>
       )}
