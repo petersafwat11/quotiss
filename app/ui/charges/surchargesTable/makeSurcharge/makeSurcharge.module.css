@@ -93,6 +93,47 @@
   flex-shrink: 0;
   flex-grow: 0;
 }
+.container-type {
+  flex-basis: 10%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.weight {
+  flex-basis: 8%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.measurement {
+  flex-basis: 13%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.piece {
+  flex-basis: 7%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.document {
+  flex-basis: 10%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.min {
+  flex-basis: 6%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.max {
+  flex-basis: 6%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
 @media (max-width: 50rem) {
   .origin-country {
     flex-basis: 19%;

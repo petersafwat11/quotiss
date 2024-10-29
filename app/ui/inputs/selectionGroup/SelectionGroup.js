@@ -51,7 +51,7 @@ const SelectionGroup = ({
         }}
         className={classes["selected"]}
       >
-        <p className={classes["selected-sport"]}>
+        <p className={classes["selected-text"]}>
           {data[dataKey].length !== 0 ? data[dataKey] : label}
         </p>
         <MdKeyboardArrowDown className={classes["arrow"]} />

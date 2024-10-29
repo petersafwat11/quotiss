@@ -58,7 +58,7 @@ export const intialValue = {
   terms_and_conditions: {
     type: "",
     language: "",
-    destination: "",
-    origin: "",
+    destination_terms_and_conditions: "",
+    origin_terms_and_conditions: "",
   },
 };

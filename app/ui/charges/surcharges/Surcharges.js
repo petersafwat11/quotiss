@@ -6,38 +6,35 @@ import axios from "axios";
 const Surcharges = ({ data, dispatchDetail, type }) => {
   let user = Cookies.get("user");
   user = user && JSON.parse(user);
-  const { company, entity_code } = user;
-  const [tableData, setTableData] = useState([]);
+  const [serviceFilterValue, setServiceFilterValue] =
+    useState("Select Carrier");
+  const [filteredData, setFilteredData] = useState(data);
+
+  const addSurcharge = (newData) => {
+    dispatchDetail({
+      type: "surcharges".toUpperCase(),
+      value: [...data, newData],
+    });
+  };
+
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.BACKEND_SERVER}/charges`,
-          {
-            params: {
-              company: company,
-              entity_code: entity_code,
-              type: type,
-            },
-          }
-        );
-        console.log("response", response?.data?.data?.data[0]);
-        // const data = response?.data?.data?.data[0];
-        // data
-        //   ? dispatchDetail({
-        //       type: "UPDATE-ALL",
-        //       value: data,
-        //     })
-        //   : "";
-      } catch (err) {
-        console.log("err", err);
-      }
-    };
-    getData();
-  }, [company, entity_code, type]);
+    const surchargeData = data.filter(
+      (item) => item.service === serviceFilterValue
+    );
+    setFilteredData(surchargeData);
+  }, [serviceFilterValue, data]);
+
   return (
     <div className={"sub-form"}>
-      <Table tableData={tableData} data={data} dispatchDetail={dispatchDetail} type={type} />
+      <Table
+        applyChanges={addSurcharge}
+        tableData={filteredData}
+        data={data}
+        dispatchDetail={dispatchDetail}
+        type={type}
+        serviceFilterValue={serviceFilterValue}
+        setServiceFilterValue={setServiceFilterValue}
+      />
     </div>
   );
 };

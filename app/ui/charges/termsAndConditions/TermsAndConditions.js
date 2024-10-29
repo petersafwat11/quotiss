@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./termsAndConditions.module.css";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
 import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
 import RichText from "../../inputs/richTextGroup/RichTextGroup";
-const TermsAndConditions = ({ data, dispatchDetail }) => {
+const TermsAndConditions = ({ data, dispatchDetail, type }) => {
   const languages = [
     "English",
     "Polish",
@@ -21,7 +21,12 @@ const TermsAndConditions = ({ data, dispatchDetail }) => {
     "Spanish",
     "Slovenian",
   ];
-
+  useEffect(() => {
+    dispatchDetail({
+      type: "terms_and_conditions".toUpperCase(),
+      value: { ...data, type: type },
+    });
+  }, [type, data, dispatchDetail]);
   return (
     <div className={"sub-form"}>
       <SelectionGroup
@@ -41,7 +46,7 @@ const TermsAndConditions = ({ data, dispatchDetail }) => {
             </p>
             <RichText
               data={data}
-              dataKey={"destination"}
+              dataKey={"destination_terms_and_conditions"}
               type={"terms_and_conditions"}
               setData={dispatchDetail}
               dataType={"object"}
@@ -51,7 +56,7 @@ const TermsAndConditions = ({ data, dispatchDetail }) => {
             <p className={classes["label"]}>FCL Origin Terms & Conditions</p>
             <RichText
               data={data}
-              dataKey={"origin"}
+              dataKey={"origin_terms_and_conditions"}
               type={"terms_and_conditions"}
               setData={dispatchDetail}
               dataType={"object"}

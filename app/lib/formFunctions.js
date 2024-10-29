@@ -23,7 +23,7 @@ export const createItem = async (route, data, router, pageName) => {
       }
     );
     const page = pageName ? pageName : route;
-    router.push(`/${page}`);
+    // router.push(`/${page}`);
     console.log("response", response);
     return response;
   } catch (err) {
@@ -47,7 +47,7 @@ export const updateItem = async (route, data, router, id, pageName) => {
       }
     );
     const page = pageName ? pageName : route;
-    router.push(`/${page}`);
+    // router.push(`/${page}`);
     console.log("response", response);
     return response;
   } catch (err) {

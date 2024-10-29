@@ -12,12 +12,14 @@ import SelectionGroup from "@/app/ui/inputs/selectionGroup/SelectionGroup";
 import InputGroup from "@/app/ui/inputs/inputGroup/InputGroup";
 import CheckboxGroup from "@/app/ui/inputs/checkboxGroup/CheckboxGroup";
 import { currencies } from "@/app/utils/options";
+import { formatContainer } from "@/app/lib/formatText";
 
 const MakeSurcharge = ({
   toggleAddSurcharge,
   applyChanges,
   itemData,
   type,
+  selectedOptions,
 }) => {
   const typesOptions = ["distination", "origin", "both"];
   const servicesOptions = [
@@ -46,40 +48,39 @@ const MakeSurcharge = ({
     "Ocean Alliance",
     "Seago Line",
   ];
-  const FCLOptions = [
-    "20' DC",
-    "40' DC",
-    "40' HC",
-    "45' HC",
-    "20' NOR",
-    "40' NOR",
-    "20' REEF",
-    "40' HREEF",
-    "45' PLWD",
-    "20' OT",
-    "40' OT",
-    "20' FR",
-    "40' FR",
-    "20' TANK",
-    "40' TANK",
+  // const FCLOptions = [
+  //   "20' DC",
+  //   "40' DC",
+  //   "40' HC",
+  //   "45' HC",
+  //   "20' NOR",
+  //   "40' NOR",
+  //   "20' REEF",
+  //   "40' HREEF",
+  //   "45' PLWD",
+  //   "20' OT",
+  //   "40' OT",
+  //   "20' FR",
+  //   "40' FR",
+  //   "20' TANK",
+  //   "40' TANK",
+  // ];
+  const LCLTableInputs = [
+    "weight",
+    "measurement",
+    "piece",
+    "document",
+    "min",
+    "max",
   ];
-  const LCLOptions = [
-    "Weight (kg)",
-    "Measurement",
-    "Shipment",
-    "Piece",
-    "Document",
-    "Min",
-    "Max",
-  ];
-
+  // console.log(formatContainer("40' FR", "xxxxxxxxxxxxxxxx"));
   const [data, dispatchDetail] = useReducer(
     holidaysReducer,
     itemData
       ? itemData
       : type === "FCL"
-      ? { ...intialValue, ...FCLOptions }
-      : { ...intialValue, ...LCLOptions }
+      ? { ...intialValue, ...FCLIntial }
+      : { ...intialValue, ...LCLIntial }
   );
   return (
     <div className={classes["form"]}>
@@ -112,7 +113,7 @@ const MakeSurcharge = ({
         </div>
       </div>
 
-      <div className={classes["service"]}>
+      <div className={classes["type"]}>
         <div className={classes["input-wrapper"]}>
           <SelectionGroup
             data={data}
@@ -156,7 +157,7 @@ const MakeSurcharge = ({
           <InputGroup
             numbersOnly={true}
             noLabel={true}
-            id={"name"}
+            id={"sort_order"}
             data={data.sort_order}
             dataKey={"sort_order"}
             setData={dispatchDetail}
@@ -179,6 +180,40 @@ const MakeSurcharge = ({
           />
         </div>
       </div>
+      {type === "FCL"
+        ? selectedOptions.map((item, index) => (
+            <div key={index} className={classes["container-type"]}>
+              <div className={classes["input-wrapper"]}>
+                <InputGroup
+                  numbersOnly={true}
+                  noLabel={true}
+                  id={formatContainer(item)}
+                  data={data[formatContainer(item)]}
+                  dataKey={formatContainer(item)}
+                  setData={dispatchDetail}
+                  stateType={"useReducer"}
+                  dataType="single"
+                />
+              </div>
+            </div>
+          ))
+        : LCLTableInputs.map((item, index) => (
+            <div key={index} className={classes[item]}>
+              <div className={classes["input-wrapper"]}>
+                <InputGroup
+                  numbersOnly={true}
+                  noLabel={true}
+                  id={item}
+                  label={item}
+                  data={data[item]}
+                  dataKey={item}
+                  setData={dispatchDetail}
+                  stateType={"useReducer"}
+                  dataType="single"
+                />
+              </div>
+            </div>
+          ))}
       <div className={classes["currency"]}>
         <div className={classes["input-wrapper"]}>
           <SelectionGroup
@@ -208,29 +243,11 @@ const MakeSurcharge = ({
         </div>
       </div> */}
 
-      {/* {Object.keys(intialValue)
-        .slice(3)
-        .map((month, index) => (
-          <div key={index} className={classes["month"]}>
-            <div className={classes["input-wrapper"]}>
-              <InputGroup
-                numbersOnly={true}
-                noLabel={true}
-                id={month}
-                label={month}
-                data={data[month]}
-                dataKey={month}
-                setData={dispatchDetail}
-                stateType={"useReducer"}
-                dataType="single"
-              />
-            </div>
-          </div>
-        ))} */}
       <div className={classes["actions"]}>
         <div
           onClick={() => {
             applyChanges(data);
+            toggleAddSurcharge();
           }}
           className={classes["apply-div"]}
         >

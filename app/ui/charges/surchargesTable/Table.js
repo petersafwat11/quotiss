@@ -6,10 +6,18 @@ import SelectionCheckBoxGroup from "../../inputs/selectionCheckBoxGroup/Selectio
 import StandardFilter from "../../filters/standardFilter/StandardFilter";
 import CircleCheckbox from "../../circleCheckbox/CircleChexbox";
 import MakeSurcharge from "./makeSurcharge/MakeSurcharge";
+import { formatContainer } from "@/app/lib/formatText";
 
-const Table = ({ tableData, data, dispatchDetail, type }) => {
+const Table = ({
+  tableData,
+  data,
+  dispatchDetail,
+  type,
+  applyChanges,
+  serviceFilterValue,
+  setServiceFilterValue,
+}) => {
   const [marginFilterValue, setMarginFilterValue] = useState([]);
-  const [serviceFilterValue, setServiceFilterValue] = useState("Select Carier");
   const [weightFilterValue, setWeightFilterValue] = useState("KG");
   const [showAddSurcharge, setShowAddSurcharge] = useState({
     state: false,
@@ -70,7 +78,14 @@ const Table = ({ tableData, data, dispatchDetail, type }) => {
   const toggleAddSurcharge = () => {
     setShowAddSurcharge({ state: !showAddSurcharge.state, index: null });
   };
-
+  const LCLTableCols = [
+    "weight",
+    "measurement",
+    "piece",
+    "document",
+    "min",
+    "max",
+  ];
   return (
     <div className={"sub-form"}>
       <div className={classes["filters"]}>
@@ -114,11 +129,17 @@ const Table = ({ tableData, data, dispatchDetail, type }) => {
           <p className={classes["service"]}>Service</p>
           <p className={classes["sort_order"]}>Sort_order</p>
           <p className={classes["shipment"]}>Shipment</p>
-          {marginFilterValue.map((item, index) => (
-            <p key={index} className={classes["container-type"]}>
-              {item}
-            </p>
-          ))}
+          {type === "FCL"
+            ? marginFilterValue.map((item, index) => (
+                <p key={index} className={classes["container-type"]}>
+                  {item}
+                </p>
+              ))
+            : LCLTableCols.map((item, index) => (
+                <p key={index} className={classes[item]}>
+                  {item}
+                </p>
+              ))}
           <p className={classes["currency"]}>Currency</p>
           <p className={classes["space"]}></p>
         </div>
@@ -132,24 +153,34 @@ const Table = ({ tableData, data, dispatchDetail, type }) => {
                   {item?.surcharge_type}
                 </p>
                 <p className={classes["type"]}>{item?.type}</p>
-                <CircleCheckbox value={item?.online} />
+                <div className={classes["online"]}>
+                  <CircleCheckbox value={item?.online} />
+                </div>
                 {/* <p className={classes["online"]}>{item?.onl}</p> */}
                 <p className={classes["service"]}>{item?.service}</p>
                 <p className={classes["sort_order"]}>{item?.sort_order}</p>
                 <p className={classes["shipment"]}>{item.shipment}</p>
-                {marginFilterValue.map((item, index) => (
-                  <p key={index} className={classes["container-type"]}>
-                    {item}
-                  </p>
-                ))}
+                {type === "FCL"
+                  ? marginFilterValue.map((container, index) => (
+                      <p key={index} className={classes["container-type"]}>
+                        {item[formatContainer(container)]}
+                      </p>
+                    ))
+                  : LCLTableCols.map((item, index) => (
+                      <p key={index} className={classes[item]}>
+                        {item?.container}
+                      </p>
+                    ))}
                 <p className={classes["currency"]}>{item.currency}</p>
                 <p className={classes["delete"]}>Delete</p>
               </div>
             ))}
           {showAddSurcharge.state && !showAddSurcharge.index && (
             <MakeSurcharge
+              type={type}
+              selectedOptions={marginFilterValue}
               toggleAddSurcharge={toggleAddSurcharge}
-              // applyChanges={applyChanges}
+              applyChanges={applyChanges}
             />
           )}
         </div>

@@ -24,7 +24,13 @@ const Table = ({ data, rows, search }) => {
       <div className={classes["body"]}>
         {data.length > 0 &&
           data.map((item, index) => (
-            <div key={index} className={classes["row"]}>
+            <div
+              onClick={() => {
+                handleItemClick(item.id);
+              }}
+              key={index}
+              className={classes["row"]}
+            >
               <p className={classes["location"]}>{item.name}</p>
               <p className={classes["kind"]}>{item.kind}</p>
               <p className={classes["code"]}>{item.code}</p>
@@ -32,7 +38,14 @@ const Table = ({ data, rows, search }) => {
               <p className={classes["country"]}>{item.country}</p>
               {/* // not sure */}
               {/* <p className={classes["alias"]}>{item.alias}</p> */}
-              <p className={classes["surcharges"]}>{item.surcharges}</p>
+              <p
+                onClick={() => {
+                  console.log(JSON.parse(item.surcharges[0]));
+                }}
+                className={classes["surcharges"]}
+              >
+                {JSON.parse(item.surcharges[0])?.name}
+              </p>
               <p className={classes["translations"]}>{item.translations}</p>
             </div>
           ))}

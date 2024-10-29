@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  /* gap: 1.5rem; */
   padding: 0.5rem;
   border: 1px solid var(--border);
   border-radius: 0.25rem;
@@ -36,6 +36,7 @@
   font-weight: 500;
   cursor: pointer;
   text-wrap: nowrap;
+  overflow: hidden;
 }
 .arrow {
   font-size: 1.1rem;
@@ -69,7 +70,7 @@
   border: 1px solid var(--black-50);
   background-color: rgb(236 236 236);
   max-height: 9rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-top: 0;
   width: 100%;
   position: absolute;

@@ -9,142 +9,186 @@ import Tabs from "../../tabs/Tabs";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
 import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
 import axios from "axios";
+import ActionBtns from "../../actionBtns/ActionBtns";
+import { createItem, updateItem } from "@/app/lib/formFunctions";
+import { usePathname, useRouter } from "next/navigation";
 
 const Form = () => {
+  const pathname = usePathname();
   const [data, dispatchDetail] = useReducer(chargesReducer, intialValue);
   const [dataType, setDataType] = useState("Surcharges");
   const options = ["Both", "Origin", "Destination", "Not Available"];
   const [type, setType] = useState("FCL");
+  const router = useRouter();
+
   // useEffect(()=>{data?.})
+  const applyChanges = async () => {
+    const termsAndConditions = data.terms_and_conditions;
+    const chargesData = data;
+    delete chargesData.terms_and_conditions;
+    const id = pathname.slice(pathname.lastIndexOf("/") + 1);
+
+    if (id === "create") {
+      const chargeCreated = await createItem("charges", chargesData, router);
+      const charges_id = chargeCreated?.data?.data?.data?.id;
+      chargesData.charges_id = charges_id;
+
+      console.log(
+        "response",
+        chargeCreated?.data?.data?.data?.id,
+        charges_id,
+        chargesData
+      );
+      const terms = await createItem(
+        "charges/termsAndConditions",
+        termsAndConditions,
+        router
+      );
+      console.log("terms", terms);
+    } else {
+      await updateItem("charges", data, router, id);
+      await updateItem(
+        "charges/termsAndConditions",
+        termsAndConditions,
+        router,
+        id
+      );
+    }
+  };
+
   return (
-    <div className={"form"}>
-      <div className={classes["inputs"]}>
-        <InputGroup
-          required={true}
-          id={"name"}
-          label={"Name"}
-          data={data.name}
-          dataKey={"name"}
-          setData={dispatchDetail}
-          stateType={"useReducer"}
-          dataType="single"
-        />
-        <InputGroup
-          required={true}
-          id={"kind"}
-          label={"Kind"}
-          data={data.kind}
-          dataKey={"kind"}
-          setData={dispatchDetail}
-          stateType={"useReducer"}
-          dataType="single"
-        />
+    <div>
+      <div className={"form"}>
+        <div className={classes["inputs"]}>
+          <InputGroup
+            required={true}
+            id={"name"}
+            label={"Name"}
+            data={data.name}
+            dataKey={"name"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            required={true}
+            id={"kind"}
+            label={"Kind"}
+            data={data.kind}
+            dataKey={"kind"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
 
-        <InputGroup
-          required={true}
-          numbersOnly={true}
-          id={"code"}
-          label={"Code"}
-          data={data.code}
-          dataKey={"code"}
-          setData={dispatchDetail}
-          stateType={"useReducer"}
-          dataType="single"
-        />
-        <SelectionGroup
-          required={true}
-          data={data}
-          type={"available_online"}
-          dataKey={"available_online"}
-          label={"Available Online"}
-          options={options}
-          setData={dispatchDetail}
-          dataType="single"
-        />
+          <InputGroup
+            required={true}
+            numbersOnly={true}
+            id={"code"}
+            label={"Code"}
+            data={data.code}
+            dataKey={"code"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <SelectionGroup
+            required={true}
+            data={data}
+            type={"available_online"}
+            dataKey={"available_online"}
+            label={"Available Online"}
+            options={options}
+            setData={dispatchDetail}
+            dataType="single"
+          />
 
-        <InputGroup
-          required={true}
-          id={"country"}
-          label={"Country"}
-          data={data.country}
-          dataKey={"country"}
-          setData={dispatchDetail}
-          stateType={"useReducer"}
-          dataType="single"
-        />
-        <InputGroup
-          required={true}
-          id={"region"}
-          label={"Region"}
-          data={data.region}
-          dataKey={"region"}
-          setData={dispatchDetail}
-          stateType={"useReducer"}
-          dataType="single"
-        />
-        <InputGroup
-          required={true}
-          numbersOnly={true}
-          id={"latitude"}
-          label={"Latitude"}
-          data={data.latitude}
-          dataKey={"latitude"}
-          setData={dispatchDetail}
-          stateType={"useReducer"}
-          dataType="single"
-        />
-        <InputGroup
-          required={true}
-          numbersOnly={true}
-          id={"longitude"}
-          label={"Longitude"}
-          data={data.longitude}
-          dataKey={"longitude"}
-          setData={dispatchDetail}
-          stateType={"useReducer"}
-          dataType="single"
-        />
-      </div>
-      <div className={classes["data-types"]}>
-        <div className={classes["types"]}>
-          <button
-            onClick={() => {
-              setType("FCL");
-            }}
-            className={classes[type === "FCL" ? "active-type" : "type"]}
-          >
-            FCL
-          </button>
-          <button
-            onClick={() => {
-              setType("LCL");
-              console.log("type", type);
-            }}
-            className={classes[type === "LCL" ? "active-type" : "type"]}
-          >
-            LCL
-          </button>
+          <InputGroup
+            required={true}
+            id={"country"}
+            label={"Country"}
+            data={data.country}
+            dataKey={"country"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            required={true}
+            id={"region"}
+            label={"Region"}
+            data={data.region}
+            dataKey={"region"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            required={true}
+            numbersOnly={true}
+            id={"latitude"}
+            label={"Latitude"}
+            data={data.latitude}
+            dataKey={"latitude"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
+          <InputGroup
+            required={true}
+            numbersOnly={true}
+            id={"longitude"}
+            label={"Longitude"}
+            data={data.longitude}
+            dataKey={"longitude"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
+          />
         </div>
-        <Tabs
-          types={["Surcharges", "Terms & Conditions"]}
-          setDataType={setDataType}
-          dataType={dataType}
-        />
+        <div className={classes["data-types"]}>
+          <div className={classes["types"]}>
+            <button
+              onClick={() => {
+                setType("FCL");
+              }}
+              className={classes[type === "FCL" ? "active-type" : "type"]}
+            >
+              FCL
+            </button>
+            <button
+              onClick={() => {
+                setType("LCL");
+                console.log("type", type);
+              }}
+              className={classes[type === "LCL" ? "active-type" : "type"]}
+            >
+              LCL
+            </button>
+          </div>
+          <Tabs
+            types={["Surcharges", "Terms & Conditions"]}
+            setDataType={setDataType}
+            dataType={dataType}
+          />
+        </div>
+
+        {dataType === "Surcharges" ? (
+          <Surcharges
+            type={type}
+            data={data.surcharges}
+            dispatchDetail={dispatchDetail}
+          />
+        ) : (
+          <TermsAndConditions
+            type={type}
+            data={data.terms_and_conditions}
+            dispatchDetail={dispatchDetail}
+          />
+        )}
       </div>
 
-      {dataType === "Surcharges" ? (
-        <Surcharges
-          type={type}
-          data={data.surcharges}
-          dispatchDetail={dispatchDetail}
-        />
-      ) : (
-        <TermsAndConditions
-          type={type}
-          data={data.terms_and_conditions}
-          dispatchDetail={dispatchDetail}
-        />
-      )}
+      <ActionBtns applyChanges={applyChanges} />
     </div>
   );
 };

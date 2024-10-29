@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import ChexBoxFilter from "../ui/charges/checkboxFilter/ChexBoxFilter";
 
 const Wrapper = ({ data, rows, search }) => {
-  const usableData = data?.data?.data;
+  let usableData = data?.data?.data;
   const [filterValue, setFilterValue] = useState({ name: "types", type: "" });
   const [tableData, setTableData] = useState(usableData ? usableData : []);
 
