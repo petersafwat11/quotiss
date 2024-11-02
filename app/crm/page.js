@@ -1,3 +1,4 @@
+import axios from "axios";
 import Wrapper from "./Wrapper";
 const Page = async ({ searchParams }) => {
   const page = searchParams?.page || 1;

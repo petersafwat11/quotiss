@@ -6,12 +6,32 @@ import DateInput from "../../inputs/dateInput/DateInput";
 import CheckboxGroup from "../../inputs/checkboxGroup/CheckboxGroup";
 import ContainerTypeFilter from "../../filters/containerTypeFilter/ContainerTypeFilter";
 import SelectionCheckBoxGroup from "../../inputs/selectionCheckBoxGroup/SelectionCheckBoxGroup";
-const MainInputs = ({ data, dispatchDetail }) => {
+import { currencies } from "@/app/utils/options";
+
+import { formatContainer } from "@/app/lib/formatText";
+const MainInputs = ({ container_type, data, dispatchDetail }) => {
   const options = [
     "Linked",
-    "Flat",
+    // "Flat",
     "Pick up Delivery (by zipcode)",
     "Pick up Delivery (by distance)",
+  ];
+  const servicesOptions = [
+    "ECU Worldwide",
+    "Sun Star",
+    "Shenzhen Smile",
+    "World jaguar",
+    "Own Service Rail",
+    "Trans China",
+    "RAILGATE",
+    "Multiwell",
+    "Trans Hope",
+    "RZDL Trans Siberian LandBridge",
+    "RAil",
+    "Loconi",
+    "Nordicon rail",
+    "Carrier Of Choice_rail",
+    "Camel Alliance",
   ];
   const containerOptions = [
     "20' DC",
@@ -53,15 +73,16 @@ const MainInputs = ({ data, dispatchDetail }) => {
         stateType={"useReducer"}
         dataType="single"
       />
-      <InputGroup
+
+      <SelectionGroup
         required={true}
-        id={"service"}
-        label={"Service"}
-        data={data.service}
+        data={data}
+        type={"service"}
         dataKey={"service"}
+        label={"Select Service"}
+        options={servicesOptions}
         setData={dispatchDetail}
-        stateType={"useReducer"}
-        dataType="single"
+        dataType={"single"}
       />
       <SelectionGroup
         data={data}
@@ -147,6 +168,7 @@ const MainInputs = ({ data, dispatchDetail }) => {
       {(data.rate_type !== "Flat") & (data.rate_type !== "Linked") && (
         <>
           <InputGroup
+            disabled={true}
             id={"terminal_type"}
             label={"Terminal type "}
             data={data.terminal_type}
@@ -164,14 +186,14 @@ const MainInputs = ({ data, dispatchDetail }) => {
             stateType={"useReducer"}
             dataType="single"
           />
-          <InputGroup
-            id={"currency"}
-            label={"Currency "}
-            data={data.currency}
+          <SelectionGroup
+            data={data}
+            type={"currency"}
             dataKey={"currency"}
+            label={"currency"}
+            options={currencies}
             setData={dispatchDetail}
-            stateType={"useReducer"}
-            dataType="single"
+            dataType={"single"}
           />
           <InputGroup
             id={"mark_up"}
@@ -194,6 +216,24 @@ const MainInputs = ({ data, dispatchDetail }) => {
           </div>
         </>
       )}
+      {data?.container_type.length > 0 &&
+        data?.container_type.map((item, index) => (
+          <div key={index} className={classes["container-type"]}>
+            <div className={classes["input-wrapper"]}>
+              <InputGroup
+                numbersOnly={true}
+                // noLabel={true}
+                label={item}
+                id={formatContainer(item)}
+                data={data[formatContainer(item)]}
+                dataKey={formatContainer(item)}
+                setData={dispatchDetail}
+                stateType={"useReducer"}
+                dataType="single"
+              />
+            </div>
+          </div>
+        ))}
     </div>
   );
 };

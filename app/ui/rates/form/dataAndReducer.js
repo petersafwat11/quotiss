@@ -11,8 +11,11 @@ export const ratesReducer = (state, action) => {
     };
   }
 };
+
 export const intialValue = {
   name: "",
+  type: "",
+  contract_or_spot_rate: "",
   service: "",
   contract_number: "",
   rate_type: "",
@@ -22,7 +25,7 @@ export const intialValue = {
   base_origin_location: "",
   base_destination_location: "",
   pickup_delivery_rate: "",
-  terminal_type: "",
+  terminal_type: "Rail Terminal",
   direction: "",
   currency: "",
   mark_up: "",

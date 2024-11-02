@@ -35,39 +35,39 @@ const Wrapper = ({ data, rows, search }) => {
   ];
   const usableData = data?.data?.data;
   const [tableData, setTableData] = useState(usableData ? usableData : []);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const data = await axios.get(`${process.env.BACKEND_SERVER}/rates`, {
-          params: {
-            page: page,
-            limit: rows,
-            searchValue: search ? search : null,
-            or: search
-              ? [
-                  "status",
-                  "name",
-                  "service",
-                  "contract_number",
-                  "origin",
-                  "destination",
-                  "validity_start",
-                  "validity_end",
-                ]
-              : null,
-          },
-        });
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const data = await axios.get(`${process.env.BACKEND_SERVER}/rates`, {
+  //         params: {
+  //           page: page,
+  //           limit: rows,
+  //           searchValue: search ? search : null,
+  //           or: search
+  //             ? [
+  //                 "status",
+  //                 "name",
+  //                 "service",
+  //                 "contract_number",
+  //                 "origin",
+  //                 "destination",
+  //                 "validity_start",
+  //                 "validity_end",
+  //               ]
+  //             : null,
+  //         },
+  //       });
 
-        // setTableData(data?.data?.data?.data);
-      } catch (err) {
-        console.log("err", err);
-      }
-    };
-    getData();
-  }, [rows, search]);
+  //       // setTableData(data?.data?.data?.data);
+  //     } catch (err) {
+  //       console.log("err", err);
+  //     }
+  //   };
+  //   getData();
+  // }, [rows, search]);
 
   return (
-    <div >
+    <div>
       <div className={classes["top"]}>
         <div className={classes["first"]}>
           <Title title={"Rates"} />
@@ -114,7 +114,7 @@ const Wrapper = ({ data, rows, search }) => {
         />
         <CheckBoxFilter title={"Show valid only"} />
       </div>
-      <Table data={tableData} />
+      <Table tableData={tableData} />
     </div>
   );
 };

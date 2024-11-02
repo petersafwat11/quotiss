@@ -8,8 +8,10 @@ import { MdUnarchive } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
 import { GrClear } from "react-icons/gr";
 import CircleCheckbox from "../../inputs/selectionCheckBoxGroup/circleCheckbox/CircleChexbox";
+import { FaRegComment } from "react-icons/fa";
 
 const Table = ({ tableData }) => {
+  console.log("tableData", tableData);
   const router = useRouter();
   const pathname = usePathname();
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -108,18 +110,26 @@ const Table = ({ tableData }) => {
                 <p className={classes["contract-number"]}>
                   {item.contract_number}
                 </p>
-                <p className={classes["form"]}>{item.validity_start}</p>
-                <p className={classes["till"]}>{item.validity_end}</p>
+                <p className={classes["form"]}>
+                  {item.validity_start.split("T")[0]}
+                </p>
+                <p className={classes["till"]}>
+                  {item.validity_end.split("T")[0]}
+                </p>
 
                 <p className={classes["base-origin"]}>
                   {item.base_origin_location}
                 </p>
                 <p className={classes["base-dest"]}>
-                  {item.base_origin_destination}
+                  {item.base_destination_location}
                 </p>
-                <p className={classes["curr"]}>Curr.</p>
-                <p className={classes["int"]}>Int.</p>
-                <p className={classes["ext"]}>Ext.</p>
+                <p className={classes["curr"]}>{item?.currency}</p>
+                <p className={classes["int"]}>
+                  <FaRegComment className={classes["comment-icon"]} />
+                </p>
+                <p className={classes["ext"]}>
+                  <FaRegComment className={classes["comment-icon"]} />
+                </p>
               </div>
             ))}
         </div>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import Wrapper from "./Wrapper";
 const Page = async ({ searchParams }) => {
   const page = searchParams?.page || 1;
@@ -29,7 +30,7 @@ const Page = async ({ searchParams }) => {
   }
   return (
     <div className={"page"}>
-      <Wrapper data={data?.data} page={page} rows={rows} search={search}/>
+      <Wrapper data={data?.data} page={page} rows={rows} search={search} />
     </div>
   );
 };
