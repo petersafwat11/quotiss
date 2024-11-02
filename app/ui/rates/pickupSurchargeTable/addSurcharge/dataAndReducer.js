@@ -9,11 +9,13 @@ export const locationReducer = (state, action) => {
     [action.type.toLowerCase()]: action.value,
   };
 };
+
 export const intialValue = {
-  postal_code_min: "",
-  postal_code_max: "",
-  country: "",
-  pickup: "",
+  surcharge_typetype: "",
+  margin_type: "",
+  active: "",
+  min_price: "",
+  max_price:'',
   m20_dc: "",
   m40_dc: "",
   m40_hc: "",

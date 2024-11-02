@@ -51,6 +51,8 @@ export const intialValue = {
     allowed_users: [],
   },
   surcharges: [],
+  locations: [],
+  restricted_postal_codes: [],
   destination_locations: [],
   origin_locations: [],
 };

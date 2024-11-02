@@ -35,11 +35,7 @@
 .cancel-icon {
   color: var(--black);
 }
-.name,
-.country,
-.price,
-.comment,
-.container-type {
+.min,.max,.comment {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,28 +58,18 @@
   color: var(--border);
   font-size: 1.2rem;
 }
-.country {
-  flex-basis: 22%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
 .min {
-  flex-basis: 18%;
+  flex-basis: 40%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
 .max {
-  flex-basis: 18%;
+  flex-basis: 40%;
   flex-shrink: 0;
   flex-grow: 0;
 }
-.pickup {
-  flex-basis: 22%;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
+
 .comment {
   flex-basis: 10%;
   flex-shrink: 0;
@@ -100,11 +86,6 @@
   color: var(--border);
   font-size: 1.6rem;
   cursor: pointer;
-}
-.container-type {
-  flex-basis: 10%;
-  flex-shrink: 0;
-  flex-grow: 0;
 }
 @media (max-width: 50rem) {
   .origin-country {

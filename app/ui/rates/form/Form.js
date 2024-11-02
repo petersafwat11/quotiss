@@ -11,6 +11,9 @@ import SurchargeTable from "../surchargeTable/Table";
 import OriginTable from "../locations/originTable/OriginTable";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
 import ActionBtns from "../../actionBtns/ActionBtns";
+import LocationsTable from "../locations/LocationsTable/LocationsTable";
+import RestrictedPostalCodes from "../restrictedPostalCodes/RestrictedPostalCodes";
+import PickupSurchargeTable from "../pickupSurchargeTable/PickupSurchargeTable";
 
 const Form = () => {
   const applyChanges = () => {};
@@ -40,17 +43,32 @@ const Form = () => {
             </div>
           ))}
         <Tabs
-          types={[
-            "Origin Locations",
-            "Destination Locations",
-            "Surcharges",
-            "Restrictions",
-            "Notes",
-          ]}
+          types={
+            data?.rate_type === "Linked"
+              ? [
+                  "Origin Locations",
+                  "Destination Locations",
+                  "Surcharges",
+                  "Restrictions",
+                  "Notes",
+                ]
+              : ["Locations", "Restricted Postal Codes", "Surcharges", "Notes"]
+          }
           setDataType={setDataType}
           dataType={dataType}
         />
-        {dataType === "Origin Locations" ? (
+        {dataType === "Locations" ? (
+          <LocationsTable
+            container_type={data.container_type}
+            data={data.locations}
+            dispatchDetail={dispatchDetail}
+          />
+        ) : dataType === "Restricted Postal Codes" ? (
+          <RestrictedPostalCodes
+            data={data.restricted_postal_codes}
+            dispatchDetail={dispatchDetail}
+          />
+        ) : dataType === "Origin Locations" ? (
           <OriginTable
             container_type={data.container_type}
             data={data.origin_locations}
@@ -63,15 +81,23 @@ const Form = () => {
             dispatchDetail={dispatchDetail}
           />
         ) : dataType === "Surcharges" ? (
-          <SurchargeTable
-            locations={{
-              base_origin_location: data?.base_origin_location,
-              base_destination_location: data.base_destination_location,
-            }}
-            container_type={data.container_type}
-            data={data.surcharges}
-            dispatchDetail={dispatchDetail}
-          />
+          data?.rate_type === "Linked" ? (
+            <SurchargeTable
+              locations={{
+                base_origin_location: data?.base_origin_location,
+                base_destination_location: data.base_destination_location,
+              }}
+              container_type={data.container_type}
+              data={data.surcharges}
+              dispatchDetail={dispatchDetail}
+            />
+          ) : (
+            <PickupSurchargeTable
+              container_type={data.container_type}
+              data={data.surcharges}
+              dispatchDetail={dispatchDetail}
+            />
+          )
         ) : dataType === "Restrictions" ? (
           <Restrictions
             data={data.restrictions}

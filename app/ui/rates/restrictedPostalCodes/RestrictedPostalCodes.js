@@ -3,27 +3,27 @@ import React, { useState } from "react";
 import classes from "./table.module.css";
 import AddNewButton from "@/app/ui/addNewButton-2/AddNewButton";
 import { FaRegComment } from "react-icons/fa";
-import AddLocation from "../addLocation-2/AddLocation";
+import AddRestriction from "./addRestriction/AddRestriction";
 
-const LocationsTable = ({ container_type, data, dispatchDetail }) => {
+const RestrictedPostalCodes = ({ data, dispatchDetail }) => {
   const changeTableItem = (itemData, type, index) => {
     if (type === "create") {
       dispatchDetail({
-        type: "locations".toUpperCase(),
+        type: "restricted_postal_codes".toUpperCase(),
         value: [...data, itemData],
       });
       toggleShowComponent();
     } else if (type === "delete") {
       const updatedArray = data.filter((_, indx) => indx !== index);
       dispatchDetail({
-        type: "locations".toUpperCase(),
+        type: "restricted_postal_codes".toUpperCase(),
         value: updatedArray,
       });
     } else {
       const updatedArray = [...data];
       updatedArray[index] = itemData;
       dispatchDetail({
-        type: "locations".toUpperCase(),
+        type: "restricted_postal_codes".toUpperCase(),
         value: updatedArray,
       });
       toggleShowComponent();
@@ -41,18 +41,9 @@ const LocationsTable = ({ container_type, data, dispatchDetail }) => {
   return (
     <div className={classes["table"]}>
       <div className={classes["header"]}>
-        <p className={classes["country"]}> Country</p>
-        <p className={classes["min"]}> Postal Code Min</p>
-        <p className={classes["max"]}>Postal Code Max </p>
-        <p className={classes["pickup"]}>Pickup / Delivery </p>
-        <div className={classes["comment"]}></div>
-
-        {container_type.length > 0 &&
-          container_type.map((item, index) => (
-            <p key={index} className={classes["container-type"]}>
-              {item}
-            </p>
-          ))}
+        <p className={classes["min"]}>Postal Code Min </p>
+        <p className={classes["max"]}> Postal Code Max </p>
+        <p className={classes["comment"]}>Comment </p>
       </div>
       <div className={classes["space"]}></div>
 
@@ -60,13 +51,12 @@ const LocationsTable = ({ container_type, data, dispatchDetail }) => {
         {data.length > 0 &&
           data.map((item, index) =>
             showComponent.state && showComponent.index === index ? (
-              <AddLocation
+              <AddRestriction
                 itemData={item}
                 key={index}
                 toggleShowComponent={toggleShowComponent}
                 applyChanges={changeTableItem}
                 index={index}
-                selectedOptions={container_type}
               />
             ) : (
               <div
@@ -79,21 +69,11 @@ const LocationsTable = ({ container_type, data, dispatchDetail }) => {
                 key={index}
                 className={classes["row"]}
               >
-                <p className={classes["country"]}> {item?.country}</p>
                 <p className={classes["min"]}> {item?.postal_code_min}</p>
-                <p className={classes["max"]}>{item.postal_code_max} </p>
-                <p className={classes["pickup"]}>{item.pickup} </p>
+                <p className={classes["max"]}> {item?.postal_code_max}</p>
                 <div className={classes["comment"]}>
                   <FaRegComment className={classes["comment-icon"]} />
                 </div>
-
-                {container_type.length > 0 &&
-                  container_type.map((container, index) => (
-                    <p key={index} className={classes["container-type"]}>
-                      {item[container]}
-                    </p>
-                  ))}
-
                 <div
                   onClick={() => {
                     changeTableItem([], "delete", index);
@@ -108,8 +88,7 @@ const LocationsTable = ({ container_type, data, dispatchDetail }) => {
         {showComponent.state &&
           !showComponent.index &&
           showComponent.index !== 0 && (
-            <AddLocation
-              selectedOptions={container_type}
+            <AddRestriction
               toggleShowComponent={toggleShowComponent}
               applyChanges={changeTableItem}
             />
@@ -122,4 +101,4 @@ const LocationsTable = ({ container_type, data, dispatchDetail }) => {
   );
 };
 
-export default LocationsTable;
+export default RestrictedPostalCodes;

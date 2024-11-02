@@ -13,7 +13,7 @@ const SurchargeTable = ({
   const changeTableItem = (itemData, type, index) => {
     if (type === "create") {
       dispatchDetail({
-        type: "destination_locations".toUpperCase(),
+        type: "surcharges".toUpperCase(),
         value: [...data, itemData],
       });
       console.log("create");
@@ -21,7 +21,7 @@ const SurchargeTable = ({
     } else if (type === "delete") {
       const updatedArray = data.filter((_, indx) => indx !== index);
       dispatchDetail({
-        type: "destination_locations".toUpperCase(),
+        type: "surcharges".toUpperCase(),
         value: updatedArray,
       });
     } else {
@@ -29,9 +29,8 @@ const SurchargeTable = ({
       updatedArray[index] = itemData;
       console.log("edit");
 
-      console.log("updatedArray", updatedArray);
       dispatchDetail({
-        type: "destination_locations".toUpperCase(),
+        type: "surcharges".toUpperCase(),
         value: updatedArray,
       });
       toggleShowComponent();
@@ -87,18 +86,29 @@ const SurchargeTable = ({
                 key={index}
                 className={classes["row"]}
               >
-                <p className={classes["name"]}> {item?.type}</p>
-                <p className={classes["country"]}> {item?.origin_locations}</p>
-                <p className={classes["price-based-on"]}>
+                <p className={classes["type"]}> {item?.type}</p>
+                <p className={classes["origin-locations"]}>
+                  {" "}
+                  {item?.origin_locations}
+                </p>
+                <p className={classes["destination-locations"]}>
                   {item.destination_locations}
                 </p>
-                <p className={classes["comment"]}>{item?.margin_type} </p>
+                <p className={classes["margin-type"]}>{item?.margin_type} </p>
                 {container_type.length > 0 &&
                   container_type.map((container, index) => (
                     <p key={index} className={classes["container-type"]}>
                       {item[container]}
                     </p>
                   ))}
+                <div
+                  onClick={() => {
+                    changeTableItem([], "delete", index);
+                  }}
+                  className={classes["delete"]}
+                >
+                  Delete
+                </div>
               </div>
             )
           )}
