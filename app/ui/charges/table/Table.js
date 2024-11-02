@@ -44,7 +44,8 @@ const Table = ({ data, rows, search }) => {
                 }}
                 className={classes["surcharges"]}
               >
-                {JSON.parse(item.surcharges[0])?.name}
+                {item.surcharges.length > 0 &&
+                  JSON.parse(item.surcharges[0])?.name}
               </p>
               <p className={classes["translations"]}>{item.translations}</p>
             </div>

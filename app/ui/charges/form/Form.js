@@ -8,14 +8,30 @@ import TermsAndConditions from "../termsAndConditions/TermsAndConditions";
 import Tabs from "../../tabs/Tabs";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
 import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
-import axios from "axios";
 import ActionBtns from "../../actionBtns/ActionBtns";
 import { createItem, updateItem } from "@/app/lib/formFunctions";
 import { usePathname, useRouter } from "next/navigation";
 
-const Form = () => {
+const Form = ({ formData, id }) => {
+  const usableData = formData?.data?.data;
+  if (id !== "create") {
+    // const usableData = formData?.data?.data;
+    const surcharges = usableData?.surcharges.map((item) =>
+      typeof item === "string" ? JSON.parse(item) : item
+    );
+    usableData.surcharges = surcharges;
+    usableData.terms_and_conditions = {
+      type: "",
+      language: "",
+      destination_terms_and_conditions: "",
+      origin_terms_and_conditions: "",
+    };
+  }
   const pathname = usePathname();
-  const [data, dispatchDetail] = useReducer(chargesReducer, intialValue);
+  const [data, dispatchDetail] = useReducer(
+    chargesReducer,
+    usableData ? usableData : intialValue
+  );
   const [dataType, setDataType] = useState("Surcharges");
   const options = ["Both", "Origin", "Destination", "Not Available"];
   const [type, setType] = useState("FCL");
@@ -26,33 +42,57 @@ const Form = () => {
     const termsAndConditions = data.terms_and_conditions;
     const chargesData = data;
     delete chargesData.terms_and_conditions;
-    const id = pathname.slice(pathname.lastIndexOf("/") + 1);
 
     if (id === "create") {
-      const chargeCreated = await createItem("charges", chargesData, router);
-      const charges_id = chargeCreated?.data?.data?.data?.id;
-      chargesData.charges_id = charges_id;
-
-      console.log(
-        "response",
-        chargeCreated?.data?.data?.data?.id,
-        charges_id,
-        chargesData
+      const chargeCreated = await createItem(
+        "charges",
+        chargesData,
+        router,
+        "charges",
+        "don't redirect"
       );
+      const charges_id = chargeCreated?.data?.data?.data?.id;
+      termsAndConditions.charges_id = charges_id;
+
       const terms = await createItem(
         "charges/termsAndConditions",
         termsAndConditions,
-        router
+        router,
+        "charges"
+        // "don't redirect"
       );
       console.log("terms", terms);
+      // router.push("/charges");
     } else {
-      await updateItem("charges", data, router, id);
-      await updateItem(
-        "charges/termsAndConditions",
-        termsAndConditions,
+      const chargeUpdated = await updateItem(
+        "charges",
+        data,
         router,
-        id
+        id,
+        "charges",
+        "don't redirect"
       );
+      const charges_id = chargeUpdated?.data?.data?.data?.id;
+      `termsAndConditions`.charges_id = charges_id;
+
+      const termsID = termsAndConditions?.id;
+      console.log("termsID", termsID);
+      if (termsID) {
+        const terms = await updateItem(
+          "charges/termsAndConditions",
+          termsAndConditions,
+          router,
+          termsID,
+          "charges"
+        );
+      } else {
+        await createItem(
+          "charges/termsAndConditions",
+          termsAndConditions,
+          router,
+          "charges"
+        );
+      }
     }
   };
 
@@ -151,6 +191,10 @@ const Form = () => {
             <button
               onClick={() => {
                 setType("FCL");
+                dispatchDetail({
+                  type: "terms_and_conditions".toUpperCase(),
+                  value: { ...data.terms_and_conditions, type: "FCL" },
+                });
               }}
               className={classes[type === "FCL" ? "active-type" : "type"]}
             >
@@ -159,6 +203,11 @@ const Form = () => {
             <button
               onClick={() => {
                 setType("LCL");
+                dispatchDetail({
+                  type: "terms_and_conditions".toUpperCase(),
+                  value: { ...data.terms_and_conditions, type: "LCL" },
+                });
+
                 console.log("type", type);
               }}
               className={classes[type === "LCL" ? "active-type" : "type"]}
@@ -181,6 +230,7 @@ const Form = () => {
           />
         ) : (
           <TermsAndConditions
+            charges_id={data?.id}
             type={type}
             data={data.terms_and_conditions}
             dispatchDetail={dispatchDetail}

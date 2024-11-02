@@ -6,7 +6,7 @@ user = user && JSON.parse(user);
 
 // create_date, create_user, update_date, update_user;
 
-export const createItem = async (route, data, router, pageName) => {
+export const createItem = async (route, data, router, pageName, noRedirect) => {
   const { company, entity_code, id } = user;
 
   try {
@@ -23,7 +23,7 @@ export const createItem = async (route, data, router, pageName) => {
       }
     );
     const page = pageName ? pageName : route;
-    // router.push(`/${page}`);
+    noRedirect ? "" : router.push(`/${page}`);
     console.log("response", response);
     return response;
   } catch (err) {
@@ -31,7 +31,14 @@ export const createItem = async (route, data, router, pageName) => {
     return err;
   }
 };
-export const updateItem = async (route, data, router, id, pageName) => {
+export const updateItem = async (
+  route,
+  data,
+  router,
+  id,
+  pageName,
+  noRedirect
+) => {
   const { company, entity_code, id: userID } = user;
 
   const dataWithoutID = { ...data };
@@ -47,7 +54,7 @@ export const updateItem = async (route, data, router, id, pageName) => {
       }
     );
     const page = pageName ? pageName : route;
-    // router.push(`/${page}`);
+    noRedirect ? "" : router.push(`/${page}`);
     console.log("response", response);
     return response;
   } catch (err) {

@@ -11,6 +11,12 @@ const SelectionCheckBoxGroup = ({
   selectedOptions,
   setSelectedOptions,
   required,
+  stateType,
+  dataType,
+  objectKey,
+  dataKey,
+  width,
+  data,
 }) => {
   // const [selectedOptions, setSelectedOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
@@ -32,24 +38,47 @@ const SelectionCheckBoxGroup = ({
   const onSelect = (val) => {
     if (val === "all") {
       if (selectedOptions?.length === options.length) {
-        setSelectedOptions([]); // Deselect all
+        dataType === "single"
+          ? setSelectedOptions({ type: dataKey, value: [] })
+          : dataType === "object"
+          ? setSelectedOptions({
+              type: objectKey,
+              value: { ...data, [dataKey]: [] },
+            })
+          : setSelectedOptions([]); // Deselect all
       } else {
-        setSelectedOptions([...options]); // Select all
+        dataType === "single"
+          ? setSelectedOptions({ type: dataKey, value: [...options] })
+          : dataType === "object"
+          ? setSelectedOptions({
+              type: objectKey,
+              value: { ...data, [dataKey]: [...options] },
+            })
+          : setSelectedOptions([...options]); // Select all
       }
     } else {
-      setSelectedOptions((prev) =>
-        prev.includes(val)
-          ? prev.filter((item) => item !== val)
-          : [...prev, val]
-      );
+      const newState = selectedOptions.includes(val)
+        ? options.filter((item) => item !== val)
+        : [...options, val];
+      dataType === "single"
+        ? setSelectedOptions({ type: dataKey, value: newState })
+        : dataType === "object"
+        ? setSelectedOptions({
+            type: objectKey,
+            value: { ...data, [dataKey]: newState },
+          })
+        : setSelectedOptions(newState);
     }
-    console.log("selectedOptions", selectedOptions);
     // toggleFilter();
   };
 
   return (
     <div className={classes["selection"]}>
-      <div onClick={toggleFilter} className={classes["selected"]}>
+      <div
+        style={{ width: width ? width : "" }}
+        onClick={toggleFilter}
+        className={classes["selected"]}
+      >
         <p className={classes["selected-sport"]}>
           {label}
           {required && <span className={classes["required"]}>*</span>}
@@ -59,7 +88,10 @@ const SelectionCheckBoxGroup = ({
 
       {/* Options list */}
       {showOptions && (
-        <div className={classes["options"]}>
+        <div
+          style={{ width: width ? width : "" }}
+          className={classes["options"]}
+        >
           <div className={classes["option-wrapper"]}>
             <CircleCheckbox
               itemName={null}
@@ -69,6 +101,7 @@ const SelectionCheckBoxGroup = ({
             />
 
             <FilterSearch
+              width={"100%"}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
             />

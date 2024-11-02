@@ -31,6 +31,7 @@
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
+  align-items: center;
 }
 .row:hover {
   background-color: #dddddd74;
@@ -61,13 +62,39 @@
 }
 
 .comment {
-  flex-basis: 25%;
+  flex-basis: 10%;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
+.space {
+  flex-basis: 15%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.delete {
+  flex-basis: 15%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: 1px solid var(--black-75);
+  font-size: 0.7rem;
+  font-weight: 400;
+  font-family: "Poppins";
+  color: var(--black-75);
+  cursor: pointer;
+}
 .container-type {
   flex-basis: 10%;
   flex-shrink: 0;
   flex-grow: 0;
+}
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
 }

@@ -56,7 +56,7 @@ export const intialValue = {
   longitude: "",
   surcharges: [],
   terms_and_conditions: {
-    type: "",
+    type: "FCL",
     language: "",
     destination_terms_and_conditions: "",
     origin_terms_and_conditions: "",

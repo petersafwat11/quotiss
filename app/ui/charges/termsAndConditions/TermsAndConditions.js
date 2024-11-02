@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import classes from "./termsAndConditions.module.css";
-import InputGroup from "../../inputs/inputGroup/InputGroup";
 import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
 import RichText from "../../inputs/richTextGroup/RichTextGroup";
-const TermsAndConditions = ({ data, dispatchDetail, type }) => {
+import axios from "axios";
+
+const TermsAndConditions = ({ data, dispatchDetail, type, charges_id }) => {
   const languages = [
     "English",
     "Polish",
@@ -22,11 +23,42 @@ const TermsAndConditions = ({ data, dispatchDetail, type }) => {
     "Slovenian",
   ];
   useEffect(() => {
-    dispatchDetail({
-      type: "terms_and_conditions".toUpperCase(),
-      value: { ...data, type: type },
-    });
-  }, [type, data, dispatchDetail]);
+    const getData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.BACKEND_SERVER}/charges/termsAndConditions`,
+          {
+            params: {
+              language: data.language,
+              type: type,
+              charges_id: charges_id,
+            },
+          }
+        );
+        console.log("response", response?.data?.data?.data);
+        const responseData = response?.data?.data?.data;
+        console.log("responseData.length", responseData.length);
+        responseData.length === 0
+          ? dispatchDetail({
+              type: "terms_and_conditions".toUpperCase(),
+              value: {
+                type: type,
+                language: data.language,
+                destination_terms_and_conditions: "",
+                origin_terms_and_conditions: "",
+              },
+            })
+          : dispatchDetail({
+              type: "terms_and_conditions".toUpperCase(),
+              value: responseData[0],
+            });
+      } catch (err) {
+        console.log("err", err);
+      }
+    };
+    getData();
+    console.log("lang", data?.language);
+  }, [data.language, type, charges_id, dispatchDetail]);
   return (
     <div className={"sub-form"}>
       <SelectionGroup

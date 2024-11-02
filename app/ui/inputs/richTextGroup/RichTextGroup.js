@@ -4,20 +4,22 @@ import "react-quill/dist/quill.snow.css"; // Quill editor styling
 
 // Custom image handler to allow image uploads
 const handleImageUpload = () => {
-  const input = document?.createElement("input");
-  input.setAttribute("type", "file");
-  input.setAttribute("accept", "image/*");
-  input.click();
+  if (document) {
+    const input = document?.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
 
-  input.onchange = async () => {
-    const file = input.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const range = this.quill.getSelection();
-      this.quill.insertEmbed(range.index, "image", reader.result);
+    input.onchange = async () => {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const range = this.quill.getSelection();
+        this.quill.insertEmbed(range.index, "image", reader.result);
+      };
+      reader.readAsDataURL(file);
     };
-    reader.readAsDataURL(file);
-  };
+  }
 };
 
 // Quill editor modules (toolbar configuration)
@@ -69,6 +71,8 @@ const RichText = ({ data, setData, dataKey, dataType, type }) => {
   const handleChange = (value) => {
     dataType === "object"
       ? setData({ type: type, value: { ...data, [dataKey]: value } })
+      : dataType === "single"
+      ? setData({ type: dataKey, value: value })
       : setData({ ...data, [dataKey]: value });
     // console.log(value);
   };

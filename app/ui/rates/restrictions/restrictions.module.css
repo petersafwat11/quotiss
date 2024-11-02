@@ -1,0 +1,9 @@
+/* .input-group {
+  width: 40%;
+} */
+.sub-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}

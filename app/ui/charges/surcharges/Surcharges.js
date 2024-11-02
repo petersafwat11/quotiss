@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "../surchargesTable/Table";
-import Cookies from "js-cookie";
-import axios from "axios";
 
 const Surcharges = ({ data, dispatchDetail, type }) => {
-  let user = Cookies.get("user");
-  user = user && JSON.parse(user);
   const [serviceFilterValue, setServiceFilterValue] =
     useState("Select Carrier");
   const [filteredData, setFilteredData] = useState(data);
@@ -18,6 +14,9 @@ const Surcharges = ({ data, dispatchDetail, type }) => {
   };
 
   useEffect(() => {
+    if (serviceFilterValue === "Select Carrier") {
+      return setFilteredData(data);
+    }
     const surchargeData = data.filter(
       (item) => item.service === serviceFilterValue
     );

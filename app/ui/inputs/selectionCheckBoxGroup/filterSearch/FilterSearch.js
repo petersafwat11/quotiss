@@ -1,10 +1,11 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 import classes from "./filterSearch.module.css";
-const FilterSearch = ({ searchValue, setSearchValue }) => {
+const FilterSearch = ({ width, searchValue, setSearchValue }) => {
   return (
     <div className={classes["search-wrapper"]}>
       <input
+        style={{ width: width ? width : "" }}
         type="text"
         value={searchValue}
         onChange={(e) => {

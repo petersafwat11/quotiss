@@ -5,6 +5,7 @@ import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
 import DateInput from "../../inputs/dateInput/DateInput";
 import CheckboxGroup from "../../inputs/checkboxGroup/CheckboxGroup";
 import ContainerTypeFilter from "../../filters/containerTypeFilter/ContainerTypeFilter";
+import SelectionCheckBoxGroup from "../../inputs/selectionCheckBoxGroup/SelectionCheckBoxGroup";
 const MainInputs = ({ data, dispatchDetail }) => {
   const options = [
     "Linked",
@@ -12,9 +13,28 @@ const MainInputs = ({ data, dispatchDetail }) => {
     "Pick up Delivery (by zipcode)",
     "Pick up Delivery (by distance)",
   ];
+  const containerOptions = [
+    "20' DC",
+    "40' DC",
+    "40' HC",
+    "45' HC",
+    "20' NOR",
+    "40' NOR",
+    "20' REEF",
+    "40' HREEF",
+    "45' PLWD",
+    "20' OT",
+    "40' OT",
+    "20' FR",
+    "40' FR",
+    "20' TANK",
+    "40' TANK",
+  ];
+
   return (
     <div className={classes["inputs"]}>
       <InputGroup
+        required={true}
         id={"name"}
         label={"Organization name"}
         data={data.name}
@@ -24,6 +44,7 @@ const MainInputs = ({ data, dispatchDetail }) => {
         dataType="single"
       />
       <InputGroup
+        numbersOnly={true}
         id={"contract_number"}
         label={"Contract Number"}
         data={data.contract_number}
@@ -33,6 +54,7 @@ const MainInputs = ({ data, dispatchDetail }) => {
         dataType="single"
       />
       <InputGroup
+        required={true}
         id={"service"}
         label={"Service"}
         data={data.service}
@@ -51,27 +73,44 @@ const MainInputs = ({ data, dispatchDetail }) => {
         dataType={"single"}
       />
       <DateInput
+        required={true}
         label={"Validity Start"}
         data={data.validity_start}
         dataKey={"validity_start"}
         setData={dispatchDetail}
       />
       <DateInput
+        required={true}
         label={"Validity End"}
         data={data.validity_end}
         dataKey={"validity_end"}
         setData={dispatchDetail}
       />
-      <ContainerTypeFilter
-        filterValue={data.container_type}
-        setFilterValue={dispatchDetail}
-        type={"single"}
-        dataKey={"container_type"}
-      />
+      <div className={classes["input-group"]}>
+        <label className={classes["label"]}>
+          Container type <span className={classes["required"]}>*</span>{" "}
+        </label>
+        <SelectionCheckBoxGroup
+          width={"100%"}
+          options={containerOptions}
+          label={
+            data.container_type.length > 0
+              ? `${data.container_type.length} Selected`
+              : "Select"
+          }
+          selectedOptions={data.container_type}
+          setSelectedOptions={dispatchDetail}
+          stateType="useReducer"
+          dataType="single"
+          dataKey="container_type"
+        />
+      </div>
+
       {/* conditional */}
       {data.rate_type === "Linked" && (
         <>
           <InputGroup
+            required={true}
             id={"base_origin_location"}
             label={"Base Origin Location "}
             data={data.base_origin_location}
@@ -81,10 +120,11 @@ const MainInputs = ({ data, dispatchDetail }) => {
             dataType="single"
           />
           <InputGroup
-            id={"base_origin_destination"}
+            required={true}
+            id={"base_destination_location"}
             label={"Base Destination Location "}
-            data={data.base_origin_destination}
-            dataKey={"base_origin_destination"}
+            data={data.base_destination_location}
+            dataKey={"base_destination_location"}
             setData={dispatchDetail}
             stateType={"useReducer"}
             dataType="single"
