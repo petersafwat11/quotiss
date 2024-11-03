@@ -9,7 +9,7 @@ import TypesFilter from "../ui/filters/typesFilter/TypesFilter";
 import SelectionCheckBoxGroup from "../ui/inputs/selectionCheckBoxGroup/SelectionCheckBoxGroup";
 import axios from "axios";
 import CheckBoxFilter from "../ui/checkboxFilter/CheckBoxFilter";
-const Wrapper = ({ data, rows, search }) => {
+const Wrapper = ({ data, rows, search, page }) => {
   const [typesFilterValue, setTypesFilterValue] = useState({
     name: "ALL",
     type: "",
@@ -35,36 +35,35 @@ const Wrapper = ({ data, rows, search }) => {
   ];
   const usableData = data?.data?.data;
   const [tableData, setTableData] = useState(usableData ? usableData : []);
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const data = await axios.get(`${process.env.BACKEND_SERVER}/rates`, {
-  //         params: {
-  //           page: page,
-  //           limit: rows,
-  //           searchValue: search ? search : null,
-  //           or: search
-  //             ? [
-  //                 "status",
-  //                 "name",
-  //                 "service",
-  //                 "contract_number",
-  //                 "origin",
-  //                 "destination",
-  //                 "validity_start",
-  //                 "validity_end",
-  //               ]
-  //             : null,
-  //         },
-  //       });
-
-  //       // setTableData(data?.data?.data?.data);
-  //     } catch (err) {
-  //       console.log("err", err);
-  //     }
-  //   };
-  //   getData();
-  // }, [rows, search]);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await axios.get(`${process.env.BACKEND_SERVER}/rates`, {
+          params: {
+            page: page,
+            limit: rows,
+            searchValue: search ? search : null,
+            or: search
+              ? [
+                  "status",
+                  "name",
+                  "service",
+                  "base_origin_location",
+                  "base_destination_location",
+                  // "validity_start",
+                  // "validity_end",
+                ]
+              : null,
+          },
+        });
+        console.log("data?.data?.data?.data", data?.data?.data?.data);
+        setTableData(data?.data?.data?.data);
+      } catch (err) {
+        console.log("err", err);
+      }
+    };
+    getData();
+  }, [rows, search,page]);
 
   return (
     <div>

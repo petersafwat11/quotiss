@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./table.module.css";
 import AddNewButton from "../../addNewButton-2/AddNewButton";
 import MakeHolidayPopup from "../makeHolidayPopup/MakeHolidayPopup";
 import { useRouter } from "next/navigation";
 import { createItem, updateItem } from "../../../lib/formFunctions";
-const Table = ({ data, rows, search }) => {
+const Table = ({ data }) => {
   const usableData = data?.data?.data;
   const router = useRouter();
   const [tableData, setTableData] = useState(usableData ? usableData : []);
@@ -32,6 +32,11 @@ const Table = ({ data, rows, search }) => {
     }
     toggleAddHoliday();
   };
+  useEffect(() => {
+    const usableData = data?.data?.data;
+    setTableData(usableData);
+  }, [data]);
+
   return (
     <div className={classes["container"]}>
       <div className={classes["table"]}>
@@ -95,12 +100,14 @@ const Table = ({ data, rows, search }) => {
                 </div>
               )
             )}
-          {showAddHoliday.state && !showAddHoliday.index && (
-            <MakeHolidayPopup
-              toggleAddHoliday={toggleAddHoliday}
-              applyChanges={applyChanges}
-            />
-          )}
+          {showAddHoliday.state &&
+            !showAddHoliday.index &&
+            showAddHoliday.index !== 0 && (
+              <MakeHolidayPopup
+                toggleAddHoliday={toggleAddHoliday}
+                applyChanges={applyChanges}
+              />
+            )}
         </div>
         <div className={classes["add-new"]}>
           <AddNewButton buttonClickHandler={toggleAddHoliday} />

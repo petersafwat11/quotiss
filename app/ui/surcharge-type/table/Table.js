@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./table.module.css";
 import AddNewButton from "../../addNewButton/AddNewButton";
 import { useRouter } from "next/navigation";
@@ -8,11 +8,14 @@ const Table = ({ data }) => {
   const usableData = data?.data?.data;
   const router = useRouter();
   const [tableData, setTableData] = useState(usableData ? usableData : []);
-  console.log("usableData", usableData);
+  console.log("usableData", data);
   const handleItemClick = (id) => {
     router.push(`/surchrgeTypes/${id}`);
   };
-
+  useEffect(() => {
+    const usableData = data?.data?.data;
+    setTableData(usableData);
+  }, [data]);
   return (
     <div className={classes["container"]}>
       <div className={classes["top"]}>

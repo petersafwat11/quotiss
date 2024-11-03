@@ -1,13 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./table.module.css";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-const Table = ({ data, rows, search }) => {
+const Table = ({ data }) => {
+  const [tableData, setTableData] = useState(data ? data : []);
+
   const router = useRouter();
   const handleItemClick = (id) => {
     router.push(`/charges/${id}`);
   };
+  useEffect(() => {
+    setTableData(data);
+  }, [data]);
 
   return (
     <div className={classes["table"]}>
@@ -22,8 +27,8 @@ const Table = ({ data, rows, search }) => {
         <p className={classes["translations"]}>Translations</p>
       </div>
       <div className={classes["body"]}>
-        {data.length > 0 &&
-          data.map((item, index) => (
+        {tableData?.length > 0 &&
+          tableData?.map((item, index) => (
             <div
               onClick={() => {
                 handleItemClick(item.id);

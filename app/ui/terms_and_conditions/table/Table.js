@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./table.module.css";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
@@ -22,7 +22,7 @@ const Table = ({ data }) => {
   ];
   const usableData = data?.data?.data;
   const router = useRouter();
-  // const [tableData, setTableData] = useState(usableData ? usableData : []);
+  const [tableData, setTableData] = useState(usableData ? usableData : []);
 
   const { replace } = useRouter();
   const path = usePathname();
@@ -32,11 +32,16 @@ const Table = ({ data }) => {
 
   const getLangs = (item) => {
     const langs =
-      usableData.find((term) => term.type === `${item.name}-${item.type}`)
+      tableData.find((term) => term.type === `${item.name}-${item.type}`)
         ?.language || [];
     const langsString = langs.join(", ");
     return langsString;
   };
+  useEffect(() => {
+    const usableData = data?.data?.data;
+    setTableData(usableData);
+  }, [data]);
+
   return (
     <div className={classes["table"]}>
       <div className={classes["header"]}>

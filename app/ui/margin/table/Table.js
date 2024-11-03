@@ -22,10 +22,10 @@ const Table = ({ data, rows, search }) => {
             limit: rows,
             type: type,
             searchValue: search ? search : null,
-            or: search ? ["name", "Weight / Measurement", "description"] : null,
+            or: search ? ["name", "description"] : null,
           },
         });
-
+        console.log("data", data?.data);
         setTableData(data?.data?.data?.data);
       } catch (err) {
         console.log("err", err);

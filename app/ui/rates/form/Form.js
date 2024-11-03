@@ -17,8 +17,9 @@ import { formatContainer } from "@/app/lib/formatText";
 import { createItem } from "@/app/lib/formFunctions";
 import { useRouter } from "next/navigation";
 
-const Form = () => {
-  useEffect(()=>{},[])
+const Form = ({ formData, id }) => {
+  console.log("formData", formData);
+  useEffect(() => {}, []);
   // const applyChanges = async () => {
   //   if (id === "create") {
   //     await createItem("margins", data, router);
@@ -27,13 +28,17 @@ const Form = () => {
   //   }
   // };
   const router = useRouter();
+  const deleteHandler = () => {};
   const applyChanges = async (type) => {
     const ratesData = { ...data, status: "publish" };
     console.log("ratesData", ratesData);
-    type === "create" ? await createItem("rates", ratesData, router) : "";
+    if (type === "create") {
+      await createItem("rates", ratesData, router, "rates", "don't redirect");
+      setCreated(true);
+    }
   };
   const deleteItem = () => {};
-  const [created, setCreated] = useState(false);
+  const [created, setCreated] = useState(id !== "create" ? true : false);
   const [data, dispatchDetail] = useReducer(ratesReducer, intialValue);
   const [dataType, setDataType] = useState("Surcharges");
 
@@ -47,7 +52,7 @@ const Form = () => {
         />
 
         {created && (
-          <div>
+          <div className="sub-form">
             <Tabs
               types={
                 data?.rate_type === "Linked"
@@ -120,18 +125,20 @@ const Form = () => {
           </div>
         )}
       </div>
-      <div className={classes["create"]}>
-        <button
-          onClick={() => {
-            applyChanges("create");
-          }}
-          className={classes["create-btn"]}
-        >
-          Apply
-        </button>
-      </div>
-      {created && (
+
+      {created ? (
         <ActionBtns applyChanges={applyChanges} deleteHandler={deleteHandler} />
+      ) : (
+        <div className={classes["create"]}>
+          <button
+            onClick={() => {
+              applyChanges("create");
+            }}
+            className={classes["create-btn"]}
+          >
+            Apply
+          </button>
+        </div>
       )}
     </div>
   );

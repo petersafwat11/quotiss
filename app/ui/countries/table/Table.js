@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./table.module.css";
 import Popup from "../../popupWrapper/Popup";
 import Country from "../country/Country";
@@ -29,6 +29,10 @@ const Table = ({ data }) => {
     setTableData(updatedData);
     toggleEditCountry();
   };
+  useEffect(() => {
+    const usableData = data?.data?.data;
+    setTableData(usableData);
+  }, [data]);
 
   return (
     <>
@@ -39,8 +43,8 @@ const Table = ({ data }) => {
           <p className={classes["status"]}>Status</p>
         </div>
         <div className={classes["body"]}>
-          {tableData.length > 0 &&
-            tableData.map((item, index) =>
+          {tableData?.length > 0 &&
+            tableData?.map((item, index) =>
               showEditCountry.state && showEditCountry.index === index ? (
                 <Country
                   data={item}

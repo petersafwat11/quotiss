@@ -23,10 +23,9 @@ const Header = () => {
         : str === "surcharge types"
         ? "surchargeTypes"
         : str.replace(/\s+/g, "-");
-    router.push(pageName);
+    router.push(`/${pageName}`);
   }
 
-  console.log("pathname", pathname);
   return (
     // <div className={classes[showMobileMenu ? "overlay" : ""]}>
     <div className={classes["header"]}>

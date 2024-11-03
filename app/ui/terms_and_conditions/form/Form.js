@@ -63,7 +63,7 @@ const Form = () => {
     const getData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.BACKEND_SERVER}/termsAndConditions`,
+          `${process.env.BACKEND_SERVER}/termsAndConditions/one`,
           {
             params: {
               company: company,

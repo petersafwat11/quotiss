@@ -5,7 +5,7 @@ import DashboardWrapper from "./ui/dashboard/dashboardWrapper/DashboardWrapper";
 
 export default function Home() {
   return (
-    <div className={classes["page"]}>
+    <div className={"page"}>
       <div className={classes["top"]}>
         <div className={classes["first"]}>
           <h3 className={classes["title"]}>Good Afternoon, Venkat</h3>

@@ -17,7 +17,7 @@
 .header p {
   font-family: "Roboto Condensed";
   font-weight: 500;
-  font-size: 1rem;
+  font-size: .9rem;
   /* color: rgba(11, 48, 159, 0.87); */
   color: var(--black-50);
 }

@@ -10,13 +10,9 @@ import Tabs from "../../tabs/Tabs";
 import ActionBtns from "../../actionBtns/ActionBtns";
 import { createItem, updateItem } from "@/app/lib/formFunctions";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
-import axios from "axios";
 
-const Form = () => {
-  let user = Cookies.get("user");
-  user = user && JSON.parse(user);
-  const { company, entity_code } = user;
+const Form = ({ formData }) => {
+  const usableData = formData?.data?.data[0];
 
   const router = useRouter();
   const applyChanges = async () => {
@@ -27,35 +23,21 @@ const Form = () => {
       await updateItem("organization", data, router, id);
     }
   };
-  const cancelChanges = () => {};
-  const [data, dispatchDetail] = useReducer(organizationReducer, intialValue);
+  const [data, dispatchDetail] = useReducer(
+    organizationReducer,
+    usableData ? usableData : intialValue
+  );
   const [dataType, setDataType] = useState("Details");
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.BACKEND_SERVER}/organization`,
-          {
-            params: {
-              company: company,
-              entity_code: entity_code,
-            },
-          }
-        );
-        console.log("response", response?.data?.data?.data[0]);
-        const data = response?.data?.data?.data[0];
-        data
-          ? dispatchDetail({
-              type: "UPDATE-ALL",
-              value: data,
-            })
-          : "";
-      } catch (err) {
-        console.log("err", err);
-      }
-    };
-    getData();
-  }, [company, entity_code]);
+    const usableData = formData?.data?.data[0];
+    usableData
+      ? dispatchDetail({
+          type: "UPDATE-ALL",
+          value: usableData,
+        })
+      : "";
+  }, [formData]);
+
   return (
     <div className={classes["container"]}>
       <div className={"form"}>

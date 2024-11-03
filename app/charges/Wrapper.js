@@ -22,22 +22,11 @@ const Wrapper = ({ data, rows, search }) => {
             page: 1,
             limit: rows,
             searchValue: search ? search : null,
-            or: search
-              ? [
-                  "location",
-                  "kind",
-                  "code",
-                  "region",
-                  "country",
-                  "Alias",
-                  "Surcharges",
-                  "Translations",
-                ]
-              : null,
+            or: search ? ["name", "kind", "code", "region", "country"] : null,
           },
         });
 
-        // setTableData(data?.data?.data?.data);
+        setTableData(data?.data?.data?.data);
       } catch (err) {
         console.log("err", err);
       }
