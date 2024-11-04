@@ -28,6 +28,9 @@ const Table = ({ data }) => {
       );
     }
   };
+  const handleItemClick = (id) => {
+    router.push(`/users/${id}`);
+  };
 
   return (
     <div className={classes["container"]}>
@@ -66,7 +69,13 @@ const Table = ({ data }) => {
         <div className={classes["body"]}>
           {data?.length > 0 &&
             data.map((item, index) => (
-              <div key={index} className={classes["row"]}>
+              <div
+                onClick={() => {
+                  handleItemClick(item?.id);
+                }}
+                key={index}
+                className={classes["row"]}
+              >
                 <div className={classes["checkbox"]}>
                   <CircleCheckbox
                     itemName={item}

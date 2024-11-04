@@ -65,7 +65,7 @@ const Table = ({ data, rows, search }) => {
           <p className={classes["description"]}> Description</p>
         </div>
         <div className={classes["body"]}>
-          {tableData.map((item, index) => (
+          {tableData?.map((item, index) => (
             <div
               onClick={() => {
                 handleItemClick(item.id);

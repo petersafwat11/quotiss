@@ -15,7 +15,7 @@ const Table = ({ tableData }) => {
 
   const onSelect = (val) => {
     if (val === "all") {
-      if (selectedOptions.length === tableData.length) {
+      if (selectedOptions.length === tableData?.length) {
         setSelectedOptions([]); // Deselect all
       } else {
         setSelectedOptions([...tableData]); // Select all

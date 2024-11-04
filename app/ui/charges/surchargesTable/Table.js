@@ -144,8 +144,8 @@ const Table = ({
           <p className={classes["space"]}></p>
         </div>
         <div className={classes["body"]}>
-          {tableData.length > 0 &&
-            tableData.map((item, index) => (
+          {tableData?.length > 0 &&
+            tableData?.map((item, index) => (
               <div key={index} className={classes["row"]}>
                 <p className={classes["name"]}>{item.name}</p>
 

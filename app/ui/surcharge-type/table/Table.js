@@ -30,8 +30,8 @@ const Table = ({ data }) => {
           <p className={classes["comment"]}> Comment</p>
         </div>
         <div className={classes["body"]}>
-          {tableData.length > 0 &&
-            tableData.map((item, index) => (
+          {tableData?.length > 0 &&
+            tableData?.map((item, index) => (
               <div
                 onClick={() => {
                   handleItemClick(item.id);

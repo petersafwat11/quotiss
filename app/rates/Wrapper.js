@@ -56,7 +56,6 @@ const Wrapper = ({ data, rows, search, page }) => {
               : null,
           },
         });
-        console.log("data?.data?.data?.data", data?.data?.data?.data);
         setTableData(data?.data?.data?.data);
       } catch (err) {
         console.log("err", err);

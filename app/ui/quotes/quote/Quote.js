@@ -4,18 +4,23 @@ import RichTextGroup from "../../inputs/richTextGroup/RichTextGroup";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
 
 const Quote = ({ data, dispatchDetail }) => {
-  console.log("data", data);
   return (
     <div className={"sub-form"}>
       <div className={classes["note"]}>
-        <RichTextGroup />
+        <RichTextGroup
+          data={data}
+          dataKey={"message"}
+          type={"quote"}
+          setData={dispatchDetail}
+          dataType={"object"}
+        />
       </div>
       <div className={classes["inputs"]}>
         <InputGroup
           id={"net_price"}
           label={"Net price"}
           dataKey={"net_price"}
-          objectType={"quotes"}
+          objectType={"quote"}
           data={data}
           setData={dispatchDetail}
           stateType="useReducer"
@@ -26,7 +31,7 @@ const Quote = ({ data, dispatchDetail }) => {
           label={"Margin"}
           data={data}
           dataKey={"margin"}
-          objectType={"quotes"}
+          objectType={"quote"}
           setData={dispatchDetail}
           stateType="useReducer"
           dataType="object"
@@ -36,7 +41,7 @@ const Quote = ({ data, dispatchDetail }) => {
           label={"Total"}
           data={data}
           dataKey={"total"}
-          objectType={"quotes"}
+          objectType={"quote"}
           setData={dispatchDetail}
           stateType="useReducer"
           dataType="object"
@@ -46,7 +51,7 @@ const Quote = ({ data, dispatchDetail }) => {
           label={"Internal Notes"}
           data={data}
           dataKey={"internal_notes"}
-          objectType={"quotes"}
+          objectType={"quote"}
           setData={dispatchDetail}
           stateType="useReducer"
           dataType="object"

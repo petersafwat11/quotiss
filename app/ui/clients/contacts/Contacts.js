@@ -57,7 +57,7 @@ const Contacts = ({ data, dispatchDetail }) => {
           dataType="object"
         />
       </div>
-      <Table />
+      <Table data={data} dispatchDetail={dispatchDetail} />
     </div>
   );
 };

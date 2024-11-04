@@ -1,16 +1,22 @@
 .email {
   width: 100%;
-  display: flex;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  gap: 1rem;
 }
-.email > * {
+.text {
+  align-self: center;
+  margin-top: 0.5rem;
+}
+/* .email > * {
   flex-basis: 50%;
 }
 .first {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
+} */
 .rich-text-wrapper {
   display: flex;
   flex-direction: column;

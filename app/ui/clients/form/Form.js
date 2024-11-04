@@ -6,10 +6,10 @@ import Tabs from "../../tabs/Tabs";
 import Margin from "../margin/Margin";
 import Details from "../details/Details";
 import Contacts from "../contacts/Contacts";
-import Potentials from "../potentials/Potentials";
 import Dashboard from "../dashboard/Dashboard";
 import { clientsReducer, intialValue } from "./dataAndReducer";
 import TermsAndConditions from "../termsAndConditions/TermsAndConditions";
+import PotentialsTable from "../potentialsTable/PotentialsTable";
 
 const Form = () => {
   const [data, dispatchDetail] = useReducer(clientsReducer, intialValue);
@@ -43,7 +43,7 @@ const Form = () => {
       ) : dataType === "Contacts" ? (
         <Contacts data={data.contacts} dispatchDetail={dispatchDetail} />
       ) : dataType === "Potentials" ? (
-        <Potentials data={data.potentials} dispatchDetail={dispatchDetail} />
+        <PotentialsTable data={data.potentials} dispatchDetail={dispatchDetail} />
       ) : dataType === "Dashboard" ? (
         <Dashboard data={data.dashboard} dispatchDetail={dispatchDetail} />
       ) : (

@@ -1,31 +1,30 @@
 "use client";
 import React, { useState } from "react";
 import classes from "./table.module.css";
-import AddContacts from "./addContacts/AddContacts";
-import AddNewButton from "@/app/ui/addNewButton-2/AddNewButton";
-import CircleCheckbox from "@/app/ui/circleCheckbox/CircleChexbox";
+import AddPotential from "./addPotential/AddPotential";
+import AddNewButton from "../../addNewButton-2/AddNewButton";
 
-const Table = ({ data, dispatchDetail }) => {
+const PotentialsTable = ({ data, dispatchDetail }) => {
   const changeTableItem = (itemData, type, index) => {
     if (type === "create") {
       dispatchDetail({
-        type: "contacts".toUpperCase(),
-        value: { ...data, persons: [...data.persons, itemData] },
+        type: "potentials".toUpperCase(),
+        value: [...data, itemData],
       });
       toggleShowComponent();
     } else if (type === "delete") {
-      const updatedArray = data?.persons?.filter((_, indx) => indx !== index);
+      const updatedArray = data?.filter((_, indx) => indx !== index);
       dispatchDetail({
-        type: "contacts".toUpperCase(),
-        value: { ...data, persons: updatedArray },
+        type: "potentials".toUpperCase(),
+        value: updatedArray,
       });
     } else {
-      const updatedArray = [...data?.persons];
+      const updatedArray = [...data];
       updatedArray[index] = itemData;
 
       dispatchDetail({
-        type: "contacts".toUpperCase(),
-        value: { ...data, persons: updatedArray },
+        type: "potentials".toUpperCase(),
+        value: updatedArray,
       });
       toggleShowComponent();
     }
@@ -38,25 +37,24 @@ const Table = ({ data, dispatchDetail }) => {
   const toggleShowComponent = () => {
     setShowComponent({ state: !showComponent.state, index: null });
   };
-  const maskPassword = (number) => {
-    return "*".repeat(number.toString().length);
-  };
 
   return (
     <div className={classes["table"]}>
       <div className={classes["header"]}>
-        <p className={classes["name"]}>Name</p>
-        <p className={classes["email"]}>E-mail</p>
-        <p className={classes["phone"]}>Phone</p>
-        <p className={classes["active"]}>Active</p>
-        <p className={classes["password"]}>Password</p>
-        <div className={classes["space"]}></div>
+        <p className={classes["from-country"]}>From Country</p>
+        <p className={classes["from-location"]}>From Location</p>
+        <p className={classes["to-country"]}>To Country</p>
+        <p className={classes["to-location"]}>To Location</p>
+        <p className={classes["type"]}>Type</p>
+        <p className={classes["mode"]}>Mode</p>
+        <p className={classes["total"]}>Total Volume</p>
+        <p className={classes["unit"]}>Unit</p>
       </div>
       <div className={classes["body"]}>
-        {data?.persons?.length > 0 &&
-          data?.persons?.map((item, index) =>
+        {data?.length > 0 &&
+          data?.map((item, index) =>
             showComponent.state && showComponent.index === index ? (
-              <AddContacts
+              <AddPotential
                 itemData={item}
                 key={index}
                 toggleShowComponent={toggleShowComponent}
@@ -74,15 +72,17 @@ const Table = ({ data, dispatchDetail }) => {
                 key={index}
                 className={classes["row"]}
               >
-                <p className={classes["name"]}> {item?.name}</p>
-                <p className={classes["email"]}> {item?.email}</p>
-                <p className={classes["phone"]}>{item.phone}</p>
-                <div className={classes["active"]}>
-                  <CircleCheckbox value={item?.active} />
-                </div>
-                <p className={classes["password"]}>
-                  {maskPassword(item.password)}
+                <p className={classes["from-country"]}> {item?.from_country}</p>
+                <p className={classes["from-location"]}>
+                  {" "}
+                  {item?.from_location}
                 </p>
+                <p className={classes["to-country"]}>{item?.to_country}</p>
+                <p className={classes["to-location"]}>{item?.to_location}</p>
+                <p className={classes["type"]}>{item?.type}</p>
+                <p className={classes["mode"]}>{item?.mode}</p>
+                <p className={classes["total"]}>{item?.total_volume}</p>
+                <p className={classes["unit"]}>{item?.unit}</p>
 
                 <div
                   onClick={() => {
@@ -98,7 +98,7 @@ const Table = ({ data, dispatchDetail }) => {
         {showComponent.state &&
           !showComponent.index &&
           showComponent.index !== 0 && (
-            <AddContacts
+            <AddPotential
               toggleShowComponent={toggleShowComponent}
               applyChanges={changeTableItem}
             />
@@ -111,4 +111,4 @@ const Table = ({ data, dispatchDetail }) => {
   );
 };
 
-export default Table;
+export default PotentialsTable;

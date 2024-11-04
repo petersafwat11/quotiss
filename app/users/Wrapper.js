@@ -27,13 +27,6 @@ const Wrapper = ({ data, company, entity_code, page, rows }) => {
             },
           }
         );
-        console.log("response", response?.data?.users, {
-          page: page,
-          limit: rows,
-          company: company,
-          entity_code: entity_code,
-          user_active: users?.active,
-        });
         //   const responseData = response?.data?.data?.data;
         //   responseData.length > 0
         //     ? setTableData(responseData[0])

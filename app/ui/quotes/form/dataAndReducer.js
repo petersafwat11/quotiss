@@ -1,3 +1,4 @@
+
 export const ratesReducer = (state, action) => {
   console.log("state", state);
 
@@ -25,8 +26,9 @@ export const intialValue = {
     internal_notes: "",
   },
   layout: {
-    terms_and_conditions: "manual",
+    terms_and_conditions_type: "manual",
     modify: false,
+    TermsAndConditions: "",
   },
   email: {
     recipient_to: "",

@@ -1,6 +1,27 @@
-.layout{
-    display: flex;
-    align-items: flex-start;
-    gap: 3rem;
-    
+.layout {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+}
+.first,
+.second {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.5rem;
+  width: 100%;
+}
+.first {
+  border: 1px solid #ddd;
+}
+.text {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
 }

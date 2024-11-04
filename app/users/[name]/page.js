@@ -6,9 +6,7 @@ const page = async ({ params }) => {
   const id = params.id;
   if (id !== "create") {
     try {
-      data = await axios.get(
-        `${process.env.BACKEND_SERVER}/surchrgeTypes/${id}`
-      );
+      data = await axios.get(`${process.env.BACKEND_SERVER}/users/${id}`);
     } catch (err) {
       console.log("err", err);
     }

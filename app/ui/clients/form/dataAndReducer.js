@@ -1,5 +1,5 @@
 export const clientsReducer = (state, action) => {
-  console.log("state", state);
+  console.log("state", state, action);
 
   const prevState = { ...state };
   if (action.type === "UPDATE-ALL") {
@@ -23,17 +23,7 @@ export const intialValue = {
   hashtags: "",
   client_contacts: "",
   client_details: "",
-  potentials: {
-    shipment_id: "",
-    from_country: "",
-    from_location: "",
-    to_country: "",
-    to_location: "",
-    shipment_type: "",
-    mode: "",
-    total_volume: "",
-    unit: "",
-  },
+  potentials: [],
   terms_and_conditions: {
     language: "",
     type: "",
@@ -45,13 +35,7 @@ export const intialValue = {
     postal_code: "",
     city: "",
     street: "",
-    person: {
-      name: "",
-      email: "",
-      phone: "",
-      active: "",
-      password: "",
-    },
+    persons: [],
   },
   details: {
     customer_id_internal: "",

@@ -130,6 +130,16 @@ const MainInputs = ({ data, dispatchDetail }) => {
         setData={dispatchDetail}
         dataType={"single"}
       />
+      <SelectionGroup
+        data={data}
+        type={"status"}
+        dataKey={"status"}
+        label={"Status "}
+        options={statusOptions}
+        setData={dispatchDetail}
+        dataType={"single"}
+      />
+
       <InputGroup
         id={"organization_name"}
         label={"Organization name"}
@@ -165,15 +175,6 @@ const MainInputs = ({ data, dispatchDetail }) => {
         setData={dispatchDetail}
         stateType={"useReducer"}
         dataType="single"
-      />
-      <SelectionGroup
-        data={data}
-        type={"status"}
-        dataKey={"status"}
-        label={"Status "}
-        options={statusOptions}
-        setData={dispatchDetail}
-        dataType={"single"}
       />
       <SelectionGroup
         data={data}

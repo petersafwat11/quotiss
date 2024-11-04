@@ -21,7 +21,7 @@ const Table = ({ data }) => {
     const id = data?.id || false;
     if (!id) {
       const response = await createItem("holidays", data, router);
-      tableData.length < 10
+      tableData?.length < 10
         ? setTableData([...tableData, response?.data?.data?.data])
         : "";
     } else {
@@ -58,8 +58,8 @@ const Table = ({ data }) => {
           <p className={classes["december"]}>December</p>
         </div>
         <div className={classes["body"]}>
-          {tableData.length > 0 &&
-            tableData.map((item, index) =>
+          {tableData?.length > 0 &&
+            tableData?.map((item, index) =>
               showAddHoliday.state && showAddHoliday.index === index ? (
                 <MakeHolidayPopup
                   itemData={item}

@@ -1,5 +1,5 @@
 "use client";
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import classes from "./form.module.css";
 import { intialValue, organizationReducer } from "./dataAndReducer";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
@@ -8,15 +8,21 @@ import CheckboxGroup from "../../inputs/checkboxGroup/CheckboxGroup";
 import DateInput from "../../inputs/dateInput/DateInput";
 import { createItem, updateItem } from "@/app/lib/formFunctions";
 import { useRouter, usePathname } from "next/navigation";
+import axios from "axios";
 
-const Form = ({ formData }) => {
+const Form = ({ formData, id }) => {
+  const usableData = formData?.data?.data;
   const pathname = usePathname();
   const router = useRouter();
   const cancelChanges = () => {};
-  const [data, dispatchDetail] = useReducer(organizationReducer, intialValue);
+  const [data, dispatchDetail] = useReducer(
+    organizationReducer,
+    usableData ? usableData : intialValue
+  );
   // const [dataType, setDataType] = useState("Details");
+  const page = pathname.slice(pathname.lastIndexOf("/") + 1);
+
   const applyChanges = async () => {
-    const page = pathname.slice(pathname.lastIndexOf("/") + 1);
     const id = data?.id;
     if (page === "create") {
       await createItem("users", data, router);
@@ -24,7 +30,21 @@ const Form = ({ formData }) => {
       await updateItem("users", data, router, id);
     }
   };
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await axios.get(
+          `${process.env.BACKEND_SERVER}/users/${page}`
+        );
 
+        dispatchDetail({ type: "UPDATE-ALL", value: data?.data?.data?.data });
+        console.log("dara", data?.data?.data?.data);
+      } catch (err) {
+        console.log("err", err);
+      }
+    };
+    getData();
+  }, [page]);
   return (
     <div className={classes["container"]}>
       <div className={"form"}>
@@ -33,7 +53,7 @@ const Form = ({ formData }) => {
             id={"user_email"}
             label={"Email"}
             type={"email"}
-            data={data.name}
+            data={data.user_email}
             dataKey={"user_email"}
             setData={dispatchDetail}
             stateType={"useReducer"}

@@ -40,7 +40,7 @@ const Wrapper = ({ data, rows, search }) => {
     <div className={"page"}>
       <div className={classes["top"]}>
         <div className={classes["first"]}>
-          <Title title={"Rates"} />
+          <Title title={"quotes"} />
           <div className={classes["filters-desktop"]}>
             <StandardFilter
               filterValue={quotesFilterValue}

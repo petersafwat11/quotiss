@@ -4,7 +4,7 @@ import RichText from "../../inputs/richTextGroup/RichTextGroup";
 import classes from "./details.module.css";
 const Details = ({ data, dispatchDetail }) => {
   return (
-    <div className='sub-form'>
+    <div className="sub-form">
       <div className={classes["inputs"]}>
         <InputGroup
           id={"customer_id_internal"}
@@ -28,7 +28,13 @@ const Details = ({ data, dispatchDetail }) => {
         />
       </div>
       <div className={classes["rich-text"]}>
-        <RichText />
+        <RichText
+          data={data}
+          dataKey={"internal_notes"}
+          type={"details"}
+          setData={dispatchDetail}
+          dataType={"object"}
+        />
       </div>
     </div>
   );
