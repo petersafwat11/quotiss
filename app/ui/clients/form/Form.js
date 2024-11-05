@@ -32,7 +32,7 @@ const Form = () => {
         dataType={dataType}
       />
       {dataType === "Margin" ? (
-        <Margin data={data.margin} dispatchDetail={dispatchDetail} />
+        <Margin data={data.margins} dispatchDetail={dispatchDetail} />
       ) : dataType === "Terms & Conditions" ? (
         <TermsAndConditions
           data={data.terms_and_conditions}

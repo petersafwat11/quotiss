@@ -1,13 +1,13 @@
 export const baseValues = [
   "Origin Country",
-  "Postal Code Min",
-  "Postal Distination Country",
-  "Postal Code Max",
+  "Destination Country",
   "Service",
-  "Active",
-  "Type",
 ];
 export const LTLOptions = [
+  "Postal Code Min",
+  "Postal Code Max",
+  "Active",
+  "Type",
   "Per 1kg",
   "Per 100kg",
   "< 3kg",
@@ -100,6 +100,8 @@ export const LTLOptions = [
   "< 17500kg",
 ];
 export const FCLOptions = [
+  "Active",
+  "Type",
   "20' DC",
   "40' DC",
   "40' HC",
@@ -117,6 +119,8 @@ export const FCLOptions = [
   "40' TANK",
 ];
 export const LCLOptions = [
+  "Active",
+  "Type",
   "< 1cbm",
   "< 2cbm",
   "< 3cbm",
