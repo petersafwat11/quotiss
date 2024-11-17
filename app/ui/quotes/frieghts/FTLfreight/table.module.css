@@ -1,0 +1,125 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bottom {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+.label {
+  font-family: "Roboto Condensed";
+  font-weight: 400;
+  font-size: 0.9rem;
+  font-size: 0.8em;
+  padding: 0 0.3em;
+  font-weight: 300;
+  color: #999;
+  white-space: nowrap;
+}
+
+.selections {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.first,
+.second {
+  width: 100%;
+}
+.inputs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  margin-top: 1rem;
+}
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--black-10);
+  background-color: #f1f0f0;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.header {
+  display: flex;
+  margin: 0 10px;
+  padding: 10px;
+  border-bottom: 1px solid var(--black-10);
+}
+
+.header p {
+  font-family: "Roboto Condensed";
+  font-weight: 500;
+  font-size: 0.9rem;
+  /* color: rgba(11, 48, 159, 0.87); */
+  color: var(--black-50);
+}
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+.row:hover {
+  background-color: #dddddd74;
+}
+.body p {
+  font-family: "Roboto Condensed";
+  font-weight: 400;
+  font-size: 0.8rem;
+  /* color: rgba(11, 48, 159, 0.87); */
+  color: var(--black-50);
+}
+.service,
+.name,
+.start,
+.end,
+.shipment,
+.currency {
+  flex-basis: 13.3%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.comment {
+  flex-basis: 10%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.delete {
+  flex-basis: 10%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: 1px solid var(--black-75);
+  font-size: 0.7rem;
+  font-weight: 400;
+  font-family: "Poppins";
+  color: var(--black-75);
+  cursor: pointer;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+}

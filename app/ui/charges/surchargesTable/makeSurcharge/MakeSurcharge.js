@@ -48,23 +48,6 @@ const MakeSurcharge = ({
     "Ocean Alliance",
     "Seago Line",
   ];
-  // const FCLOptions = [
-  //   "20' DC",
-  //   "40' DC",
-  //   "40' HC",
-  //   "45' HC",
-  //   "20' NOR",
-  //   "40' NOR",
-  //   "20' REEF",
-  //   "40' HREEF",
-  //   "45' PLWD",
-  //   "20' OT",
-  //   "40' OT",
-  //   "20' FR",
-  //   "40' FR",
-  //   "20' TANK",
-  //   "40' TANK",
-  // ];
   const LCLTableInputs = [
     "weight",
     "measurement",
