@@ -14,7 +14,7 @@
 .header p {
   font-family: "Roboto Condensed";
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   /* color: rgba(11, 48, 159, 0.87); */
   color: var(--black-50);
 }
@@ -39,20 +39,38 @@
   /* color: rgba(11, 48, 159, 0.87); */
   color: var(--black-50);
 }
-.name {
-  flex-basis: 20%;
+.origin-country,
+.destination-country,
+.service,
+.postal-code-min,
+.postal-code-max {
+  flex-basis: 17%;
   flex-shrink: 0;
   flex-grow: 0;
 }
-
-.W-M {
-  flex-basis: 60%;
+.val {
+  flex-basis: 10%;
   flex-shrink: 0;
   flex-grow: 0;
 }
-
-.description {
-  flex-basis: 20%;
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+}
+.delete {
+  flex-basis: 10%;
   flex-shrink: 0;
   flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: 1px solid var(--black-75);
+  font-size: 0.7rem;
+  font-weight: 400;
+  font-family: "Poppins";
+  color: var(--black-75);
+  cursor: pointer;
 }

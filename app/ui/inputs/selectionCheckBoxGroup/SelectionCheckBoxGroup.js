@@ -58,8 +58,8 @@ const SelectionCheckBoxGroup = ({
       }
     } else {
       const newState = selectedOptions.includes(val)
-        ? options.filter((item) => item !== val)
-        : [...options, val];
+        ? selectedOptions.filter((item) => item !== val)
+        : [...selectedOptions, val];
       dataType === "single"
         ? setSelectedOptions({ type: dataKey, value: newState })
         : dataType === "object"

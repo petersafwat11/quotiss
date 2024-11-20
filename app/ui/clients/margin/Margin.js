@@ -44,9 +44,17 @@ const Margin = ({ data, dispatchDetail }) => {
       {type === "LTL" ? (
         <LTLTable data={data} dispatchDetail={dispatchDetail} />
       ) : type.startsWith("FCL") ? (
-        <FCLTable data={data} dispatchDetail={dispatchDetail} />
+        <FCLTable
+        marginType={type === "FCL SEA" ? "FCLSea" : "FCLRail"}
+          data={data}
+          dispatchDetail={dispatchDetail}
+        />
       ) : type.startsWith("LCL") ? (
-        <LCLTable data={data} dispatchDetail={dispatchDetail} />
+        <LCLTable
+          marginType={type === "LCL SEA" ? "LCLSea" : "LCLRail"}
+          data={data}
+          dispatchDetail={dispatchDetail}
+        />
       ) : (
         <AIRTable data={data} dispatchDetail={dispatchDetail} />
       )}

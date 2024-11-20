@@ -4,36 +4,40 @@ import classes from "./table.module.css";
 import { baseValues, AIROptions } from "../options";
 import AddNewButton from "@/app/ui/addNewButton-2/AddNewButton";
 import AddItem from "./addItem/AddItem";
+import CircleCheckbox from "@/app/ui/circleCheckbox/CircleChexbox";
 
 const AIRTable = ({ data, dispatchDetail }) => {
   const headerItems = [...baseValues, ...AIROptions];
   const handleNames = (str, type) => {
-    const className =
-      type === "class"
-        ? str.toLowerCase().replace(/\s+/g, "-")
-        : str.toLowerCase().replace(/\s+/g, "_");
-    return className;
+    if (typeof str === "string") {
+      const className =
+        type === "class"
+          ? str.toLowerCase().replace(/\s+/g, "-")
+          : str.toLowerCase().replace(/\s+/g, "_");
+      return className;
+    }
+    return str;
   };
   const changeTableItem = (itemData, type, index) => {
     if (type === "create") {
       dispatchDetail({
-        type: "potentials".toUpperCase(),
-        value: [...data, itemData],
+        type: "margins".toUpperCase(),
+        value: { ...data, air: [...data.air, itemData] },
       });
       toggleShowComponent();
     } else if (type === "delete") {
-      const updatedArray = data?.filter((_, indx) => indx !== index);
+      const updatedArray = data?.air?.filter((_, indx) => indx !== index);
       dispatchDetail({
-        type: "potentials".toUpperCase(),
-        value: updatedArray,
+        type: "margins".toUpperCase(),
+        value: { ...data, air: updatedArray },
       });
     } else {
-      const updatedArray = [...data];
+      const updatedArray = [...data.air];
       updatedArray[index] = itemData;
 
       dispatchDetail({
-        type: "potentials".toUpperCase(),
-        value: updatedArray,
+        type: "margins".toUpperCase(),
+        value: { ...data, air: updatedArray },
       });
       toggleShowComponent();
     }
@@ -62,8 +66,8 @@ const AIRTable = ({ data, dispatchDetail }) => {
         ))}
       </div>
       <div className={classes["body"]}>
-        {data?.length > 0 &&
-          data?.map((item, index) =>
+        {data?.air?.length > 0 &&
+          data?.air?.map((item, index) =>
             showComponent.state && showComponent.index === index ? (
               <AddItem
                 itemData={item}
@@ -83,41 +87,38 @@ const AIRTable = ({ data, dispatchDetail }) => {
                 key={index}
                 className={classes["row"]}
               >
-                {Object.keys(item).map((key, idx) => (
-                  <p
-                    key={`${index}-${idx}`}
-                    className={
-                      index < 3
-                        ? classes[handleNames(key, "class")]
-                        : classes["val"]
-                    }
-                  >
-                    {item[handleNames(key, "data")]}
-                  </p>
-                ))}
+                {headerItems.map((name, idx) =>
+                  name === "Active" ? (
+                    <div key={idx} className={classes["val"]}>
+                      <CircleCheckbox value={item?.active} />
+                    </div>
+                  ) : name === "Service" ? (
+                    <p
+                      key={`${index}-${idx}`}
+                      className={
+                        idx < 3
+                          ? classes[handleNames(name, "class")]
+                          : classes["val"]
+                      }
+                    >
+                      {item?.service?.length > 0
+                        ? `${item?.service?.length} Selected`
+                        : `0 Selected`}
+                    </p>
+                  ) : (
+                    <p
+                      key={`${index}-${idx}`}
+                      className={
+                        idx < 3
+                          ? classes[handleNames(name, "class")]
+                          : classes["val"]
+                      }
+                    >
+                      {item[handleNames(name, "data")]}
+                    </p>
+                  )
+                )}
 
-                <p
-                  key={index}
-                  className={
-                    index < 3
-                      ? classes[handleNames(item, "class")]
-                      : classes["val"]
-                  }
-                >
-                  {item}
-                </p>
-
-                {/* <p className={classes["from-country"]}> {item?.from_country}</p>
-                <p className={classes["from-location"]}>
-                  {item?.from_location}
-                </p>
-                <p className={classes["to-country"]}>{item?.to_country}</p>
-                <p className={classes["to-location"]}>{item?.to_location}</p>
-                <p className={classes["type"]}>{item?.type}</p>
-                <p className={classes["mode"]}>{item?.mode}</p>
-                <p className={classes["total"]}>{item?.total_volume}</p>
-                <p className={classes["unit"]}>{item?.unit}</p>
- */}
                 <div
                   onClick={() => {
                     changeTableItem([], "delete", index);
@@ -141,21 +142,6 @@ const AIRTable = ({ data, dispatchDetail }) => {
       <div className={classes["add-btn"]}>
         <AddNewButton buttonClickHandler={toggleShowComponent} />
       </div>
-
-      {/* <div className={classes["body"]}>
-        <div className={classes["row"]}>
-          {headerItems.map((item, index) => (
-            <p
-              key={index}
-              className={
-                index < 3 ? classes[handleClassName(item)] : classes["val"]
-              }
-            >
-              {item}
-            </p>
-          ))}
-        </div>
-      </div> */}
     </div>
   );
 };

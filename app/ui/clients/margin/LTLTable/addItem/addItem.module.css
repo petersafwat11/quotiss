@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+.origin-country,
+.destination-country,
+.service,
+.postal-code-min,
+.postal-code-max {
+  flex-basis: 17%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.val {
+  flex-basis: 10%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.active div {
+  justify-content: center;
+}
+.input-wrapper {
+  width: 98%;
+}
