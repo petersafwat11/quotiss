@@ -15,6 +15,7 @@ const InputGroup = ({
   numbersOnly,
   disabled,
   required,
+  placeHolder,
 }) => {
   const handleInputChange = (val) => {
     stateType !== "useReducer"
@@ -52,7 +53,7 @@ const InputGroup = ({
             handleInputChange(e.target.value);
           }
         }}
-        // placeholder={`Please Enter ${label}`}
+        placeholder={placeHolder ? placeHolder : ""}
         id={id}
         className={classes["input"]}
       ></input>

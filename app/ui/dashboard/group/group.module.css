@@ -1,0 +1,38 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 1rem;
+  cursor: pointer;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title {
+  color: var(--black-75);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.center-text {
+  color: var(--black-75);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+.bottom {
+  display: flex;
+  gap: 0.4rem;
+}
+.number,
+.tag {
+  color: var(--black-75);
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}

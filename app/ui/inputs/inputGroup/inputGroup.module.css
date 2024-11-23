@@ -18,6 +18,24 @@
   font-size: 0.8rem;
   color: #c42828;
 }
+.input::placeholder {
+  color: gray;
+  font-size: 12px;
+}
+
+/* For browsers that support vendor prefixes */
+.input::-webkit-input-placeholder {
+  color: gray;
+  font-size: 12px;
+}
+.input:-ms-input-placeholder {
+  color: gray;
+  font-size: 12px;
+}
+.input::-moz-placeholder {
+  color: gray;
+  font-size: 12px;
+}
 
 .input {
   display: block;

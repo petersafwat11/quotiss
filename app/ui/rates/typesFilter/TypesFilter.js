@@ -6,41 +6,12 @@ import { RiShip2Fill } from "react-icons/ri";
 import { FaTrain } from "react-icons/fa";
 import { IoAirplane } from "react-icons/io5";
 import { FaTruck } from "react-icons/fa";
-import FilterSearch from "../../filters/filterSearch/FilterSearch";
 
 const TypesFilter = ({ filterValue, setFilterValue }) => {
   const [showOptions, setShowOptions] = useState(false);
   const toggleFilter = () => {
     setShowOptions(!showOptions);
   };
-  // const [searchValue, setSearchValue] = useState("");
-
-  // const [updatedValues, setUpdatedValues] = useState(values);
-  // useEffect(() => {
-  //   const values = [
-  //     "20' DC",
-  //     "40' DC",
-  //     "40' HC",
-  //     "45' HC",
-  //     "20' NOR",
-  //     "40' NOR",
-  //     "20' REEF",
-  //     "40' HREEF",
-  //     "45' PLWD",
-  //     "20' OT",
-  //     "40' OT",
-  //     "20' FR",
-  //     "40' FR",
-  //     "20' TANK",
-  //     "40' TANK",
-  //   ];
-
-  //   const searchedValues = values.filter((item) =>
-  //     item.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
-  //   );
-  //   setUpdatedValues(searchedValues);
-  // }, [searchValue]);
-
   return (
     <div className={classes["selection"]}>
       <div

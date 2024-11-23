@@ -14,8 +14,9 @@ const Wrapper = ({ data, rows, search, page }) => {
     name: "ALL",
     type: "",
   });
-  const [selectedOptions, setSelectedOptions] = useState([]);
   const [contractsFilterValue, setContractsFilterValue] = useState("Contracts");
+
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const marginOptions = [
     "20' DC",
     "40' DC",

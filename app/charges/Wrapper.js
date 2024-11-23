@@ -6,7 +6,6 @@ import Search from "../ui/search/Search";
 import Table from "../ui/charges/table/Table";
 import axios from "axios";
 import TypesFilter from "../ui/filters/typesFilter/TypesFilter";
-import { useRouter } from "next/navigation";
 import ChexBoxFilter from "../ui/charges/checkboxFilter/ChexBoxFilter";
 
 const Wrapper = ({ data, rows, search }) => {

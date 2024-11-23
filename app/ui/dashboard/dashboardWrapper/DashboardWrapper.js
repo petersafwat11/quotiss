@@ -1,6 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import classes from "./dashboardWrapper.module.css";
+import Filters from "../filters/Filters";
+import Groups from "../groups/Groups";
+import Bottom from "../bottom/Bottom";
+import QuotesChart from "../charts/quotesChart";
 const DashboardWrapper = () => {
   const [typesFilterValue, setTypesFilterValue] = useState({
     name: "ALL",
@@ -11,21 +15,10 @@ const DashboardWrapper = () => {
 
   return (
     <div className={classes["container"]}>
-      <div className={classes["filters"]}>
-        {/* <TypesFilter
-          filterValue={typesFilterValue}
-          setFilterValue={setTypesFilterValue}
-        />
-        <MarginFilter
-          filterValue={marginFilterValue}
-          setFilterValue={setMarginFilterValue}
-        />
-        <ContractsFilter
-          filterValue={contractsFilterValue}
-          setFilterValue={setContractsFilterValue}
-        />
-        <ChexBoxFilter title={" Show Valid Only"} /> */}
-      </div>
+      <Filters />
+      <Groups />
+      <QuotesChart />
+      <Bottom />
     </div>
   );
 };

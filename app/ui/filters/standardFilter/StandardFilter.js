@@ -10,14 +10,6 @@ const StandardFilter = ({ filterValue, setFilterValue, options }) => {
     setShowOptions(!showOptions);
   };
   const [searchValue, setSearchValue] = useState("");
-  //   const values = [
-  //     "status",
-  //     "draft",
-  //     "sent",
-  //     "accepted",
-  //     "declined",
-  //     "negotiated",
-  //   ];
   const [updatedValues, setUpdatedValues] = useState(options);
   useEffect(() => {
     const searchedValues = options.filter((item) =>
