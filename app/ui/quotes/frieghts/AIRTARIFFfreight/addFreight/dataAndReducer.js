@@ -11,9 +11,12 @@ export const locationReducer = (state, action) => {
 };
 
 export const intialValue = {
-  local_charge: "",
-  service: "",
-  shipment: "",
   currency: "",
   comment: "",
+  min_price: "",
+  validity_end: "",
+  validity_start: "",
+  service: "",
+  name: "",
+  checked: false,
 };

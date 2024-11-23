@@ -10,7 +10,7 @@ import Email from "../email/Email";
 import LCLfreight from "../frieghts/LCLfreight/LCLfreight";
 import AIRfreight from "../frieghts/AIRfreight/AIRfreight";
 import AIRTARIFF from "../frieghts/AIRTARIFFfreight/AIRTARIFF";
-import LTLfreight from "../frieghts/LTLfreight/FCLFreight";
+import LTLfreight from "../frieghts/LTLfreight/LTLfreight";
 import FCLFreight from "../frieghts/FCLfreight/FCLFreight";
 import FTLfreight from "../frieghts/FTLfreight/FTLfreight";
 
@@ -38,13 +38,13 @@ const Form = () => {
             selectedOptions={data?.container_type}
           />
         ) : data?.quote_type === "LCL" ? (
-          <LCLfreight data={data.layout} dispatchDetail={dispatchDetail} />
+          <LCLfreight data={data.lcl_freight} dispatchDetail={dispatchDetail} />
         ) : data?.quote_type === "AIR" ? (
-          <AIRfreight data={data.layout} dispatchDetail={dispatchDetail} />
+          <AIRfreight data={data.air_freight} dispatchDetail={dispatchDetail} />
         ) : data?.quote_type === "AIRTARIFF" ? (
-          <AIRTARIFF data={data.layout} dispatchDetail={dispatchDetail} />
+          <AIRTARIFF data={data.airtariff_freight} dispatchDetail={dispatchDetail} />
         ) : data?.quote_type === "LTL" ? (
-          <LTLfreight data={data.layout} dispatchDetail={dispatchDetail} />
+          <LTLfreight data={data.ltl_freight} dispatchDetail={dispatchDetail} />
         ) : data?.quote_type === "FTL" ? (
           <FTLfreight data={data.ftl_freight} dispatchDetail={dispatchDetail} />
         ) : (

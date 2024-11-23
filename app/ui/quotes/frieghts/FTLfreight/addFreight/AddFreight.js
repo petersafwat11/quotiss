@@ -1,5 +1,9 @@
 import { useReducer, useState } from "react";
-import { intialValue, locationReducer } from "./dataAndReducer";
+import {
+  intialValue,
+  locationReducer,
+  servicesOptions,
+} from "./dataAndReducer";
 import classes from "./addFreight.module.css";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { FaXmark } from "react-icons/fa6";
@@ -8,16 +12,11 @@ import { FaRegComment } from "react-icons/fa";
 import SelectionGroup from "@/app/ui/inputs/selectionGroup/SelectionGroup";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
-import { countryList } from "@/app/utils/countryList";
 import RichText from "@/app/ui/inputs/richTextGroup/RichTextGroup";
 import Popup from "@/app/ui/popupWrapper/Popup";
-import { formatContainer } from "@/app/lib/formatText";
-import {
-  containerTypesIntial,
-  currencies,
-  serviceOptions,
-} from "@/app/utils/options";
+import { containerTypesIntial, currencies } from "@/app/utils/options";
 import DateInput from "@/app/ui/inputs/dateInput/DateInput";
+import CheckboxGroup from "@/app/ui/inputs/checkboxGroup/CheckboxGroup";
 
 const AddFreight = ({ toggleShowComponent, applyChanges, itemData, index }) => {
   const [data, dispatchDetail] = useReducer(
@@ -29,8 +28,17 @@ const AddFreight = ({ toggleShowComponent, applyChanges, itemData, index }) => {
   const toggleComment = () => {
     setShowComment(!showComment);
   };
+
   return (
     <div className={classes["form"]}>
+      <CheckboxGroup
+        data={data}
+        type={"checked"}
+        dataKey={"checked"}
+        setData={dispatchDetail}
+        dataType="single"
+      />
+
       <div className={classes["name"]}>
         <div className={classes["input-wrapper"]}>
           <InputGroup
@@ -44,6 +52,7 @@ const AddFreight = ({ toggleShowComponent, applyChanges, itemData, index }) => {
           />
         </div>
       </div>
+
       <div className={classes["service"]}>
         <div className={classes["input-wrapper"]}>
           <SelectionGroup
@@ -52,7 +61,7 @@ const AddFreight = ({ toggleShowComponent, applyChanges, itemData, index }) => {
             type={"service"}
             dataKey={"service"}
             label={"Service"}
-            options={serviceOptions}
+            options={servicesOptions}
             setData={dispatchDetail}
             dataType={"single"}
           />
@@ -80,20 +89,6 @@ const AddFreight = ({ toggleShowComponent, applyChanges, itemData, index }) => {
           />
         </div>
       </div>
-      <div className={classes["shipment"]}>
-        <div className={classes["input-wrapper"]}>
-          <InputGroup
-            numbersOnly={true}
-            noLabel={true}
-            id={"shipment"}
-            data={data.shipment}
-            dataKey={"shipment"}
-            setData={dispatchDetail}
-            stateType={"useReducer"}
-            dataType="single"
-          />
-        </div>
-      </div>
       <div className={classes["currency"]}>
         <div className={classes["input-wrapper"]}>
           <SelectionGroup
@@ -105,6 +100,20 @@ const AddFreight = ({ toggleShowComponent, applyChanges, itemData, index }) => {
             options={currencies}
             setData={dispatchDetail}
             dataType={"single"}
+          />
+        </div>
+      </div>
+      <div className={classes["price-shipment"]}>
+        <div className={classes["input-wrapper"]}>
+          <InputGroup
+            numbersOnly={true}
+            noLabel={true}
+            id={"price_shipment"}
+            data={data.price_shipment}
+            dataKey={"price_shipment"}
+            setData={dispatchDetail}
+            stateType={"useReducer"}
+            dataType="single"
           />
         </div>
       </div>

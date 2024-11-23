@@ -31,11 +31,6 @@ export const intialValue = {
   origin_country: "",
   destination_location: "",
   destination_country: "",
-  ftl_freight:{
-    freights: [],
-    internal_notes: "",
-    comment_offer:''
-  },
   fcl_freight: {
     freights_selected: [],
     internal_notes: "",
@@ -57,6 +52,11 @@ export const intialValue = {
     m20_tank: "",
     m40_tank: "",
   },
+  airtariff_freight: { freights: [], internal_notes: "" },
+  ftl_freight: { freights: [], internal_notes: "", comment_offer: "" },
+  ltl_freight: { freights: [], internal_notes: "", comment_offer: "" },
+  air_freight: { freights: [], internal_notes: "" },
+  lcl_freight: { freights: [], internal_notes: "" },
   quote: {
     //text formmater
     message: "",

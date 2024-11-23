@@ -4,32 +4,33 @@ import classes from "./table.module.css";
 import AddNewButton from "@/app/ui/addNewButton-2/AddNewButton";
 import CircleCheckbox from "@/app/ui/circleCheckbox/CircleChexbox";
 import AddFreight from "./addFreight/AddFreight";
-import { AirOptions } from "../options";
+import { FTLOptions, LTLOptions } from "../options";
 import InputGroup from "@/app/ui/inputs/inputGroup/InputGroup";
-import { FaRegComment } from "react-icons/fa";
 import { changeTimeFormat } from "../utils";
 import { handleNames } from "@/app/lib/handleNames";
+import { FaRegComment } from "react-icons/fa";
+import RichText from "@/app/ui/inputs/richTextGroup/RichTextGroup";
 
-const AIRfreight = ({ data, dispatchDetail }) => {
-  const headerItems = [...AirOptions];
+const LTLfreight = ({ data, dispatchDetail }) => {
+  const headerItems = [...LTLOptions];
   const changeTableItem = (itemData, type, index) => {
     if (type === "create") {
       dispatchDetail({
-        type: "air_freight".toUpperCase(),
+        type: "ltl_freight".toUpperCase(),
         value: { ...data, freights: [...data?.freights, itemData] },
       });
       toggleShowComponent();
     } else if (type === "delete") {
       const updatedArray = data?.freights?.filter((_, indx) => indx !== index);
       dispatchDetail({
-        type: "air_freight".toUpperCase(),
+        type: "ltl_freight".toUpperCase(),
         value: { ...data, freights: updatedArray },
       });
     } else {
       const updatedArray = [...data?.freights];
       updatedArray[index] = itemData;
       dispatchDetail({
-        type: "air_freight".toUpperCase(),
+        type: "ltl_freight".toUpperCase(),
         value: { ...data, freights: updatedArray },
       });
       toggleShowComponent();
@@ -50,13 +51,22 @@ const AIRfreight = ({ data, dispatchDetail }) => {
           <p className={classes["space-1"]}></p>
           {headerItems.map((item, index) => (
             <>
-              <p key={index} className={classes[handleNames(item, "class")]}>
+              <p
+                key={index}
+                className={
+                  item === "Cost/ Margin / Price"
+                    ? classes["cost-margin-price"]
+                    : item === "Cost (no margin)"
+                    ? classes["cost"]
+                    : classes[handleNames(item, "class")]
+                }
+              >
                 {item}
               </p>
-              {index === 9 && <p className={classes["space-2"]}></p>}
+
+              {index === 6 && <p className={classes["space-2"]}></p>}
             </>
           ))}
-          <p className={classes["comment"]}></p>
         </div>
         <div className={classes["body"]}>
           {data?.freights?.length > 0 &&
@@ -84,29 +94,37 @@ const AIRfreight = ({ data, dispatchDetail }) => {
 
                   {headerItems.map((name, idx) =>
                     name === "Validity Start" || name === "Validity End" ? (
-                      <div
-                        key={idx}
-                        className={classes[handleNames(name, "class")]}
-                      >
+                      <div key={idx} className={classes["validity-start"]}>
                         {/* {item[handleNames(name, "data")]} */}
                         {changeTimeFormat(item[handleNames(name, "data")])}
                       </div>
-                    ) : name === "Price per kg" ? (
-                      <div key={idx} className={classes["price-per-kg"]}>
-                        {item["price_per_kg"].total_price}
-                      </div>
                     ) : (
-                      <p
-                        key={`${index}-${idx}`}
-                        className={classes[handleNames(name, "class")]}
-                      >
-                        {item[handleNames(name, "data")]}
-                      </p>
+                      <>
+                        <p
+                          onClick={() => {
+                            console.log("ddddddd", item);
+                          }}
+                          key={`${index}-${idx}`}
+                          className={
+                            name === "Cost/ Margin / Price"
+                              ? classes["cost-margin-price"]
+                              : name === "Cost (no margin)"
+                              ? classes["cost"]
+                              : classes[handleNames(name, "class")]
+                          }
+                        >
+                          {name === "cost-margin-price"
+                            ? item["cost-margin-price"].price
+                            : item[handleNames(name, "data")]}
+                        </p>
+                        {index === 6 && (
+                          <div className={classes["comment"]}>
+                            <FaRegComment className={classes["comment-icon"]} />
+                          </div>
+                        )}
+                      </>
                     )
                   )}
-                  <div className={classes["comment"]}>
-                    <FaRegComment className={classes["comment-icon"]} />
-                  </div>
 
                   <div
                     onClick={() => {
@@ -133,6 +151,17 @@ const AIRfreight = ({ data, dispatchDetail }) => {
         </div>
       </div>
       <div className={classes["bottom"]}>
+        <div className={classes["rich-text"]}>
+          <p className={classes["label"]}>Comment (visible on the offer)</p>
+          <RichText
+            data={data}
+            dataKey={"comment_offer"}
+            type={"ftl_freight"}
+            setData={dispatchDetail}
+            dataType={"object"}
+          />
+        </div>
+
         <InputGroup
           label={"Notes (internal use only):"}
           id={data?.internal_notes}
@@ -141,11 +170,11 @@ const AIRfreight = ({ data, dispatchDetail }) => {
           setData={dispatchDetail}
           stateType={"useReducer"}
           dataType="object"
-          objectType={"air_freight"}
+          objectType={"ltl_freight"}
         />
       </div>
     </div>
   );
 };
 
-export default AIRfreight;
+export default LTLfreight;

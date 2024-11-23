@@ -1,3 +1,9 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .table {
   display: flex;
   flex-direction: column;
@@ -42,21 +48,39 @@
   /* color: rgba(11, 48, 159, 0.87); */
   color: var(--black-50);
 }
-.from-country,
-.from-location,
-.to-country,
-.to-location {
-  flex-basis: 14%;
+.name,
+.service,
+.validity-start,
+.validity-end,
+.min-price,
+.currency,
+.comment,
+.chargeable,
+.ratio,
+.price-shipment,
+.price-per-kg {
+  flex-basis: 20%;
   flex-shrink: 0;
   flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.type,
-.mode,
-.total,
-.unit {
-  flex-basis: 11%;
+.validity-start,
+.validity-end {
+  flex-basis: 22%;
   flex-shrink: 0;
-  flex-grow: 0;
+}
+
+.space-1 {
+  min-width: 23px;
+}
+.space-2 {
+  min-width: 3rem;
+}
+
+.comment {
+  flex-basis: 4rem;
 }
 .delete {
   flex-basis: 10%;

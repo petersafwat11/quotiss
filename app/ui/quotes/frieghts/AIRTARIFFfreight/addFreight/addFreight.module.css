@@ -35,15 +35,38 @@
 .cancel-icon {
   color: var(--black);
 }
-.service .local-charge .shipment .currency .container-type,
-.comment {
-  flex-basis: 14%;
+.name,
+.service,
+.start,
+.end,
+.min-price,
+.currency {
+  flex-basis: 20%;
   flex-shrink: 0;
   flex-grow: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.start,
+.end {
+  flex-basis: 22%;
+  flex-shrink: 0;
+}
+
+.rich-text {
+  background-color: white;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  color: var(--border);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
 .active div {
   justify-content: center;
 }

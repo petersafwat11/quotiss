@@ -1,14 +1,21 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./table.module.css";
-import AddPotential from "./addFreight/AddFreight";
 import AddNewButton from "@/app/ui/addNewButton-2/AddNewButton";
-import RichText from "@/app/ui/inputs/richTextGroup/RichTextGroup";
-import InputGroup from "@/app/ui/inputs/inputGroup/InputGroup";
+import CircleCheckbox from "@/app/ui/circleCheckbox/CircleChexbox";
 import AddFreight from "./addFreight/AddFreight";
+import { FTLOptions } from "../options";
+import InputGroup from "@/app/ui/inputs/inputGroup/InputGroup";
+import { changeTimeFormat } from "../utils";
+import { handleNames } from "@/app/lib/handleNames";
 import { FaRegComment } from "react-icons/fa";
+import RichText from "@/app/ui/inputs/richTextGroup/RichTextGroup";
 
-const FTLfreight = ({ data, dispatchDetail, selectedOptions }) => {
+const FTLfreight = ({ data, dispatchDetail }) => {
+  useEffect(() => {
+    console.log("data", data);
+  }, [data]);
+  const headerItems = [...FTLOptions];
   const changeTableItem = (itemData, type, index) => {
     if (type === "create") {
       dispatchDetail({
@@ -17,15 +24,14 @@ const FTLfreight = ({ data, dispatchDetail, selectedOptions }) => {
       });
       toggleShowComponent();
     } else if (type === "delete") {
-      const updatedArray = data?.filter((_, indx) => indx !== index);
+      const updatedArray = data?.freights?.filter((_, indx) => indx !== index);
       dispatchDetail({
         type: "ftl_freight".toUpperCase(),
         value: { ...data, freights: updatedArray },
       });
     } else {
-      const updatedArray = [...data];
+      const updatedArray = [...data?.freights];
       updatedArray[index] = itemData;
-
       dispatchDetail({
         type: "ftl_freight".toUpperCase(),
         value: { ...data, freights: updatedArray },
@@ -41,17 +47,16 @@ const FTLfreight = ({ data, dispatchDetail, selectedOptions }) => {
   const toggleShowComponent = () => {
     setShowComponent({ state: !showComponent.state, index: null });
   };
-
   return (
     <div className={classes["container"]}>
       <div className={classes["table"]}>
         <div className={classes["header"]}>
-          <p className={classes["name"]}>Name</p>
-          <p className={classes["service"]}>service</p>
-          <p className={classes["start"]}>Validity Start</p>
-          <p className={classes["end"]}>Validity End</p>
-          <p className={classes["shipment"]}>Shipment</p>
-          <p className={classes["currency"]}>Currency</p>
+          <p className={classes["space"]}></p>
+          {headerItems.map((item, index) => (
+            <p key={index} className={classes[handleNames(item, "class")]}>
+              {item}
+            </p>
+          ))}
         </div>
         <div className={classes["body"]}>
           {data?.freights?.length > 0 &&
@@ -75,15 +80,30 @@ const FTLfreight = ({ data, dispatchDetail, selectedOptions }) => {
                   key={index}
                   className={classes["row"]}
                 >
-                  <p className={classes["name"]}> {item?.name}</p>
-                  <p className={classes["service"]}> {item?.service}</p>
-                  <p className={classes["shipment"]}>{item?.shipment}</p>
-                  <p className={classes["start"]}>{item?.validity_start}</p>
-                  <p className={classes["end"]}>{item?.validity_end}</p>
-                  <p className={classes["currency"]}>{item?.currency}</p>
+                  <CircleCheckbox value={item?.checked} />
+
+                  {headerItems.map((name, idx) =>
+                    name === "Validity Start" || name === "Validity End" ? (
+                      <div
+                        key={idx}
+                        className={classes[handleNames(name, "class")]}
+                      >
+                        {/* {item[handleNames(name, "data")]} */}
+                        {changeTimeFormat(item[handleNames(name, "data")])}
+                      </div>
+                    ) : (
+                      <p
+                        key={`${index}-${idx}`}
+                        className={classes[handleNames(name, "class")]}
+                      >
+                        {item[handleNames(name, "data")]}
+                      </p>
+                    )
+                  )}
                   <div className={classes["comment"]}>
                     <FaRegComment className={classes["comment-icon"]} />
                   </div>
+
                   <div
                     onClick={() => {
                       changeTableItem([], "delete", index);
@@ -99,7 +119,6 @@ const FTLfreight = ({ data, dispatchDetail, selectedOptions }) => {
             !showComponent.index &&
             showComponent.index !== 0 && (
               <AddFreight
-                selectedOptions={selectedOptions}
                 toggleShowComponent={toggleShowComponent}
                 applyChanges={changeTableItem}
               />
@@ -110,7 +129,7 @@ const FTLfreight = ({ data, dispatchDetail, selectedOptions }) => {
         </div>
       </div>
       <div className={classes["bottom"]}>
-        <div className={classes["input-group"]}>
+        <div className={classes["rich-text"]}>
           <p className={classes["label"]}>Comment (visible on the offer)</p>
           <RichText
             data={data}
@@ -119,17 +138,18 @@ const FTLfreight = ({ data, dispatchDetail, selectedOptions }) => {
             setData={dispatchDetail}
             dataType={"object"}
           />
-          <InputGroup
-            label={"Notes (internal use only):"}
-            id={data?.internal_notes}
-            data={data}
-            dataKey={"internal_notes"}
-            setData={dispatchDetail}
-            stateType={"useReducer"}
-            dataType="object"
-            objectType={"ftl_freight"}
-          />
         </div>
+
+        <InputGroup
+          label={"Notes (internal use only):"}
+          id={data?.internal_notes}
+          data={data}
+          dataKey={"internal_notes"}
+          setData={dispatchDetail}
+          stateType={"useReducer"}
+          dataType="object"
+          objectType={"ftl_freight"}
+        />
       </div>
     </div>
   );
