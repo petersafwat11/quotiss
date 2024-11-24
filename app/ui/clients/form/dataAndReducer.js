@@ -14,9 +14,9 @@ export const clientsReducer = (state, action) => {
 export const intialValue = {
   organization_type: "",
   organization_name: "",
-  offer_language: "",
+  offer_language: "English",
   status: "",
-  sales_rep: "",
+  // sales_rep: "",
   account_owner: "",
   payment_term: "",
   taxpayer_identification_number: "",
@@ -43,11 +43,11 @@ export const intialValue = {
     notes: "",
   },
   margins: {
-    air:[],
-    FCLRail:[],
-    FCLSea:[],
-    LCLRail:[],
-    LCLSea:[],
-    LTL:[]
-  }
+    air: [],
+    FCLRail: [],
+    FCLSea: [],
+    LCLRail: [],
+    LCLSea: [],
+    LTL: [],
+  },
 };

@@ -126,7 +126,7 @@ const Form = ({ formData, id }) => {
         )}
       </div>
 
-      {created ? (
+      {/* {created ? (
         <ActionBtns applyChanges={applyChanges} deleteHandler={deleteHandler} />
       ) : (
         <div className={classes["create"]}>
@@ -139,7 +139,17 @@ const Form = ({ formData, id }) => {
             Apply
           </button>
         </div>
-      )}
+      )} */}
+      <div className={classes["create"]}>
+        <button
+          onClick={() => {
+            applyChanges("create");
+          }}
+          className={classes["create-btn"]}
+        >
+          Apply
+        </button>
+      </div>
     </div>
   );
 };

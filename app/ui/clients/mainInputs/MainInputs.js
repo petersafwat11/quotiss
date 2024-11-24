@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./mainInputs.module.css";
 import InputGroup from "../../inputs/inputGroup/InputGroup";
 import SelectionGroup from "../../inputs/selectionGroup/SelectionGroup";
+import { languages } from "@/app/utils/options";
 const MainInputs = ({ data, dispatchDetail }) => {
   const options = [
     "Linked",
@@ -167,7 +168,7 @@ const MainInputs = ({ data, dispatchDetail }) => {
         stateType={"useReducer"}
         dataType="single"
       /> */}
-      <InputGroup
+      {/* <InputGroup
         id={"offer_language"}
         label={"Offer Language"}
         data={data.offer_language}
@@ -175,8 +176,18 @@ const MainInputs = ({ data, dispatchDetail }) => {
         setData={dispatchDetail}
         stateType={"useReducer"}
         dataType="single"
-      />
+      /> */}
       <SelectionGroup
+        data={data}
+        type={"offer_language"}
+        dataKey={"offer_language"}
+        label={"Offer Language"}
+        options={languages}
+        setData={dispatchDetail}
+        dataType={"single"}
+      />
+
+      {/* <SelectionGroup
         data={data}
         type={"sales_rep"}
         dataKey={"sales_rep"}
@@ -184,7 +195,7 @@ const MainInputs = ({ data, dispatchDetail }) => {
         options={salesRepOptions}
         setData={dispatchDetail}
         dataType={"single"}
-      />
+      /> */}
       <SelectionGroup
         data={data}
         type={"account_owner"}

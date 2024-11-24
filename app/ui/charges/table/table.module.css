@@ -1,8 +1,17 @@
+.container {
+  border: 1px solid var(--black-10);
+  background-color: #f1f0f0;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+}
 .table {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--black-10);
-  background-color: #f1f0f0;
   width: 100%;
 }
 

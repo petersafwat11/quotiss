@@ -114,3 +114,20 @@ export const serviceOptions = [
   "Ocean Alliance",
   "Seago Line",
 ];
+export const languages = [
+  "English",
+  "Polish",
+  "Turkish",
+  "Russian",
+  "German",
+  "Czech",
+  "Slovak",
+  "Lituanian",
+  "Romanian",
+  "French",
+  "Dutch",
+  "Hungarian",
+  "Italian",
+  "Spanish",
+  "Slovenian",
+];
