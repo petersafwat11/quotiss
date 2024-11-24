@@ -6,7 +6,7 @@ const nextConfig = {
     // STATIC_SERVER: "http://localhost:5000",
 
     FRONTEND_SERVER: "https://quotsis-backend-production.up.railway.app/",
-    BACKEND_SERVER: "https://quotsis-backend-production.up.railway.app//api",
+    BACKEND_SERVER: "https://quotsis-backend-production.up.railway.app/api",
     STATIC_SERVER: "https://quotsis-backend-production.up.railway.app/",
   },
 };
