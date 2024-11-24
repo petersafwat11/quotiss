@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./groups.module.css";
-import Group from "../group/Group";
 import { IoRocketOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { SlPaypal } from "react-icons/sl";
@@ -8,6 +7,7 @@ import { FaRegUser } from "react-icons/fa";
 import { LuUsers2 } from "react-icons/lu";
 import { FiPhoneCall } from "react-icons/fi";
 import { HiOutlineMailOpen } from "react-icons/hi";
+import Group from "../group/Group";
 
 const Groups = () => {
   return (
