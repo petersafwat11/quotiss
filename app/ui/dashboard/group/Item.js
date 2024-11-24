@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./group.module.css";
-const Group = ({ title, percentage, change, icon, text }) => {
+const Item = ({ title, percentage, change, icon, text }) => {
   return (
     <div className={classes["group"]}>
       <div className={classes["top"]}>
@@ -16,4 +16,4 @@ const Group = ({ title, percentage, change, icon, text }) => {
   );
 };
 
-export default Group;
+export default Item;
